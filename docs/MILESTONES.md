@@ -1,6 +1,6 @@
 # Portfolio 2.0 — Milestone tracker
 
-Updated: 2026-10-28. Application implementation has not started.
+Updated: 2026-10-28. Milestone 1 implemented and locally validated; awaiting review.
 
 Specification: `source/product-requirements-v1.0.md`. Process: `source/master-prompt.md`. Proposed architecture and inventories: `DISCOVERY.md`.
 
@@ -12,7 +12,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M0 — Discovery and architecture
 
-- Status: awaiting review; planning prepared, existing-site/configuration audit incomplete.
+- Status: architecture approved for implementation by Brady's instruction to continue development; existing-site/configuration audit remains incomplete and tracked for launch readiness.
 - Objective: turn the specification into a concrete, reviewable implementation plan without application code.
 - Scope: source review, workspace/asset inventory, documented compatibility, architecture, routes/components, risks, deployment boundaries, milestone gates.
 - Files affected: `README.md`, `docs/DISCOVERY.md`, `docs/MILESTONES.md`, immutable source copies in `docs/source/`.
@@ -24,7 +24,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M1 — Foundation
 
-- Status: not started; requires explicit M1 approval.
+- Status: awaiting review; implementation and local acceptance checks passed. See `MILESTONE-1.md` for evidence and known limits. Do not advance or merge before Brady's review.
 - Objective: establish a reproducible, maintainable application foundation.
 - Scope: Next.js/TypeScript/Tailwind, tokens, directory boundaries, tooling, baseline tests, local docs and CI; no advanced feature implementation.
 - Files/components: package/lockfile, runtime version file, TypeScript/Next/PostCSS/ESLint/Prettier/test configs, `src/app/layout.tsx`, initial `page.tsx`/`globals.css`, `src/components/ui/`, `.gitignore`, `.github/workflows/`, `README.md`, architecture decisions. License only after decision.
