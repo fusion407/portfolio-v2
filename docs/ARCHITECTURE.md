@@ -76,6 +76,18 @@ For progressive enhancement, stable `useSyncExternalStore` server/client snapsho
 
 Purpose/input/output data follows the supplied methodology. It does not make new claims about completed work or automatic code security. FatalFox Studios is a separately confirmed employer correction, documented in `CONTENT-DECISIONS.md`; the Swordbound project title and route are unchanged.
 
+## Milestone 5 — Deferred 3D and restrained motion
+
+The server-rendered SVG network is extracted intact as the always-present fallback. A homepage-only client wrapper checks viewport/pointer/motion preferences, data-saving hints, core count, intersection, and page visibility before requesting a lazy scene after a 1.5-second delay. It skips 3D for narrow/coarse-pointer/reduced-motion devices, data saving, and devices reporting at most two logical cores. These are conservative hints rather than reliable GPU classification; continuous frame-delivery monitoring handles sustained poor performance after startup.
+
+React Three Fiber 9.8.2 supports the installed React 19.3.1, paired with Three 0.186.1 and matching-major types 0.186.0. The small scene has eight nodes, eighteen connections, two orbit rings, no textures, shadows, postprocessing, network assets, controls library, or moving camera. MeshBasicMaterial and additive shells supply cyan/purple illumination. Demand rendering is requested at roughly 30 fps only while visible and unpaused, with DPR capped at 1.5 and low-power renderer preference. Pointer parallax and ambient rotations are deliberately small.
+
+The SVG remains visible until the first scene frames are rendered. Reserved control space prevents pause-button layout shifts. A visible keyboard-accessible pause/resume button controls continuous movement. Page hiding and intersection changes stop the render timer; re-entry resumes without accumulating elapsed hidden time. A React error boundary handles renderer/import failures; context loss and a sustained 60-frame mean above 90 ms after warmup permanently select the SVG for that mount. Resources, event listeners, observers, timers, and native animations are cleaned up on unmount. No automatic retry loop is used.
+
+Motion 14.7.1 is used through its deferred `motion/mini` entry point for brief heading translations. Server content starts fully visible; no opacity gate, scroll hijacking, focus interception, or animation prerequisite is introduced. CSS provides small route entrances, navigation underlines, card-artwork hover/focus scaling, and pressed-button feedback. The shared template replays route entrances; reduced-motion preferences disable them and finish active heading animations. Project routes do not import the hero wrapper or request the renderer chunk; browser tests verify that boundary and reduced-motion download avoidance.
+
+Performance and bundle evidence, platform limits, and manual review are recorded in `MILESTONE-5.md`.
+
 ## References checked
 
 - [Node release support](https://nodejs.org/en/about/previous-releases)
@@ -87,5 +99,9 @@ Purpose/input/output data follows the supplied methodology. It does not make new
 - [Next.js not-found behavior](https://nextjs.org/docs/app/api-reference/functions/not-found)
 - [React server/client snapshots](https://react.dev/reference/react/useSyncExternalStore)
 - [HTML fragment navigation and ancestor reveal](https://html.spec.whatwg.org/multipage/browsing-the-web.html#scroll-to-fragid)
+- [React Three Fiber compatibility](https://r3f.docs.pmnd.rs/getting-started/introduction)
+- [Fiber demand rendering and performance](https://r3f.docs.pmnd.rs/advanced/scaling-performance)
+- [Canvas lifecycle and renderer configuration](https://r3f.docs.pmnd.rs/api/canvas)
+- [Motion mini animation API](https://motion.dev/docs/animate)
 
 Package metadata was checked before installation. The lockfile records exact resolution; actual validation results belong in the milestone report.

@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/hero";
+import { PageMotion } from "@/components/motion/page-motion";
 import { FeaturedBuilds } from "@/components/sections/featured-builds";
 import { HowIBuild } from "@/components/sections/how-i-build";
 import { Experience } from "@/components/sections/experience";
@@ -9,6 +10,7 @@ import { Contact } from "@/components/sections/contact";
 export default function HomePage() {
   return (
     <>
+      <PageMotion />
       <Hero />
       <FeaturedBuilds />
       <HowIBuild />

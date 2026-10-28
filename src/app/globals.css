@@ -206,12 +206,52 @@ summary {
   border-color: var(--color-muted);
 }
 .hero-network {
+  position: relative;
+  padding-bottom: 3.5rem;
   width: 110%;
   margin-left: -3%;
 }
 .hero-network svg {
   width: 100%;
   height: auto;
+}
+.hero-network-canvas {
+  position: absolute;
+  inset: 0 0 auto;
+  aspect-ratio: 600 / 560;
+  opacity: 0;
+  transition: opacity 450ms ease;
+}
+.hero-network[data-scene="active"] .hero-network-canvas,
+.hero-network[data-scene="paused"] .hero-network-canvas {
+  opacity: 1;
+}
+.hero-network-fallback svg {
+  transition: opacity 450ms ease;
+}
+.hero-network[data-scene="active"] .hero-network-fallback svg,
+.hero-network[data-scene="paused"] .hero-network-fallback svg {
+  opacity: 0;
+}
+.network-motion-control {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  translate: -50% 0;
+  display: block;
+  margin: 0.75rem auto 0;
+  min-height: 2.75rem;
+  padding: 0.4rem 0.8rem;
+  color: var(--color-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.5rem;
+  font-size: 0.6875rem;
+  cursor: pointer;
+}
+.network-motion-control:hover {
+  color: var(--color-foreground);
+  border-color: var(--color-muted);
 }
 .network-caption {
   display: flex;
@@ -880,6 +920,46 @@ summary {
   }
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .route-content {
+    animation: route-arrival 320ms ease-out;
+  }
+  .project-card .project-artwork svg {
+    transition: transform 350ms ease-out;
+  }
+  .project-card:hover .project-artwork svg,
+  .project-card:focus-within .project-artwork svg {
+    transform: scale(1.015);
+  }
+  .button:active {
+    transform: translateY(1px);
+  }
+  .desktop-navigation a {
+    position: relative;
+  }
+  .desktop-navigation a::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 -0.4rem;
+    height: 1px;
+    background: var(--color-cyan);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 180ms ease-out;
+  }
+  .desktop-navigation a:hover::after,
+  .desktop-navigation a:focus-visible::after {
+    transform: scaleX(1);
+  }
+}
+@keyframes route-arrival {
+  from {
+    transform: translateY(6px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
