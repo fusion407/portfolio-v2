@@ -1,6 +1,6 @@
 # Milestone 1 — Foundation report
 
-Date: 2026-10-28. Status: implementation and local validation complete; awaiting Brady's review.
+Date: 2026-10-28. Status: completed and accepted. Brady authorized merging PR #1 and continuing to Milestone 2. PR #1 was merged at `10f12eb29d9ef5e3c41092a69df1319cc0b5a634` after its quality workflow passed.
 
 ## Delivered scope
 
@@ -59,4 +59,4 @@ The supplied source documents remain untouched in this milestone. Git whitespace
 
 ## Review gate
 
-Pause after verified foundation delivery on branch `milestone-1-foundation` and its review PR. Do not merge automatically. Milestone 2 is the full responsive homepage and navigation; it requires Brady's review before implementation under the master prompt.
+The original review gate was satisfied by Brady's explicit instruction to merge [PR #1](https://github.com/fusion407/portfolio-v2/pull/1) and continue. Milestone 2 is authorized; its own completion still requires review before advancing to Milestone 3.
