@@ -56,6 +56,18 @@ The supplied purple remains the primary button background. A separate white on-a
 
 The favicon is an authored SVG App Router metadata asset. The browser and Lighthouse checks use the same loopback-only production build. Performance scores are local baselines, not claims about a deployed site; preview noindex remains intentional.
 
+## Milestone 3 — Shared project system
+
+The root layout now owns the header, main/skip target, footer, and top anchor so all routes and 404s share exactly one shell. The homepage composes sections within that layout. A Projects navigation entry and case links expose only implemented routes; native root-relative section anchors still work from case-study pages.
+
+`src/content/projects.ts` extends the existing summaries with typed public slugs, section content, and optional migration/playground/trailer data. Existing homepage text is retained. `generateStaticParams` emits four known slugs, `dynamicParams = false` rejects unknown paths, and lookup returns undefined for unknown strings rather than falling through to a project. Page metadata is unique; preview robots/header protections are inherited.
+
+The shared case template renders optional capabilities from data rather than duplicated page implementations. Sidebar anchors, next-project links, and index cards use the same project records. Heading level is explicit for index versus homepage cards. The NeonSynth extension component is a passive server-rendered content boundary, with no audio runtime or controls. The official trailer remains a direct attributed link with no third-party script/embed cost.
+
+`app/not-found.tsx` provides branded recovery UI. Direct HTTP tests verify `/404`, unknown root paths, unknown slugs, and extra nested paths return 404 rather than successful placeholder pages. No separate `/404` page that could accidentally return 200 is created.
+
+All project covers remain conceptual SVGs. See `ASSETS.md` for source/provenance and outstanding approvals. The installed Geist OFL notice is retained with public assets; no code license is assumed. No dependency changes are needed.
+
 ## References checked
 
 - [Node release support](https://nodejs.org/en/about/previous-releases)
@@ -63,5 +75,7 @@ The favicon is an authored SVG App Router metadata asset. The browser and Lighth
 - [Tailwind with Next.js](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
 - [Next.js Vitest guidance](https://nextjs.org/docs/app/guides/testing/vitest)
 - [Next.js on Netlify](https://docs.netlify.com/build/frameworks/framework-setup-guides/nextjs/overview/)
+- [Static project parameters](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)
+- [Next.js not-found behavior](https://nextjs.org/docs/app/api-reference/functions/not-found)
 
 Package metadata was checked before installation. The lockfile records exact resolution; actual validation results belong in the milestone report.

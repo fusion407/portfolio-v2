@@ -1,6 +1,6 @@
 # Portfolio 2.0 — Milestone tracker
 
-Updated: 2026-10-28. Milestone 1 accepted and merged; Milestone 2 implemented and locally validated, awaiting review.
+Updated: 2026-10-28. Milestones 1–2 accepted and merged; Milestone 3 implemented and locally validated, awaiting review.
 
 Specification: `source/product-requirements-v1.0.md`. Process: `source/master-prompt.md`. Proposed architecture and inventories: `DISCOVERY.md`.
 
@@ -35,7 +35,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M2 — Homepage and navigation
 
-- Status: awaiting review; all seven sections and responsive navigation implemented. Local formatting, lint, types, 2 unit tests, 20 browser checks, build, and audit passed. See `MILESTONE-2.md` for evidence and remaining scope. Do not merge or advance automatically.
+- Status: completed and accepted; Brady explicitly authorized merging PR #2 and beginning M3. Merge commit `d8d4a459d076e0e2a6fb78e47e3f181a493b5009`. Local checks and Linux CI passed. Copywriting refinements deferred by Brady; see `MILESTONE-2.md`.
 - Objective: deliver the complete responsive introduction before expensive effects.
 - Scope: hero copy, seven homepage sections, header/mobile navigation, footer, shared cards/type/buttons, static hero visual.
 - Files/components: `src/app/page.tsx`, `globals.css`, `content/site.ts`, initial projects/experience/tool content, `components/layout/`, `ui/`, `sections/`, navigation registry.
@@ -46,7 +46,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M3 — Project showcase system
 
-- Status: not started.
+- Status: awaiting review; listing, four statically generated case studies, passive NeonSynth extension boundary, and branded 404 implemented. Formatting, lint, types, 2 unit tests, 40 browser checks, build, and audit passed locally. See `MILESTONE-3.md`; do not merge or advance automatically.
 - Objective: represent all four projects accurately through a reusable content system.
 - Scope: project index, statically generated case studies, status/role/contribution metadata, approved media or conceptual placeholders, future NeonSynth slot, branded 404.
 - Files/components: `content/projects.ts`, `app/projects/page.tsx`, `app/projects/[slug]/page.tsx`, `app/not-found.tsx`, `components/projects/`, approved `public/` assets and safe attribution records.

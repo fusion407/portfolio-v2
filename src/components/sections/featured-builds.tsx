@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ProjectCard } from "@/components/projects/project-card";
 import { projects } from "@/content/projects";
+import Link from "next/link";
 
 export function FeaturedBuilds() {
   return (
@@ -23,6 +24,11 @@ export function FeaturedBuilds() {
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
+        </div>
+        <div className="section-end-link">
+          <Link href="/projects">
+            View all projects <span aria-hidden="true">↗</span>
+          </Link>
         </div>
       </Container>
     </section>

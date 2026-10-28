@@ -15,11 +15,17 @@ export function SiteHeader() {
           <span>{site.name}</span>
         </Link>
         <nav className="desktop-navigation" aria-label="Primary navigation">
-          {navigation.map((item) => (
-            <a key={item.href} href={item.href}>
-              {item.label}
-            </a>
-          ))}
+          {navigation.map((item) =>
+            item.href === "/projects" ? (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
+            ) : (
+              <a key={item.href} href={item.href}>
+                {item.label}
+              </a>
+            ),
+          )}
         </nav>
         <MobileNavigation />
       </Container>

@@ -1,13 +1,17 @@
-import type { ProjectSummary } from "@/content/projects";
+import Link from "next/link";
+import { projectHref, type ProjectSummary } from "@/content/projects";
 import { ProjectArtwork } from "./project-artwork";
 
 export function ProjectCard({
   project,
   index,
+  headingLevel = 3,
 }: {
   project: ProjectSummary;
   index: number;
+  headingLevel?: 2 | 3;
 }) {
+  const Heading = headingLevel === 2 ? "h2" : "h3";
   return (
     <article className="project-card" aria-labelledby={`${project.id}-title`}>
       <ProjectArtwork kind={project.id} />
@@ -18,7 +22,9 @@ export function ProjectCard({
           </span>
           <span className="status-badge">{project.status}</span>
         </div>
-        <h3 id={`${project.id}-title`}>{project.title}</h3>
+        <Heading className="project-card-title" id={`${project.id}-title`}>
+          {project.title}
+        </Heading>
         <p className="project-summary">{project.summary}</p>
         <ul
           className="tag-list"
@@ -42,6 +48,13 @@ export function ProjectCard({
             ))}
           </div>
         </details>
+        <Link
+          className="case-study-link"
+          href={projectHref(project)}
+          aria-label={`Explore project: ${project.title}`}
+        >
+          Explore project <span aria-hidden="true">↗</span>
+        </Link>
       </div>
     </article>
   );

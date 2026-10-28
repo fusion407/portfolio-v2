@@ -3,6 +3,7 @@ import { expect, test } from "@playwright/test";
 
 test("all homepage sections and internal destinations are available", async ({
   page,
+  request,
 }) => {
   await page.goto("/");
   for (const id of [
@@ -28,12 +29,26 @@ test("all homepage sections and internal destinations are available", async ({
       .map((link) => new URL(link.href))
       .filter(
         (url) =>
-          url.pathname !== "/" ||
-          (url.hash && !document.getElementById(url.hash.slice(1))),
+          url.pathname === "/" &&
+          url.hash &&
+          !document.getElementById(url.hash.slice(1)),
       )
       .map((url) => url.pathname + url.hash),
   );
   expect(missingDestinations).toEqual([]);
+  const routePaths = await page
+    .locator('a[href^="/"]')
+    .evaluateAll((links) => [
+      ...new Set(
+        links.map((link) => new URL((link as HTMLAnchorElement).href).pathname),
+      ),
+    ]);
+  for (const path of routePaths) {
+    expect(
+      (await request.get(path)).status(),
+      `broken homepage route: ${path}`,
+    ).toBe(200);
+  }
 });
 
 test("project summaries disclose accurate work without navigating to unfinished routes", async ({
