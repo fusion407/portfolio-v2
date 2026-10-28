@@ -1,0 +1,3 @@
+* text=auto eol=lf
+# Preserve supplied source documents as originally provided.
+docs/source/* -text

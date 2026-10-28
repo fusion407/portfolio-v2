@@ -30,15 +30,15 @@ Maintain a shared navigation/command registry so section anchors, project routes
 
 ## Dependency plan and compatibility
 
-| Layer | Proposed dependency | Timing and rationale |
-| --- | --- | --- |
-| Framework | Stable Next.js with its supported React/React DOM pair | M1; no canary releases; inspect peer dependencies and lock exact resolution |
-| Types and styling | TypeScript, Tailwind CSS and its documented Next.js/PostCSS integration | M1; strict types, shared CSS tokens |
-| Motion | `motion` via `motion/react` | M5; use CSS for simple feedback and avoid a global client wrapper |
-| Hero | `three`, `@react-three/fiber`, `@types/three` | M5; Fiber 9 pairs with React 19 in current documentation; verify selected releases again |
-| Command palette | `cmdk` | M6; dialog behavior still requires keyboard, focus, and screen-reader verification |
-| Workflow | Native buttons, ordered HTML, CSS/SVG connections | M4; omit React Flow unless a later approved need justifies its weight |
-| Quality | ESLint, Prettier, Vitest, Testing Library, Playwright, axe integration | M1 infrastructure; add meaningful coverage as behavior arrives |
+| Layer             | Proposed dependency                                                     | Timing and rationale                                                                     |
+| ----------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Framework         | Stable Next.js with its supported React/React DOM pair                  | M1; no canary releases; inspect peer dependencies and lock exact resolution              |
+| Types and styling | TypeScript, Tailwind CSS and its documented Next.js/PostCSS integration | M1; strict types, shared CSS tokens                                                      |
+| Motion            | `motion` via `motion/react`                                             | M5; use CSS for simple feedback and avoid a global client wrapper                        |
+| Hero              | `three`, `@react-three/fiber`, `@types/three`                           | M5; Fiber 9 pairs with React 19 in current documentation; verify selected releases again |
+| Command palette   | `cmdk`                                                                  | M6; dialog behavior still requires keyboard, focus, and screen-reader verification       |
+| Workflow          | Native buttons, ordered HTML, CSS/SVG connections                       | M4; omit React Flow unless a later approved need justifies its weight                    |
+| Quality           | ESLint, Prettier, Vitest, Testing Library, Playwright, axe integration  | M1 infrastructure; add meaningful coverage as behavior arrives                           |
 
 Use npm and a committed lockfile unless the selected repository establishes another package manager. Pin one supported Node LTS across local tooling, CI, and Netlify. Install interaction libraries only in their milestones. Avoid initial Drei, postprocessing, state-management, MDX, CMS, and audio packages.
 
@@ -56,16 +56,16 @@ These checks establish documented feasibility, not a tested dependency matrix. M
 
 ## Proposed route structure
 
-| URL | Implementation | Content |
-| --- | --- | --- |
-| `/` | `src/app/page.tsx` | Complete seven-section introduction |
-| `/projects` | `src/app/projects/page.tsx` | All four featured projects |
-| `/projects/geovis` | Shared `src/app/projects/[slug]/page.tsx` | Ongoing cloud-to-local migration |
-| `/projects/neonsynth` | Same static template | VST3 showcase and nonfunctional future-module area |
-| `/projects/titanforge-studio` | Same static template | Concise early-prototype concept |
-| `/projects/swordbound-protocol` | Same static template | Contributions, third-party trailer attribution |
-| `/resume` | `src/app/resume/page.tsx` | Confirmed information; download only after PDF supplied |
-| `/404` and unmatched URLs | `src/app/not-found.tsx`; verify `/404` behavior | Branded recovery navigation; genuine HTTP 404 |
+| URL                             | Implementation                                  | Content                                                 |
+| ------------------------------- | ----------------------------------------------- | ------------------------------------------------------- |
+| `/`                             | `src/app/page.tsx`                              | Complete seven-section introduction                     |
+| `/projects`                     | `src/app/projects/page.tsx`                     | All four featured projects                              |
+| `/projects/geovis`              | Shared `src/app/projects/[slug]/page.tsx`       | Ongoing cloud-to-local migration                        |
+| `/projects/neonsynth`           | Same static template                            | VST3 showcase and nonfunctional future-module area      |
+| `/projects/titanforge-studio`   | Same static template                            | Concise early-prototype concept                         |
+| `/projects/swordbound-protocol` | Same static template                            | Contributions, third-party trailer attribution          |
+| `/resume`                       | `src/app/resume/page.tsx`                       | Confirmed information; download only after PDF supplied |
+| `/404` and unmatched URLs       | `src/app/not-found.tsx`; verify `/404` behavior | Branded recovery navigation; genuine HTTP 404           |
 
 Generate only the four allowed case-study slugs; unknown project paths must return 404. Add sitemap and robots metadata routes, not an unnecessary application API.
 
@@ -120,19 +120,19 @@ docs/                          # requirements, decisions, milestones, deployment
 
 ## Content and asset inventory
 
-| Item | Available facts/material | Missing or restricted | Initial handling |
-| --- | --- | --- | --- |
-| Identity | Name, headline, identity, supporting statement | Additional biography | Use supplied copy only |
-| GeoVis | Kohola role, existing architecture, migration responsibilities, Ollama target; in development | Public-detail approval; approved map image | Local supplied summary; public release requires approval, conceptual labeled cover |
-| NeonSynth | Custom VST3 project for Ableton Live; in development | Approved screenshots, detailed technical source | Showcase supplied facts; future module area only |
-| TitanForge | Specialized-agent game workspace concept; early prototype | Real screenshots, verified implemented capabilities | Concise concept; labeled conceptual visual |
-| Swordbound | Supplied contribution list; unreleased; technical-art/gameplay role | Approved captures; employment dates/details | Attribute third-party official trailer; do not imply it depicts Brady's own cinematic work |
-| Experience | Kohola AI Software Engineer; Swordbound contributions | Dates, education, additional history, metrics, updated resume | No invented chronology, employers, claims, or accomplishments |
-| Tools | Ollama; Replit; Claude Code; Codex; Gemini/Google Antigravity; Unreal; Niagara; Sequencer; VST3; Ableton | Languages/frameworks as personal skills | Separate runtime AI, development tools, and creative/game tools; site stack is not a personal-skills claim |
-| Contact | LinkedIn URL and GitHub profile `https://github.com/fusion407` supplied | Public email | Supplied profiles may be linked; email pending, no broken links |
-| Resume | Route requested | Updated PDF and validated content | Honest pending state until supplied; no dummy download |
-| Hosting and URLs | Domain and Netlify hosting stated by user | Current URL/config inventory; account access; backup | No changes to live site; migration audit remains open |
-| Source | Public `fusion407/portfolio-v2` created; discovery upload approved | Code license | Independent repository; application implementation still requires M1 approval |
+| Item             | Available facts/material                                                                                 | Missing or restricted                                         | Initial handling                                                                                           |
+| ---------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Identity         | Name, headline, identity, supporting statement                                                           | Additional biography                                          | Use supplied copy only                                                                                     |
+| GeoVis           | Kohola role, existing architecture, migration responsibilities, Ollama target; in development            | Public-detail approval; approved map image                    | Local supplied summary; public release requires approval, conceptual labeled cover                         |
+| NeonSynth        | Custom VST3 project for Ableton Live; in development                                                     | Approved screenshots, detailed technical source               | Showcase supplied facts; future module area only                                                           |
+| TitanForge       | Specialized-agent game workspace concept; early prototype                                                | Real screenshots, verified implemented capabilities           | Concise concept; labeled conceptual visual                                                                 |
+| Swordbound       | Supplied contribution list; unreleased; technical-art/gameplay role                                      | Approved captures; employment dates/details                   | Attribute third-party official trailer; do not imply it depicts Brady's own cinematic work                 |
+| Experience       | Kohola AI Software Engineer; Swordbound contributions                                                    | Dates, education, additional history, metrics, updated resume | No invented chronology, employers, claims, or accomplishments                                              |
+| Tools            | Ollama; Replit; Claude Code; Codex; Gemini/Google Antigravity; Unreal; Niagara; Sequencer; VST3; Ableton | Languages/frameworks as personal skills                       | Separate runtime AI, development tools, and creative/game tools; site stack is not a personal-skills claim |
+| Contact          | LinkedIn URL and GitHub profile `https://github.com/fusion407` supplied                                  | Public email                                                  | Supplied profiles may be linked; email pending, no broken links                                            |
+| Resume           | Route requested                                                                                          | Updated PDF and validated content                             | Honest pending state until supplied; no dummy download                                                     |
+| Hosting and URLs | Domain and Netlify hosting stated by user                                                                | Current URL/config inventory; account access; backup          | No changes to live site; migration audit remains open                                                      |
+| Source           | Public `fusion407/portfolio-v2` created; discovery upload approved                                       | Code license                                                  | Independent repository; application implementation still requires M1 approval                              |
 
 Supplied LinkedIn: https://www.linkedin.com/in/brady-dorsey-9a582279
 
@@ -152,18 +152,18 @@ Production preparation later requires a verified URL inventory, redirect map, cu
 
 ## Risks and controls
 
-| Risk | Control and evidence required |
-| --- | --- |
-| Accidental live deployment | Separate repo/site where possible; inspect existing hooks before push; never use old site credentials/configuration for previews |
-| Oversized 3D/client bundle | Deferred scene chunk; server-rendered core; compare M2 baseline to M5; keep Three off project pages |
-| Mobile GPU/battery pressure | Low-complexity scene, capped pixel ratio, visibility pause, adaptive fallback, actual device review |
-| WebGL or motion failure | Static network always available; reduced-motion and WebGL-disabled/context-loss checks |
-| Hydration and accessibility defects | Deterministic server markup; isolated client state; keyboard and screen-reader checks; progressive enhancement |
-| Inaccurate or unapproved content | Typed status and provenance, explicit pending items, human content review before public push/deploy |
-| Version/adapter incompatibility | Stable peer-compatible releases, committed lockfile, clean CI build, isolated Netlify verification |
-| Missed old URLs | Do not infer URL inventory from an inaccessible site; audit later and test redirects before migration |
-| Missing professional inputs | Honest pending states permit review; launch readiness remains conditional |
-| Future synth scope expansion | No audio engine or controls in initial release; inspect actual DSP source only under separate authorization |
+| Risk                                | Control and evidence required                                                                                                    |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Accidental live deployment          | Separate repo/site where possible; inspect existing hooks before push; never use old site credentials/configuration for previews |
+| Oversized 3D/client bundle          | Deferred scene chunk; server-rendered core; compare M2 baseline to M5; keep Three off project pages                              |
+| Mobile GPU/battery pressure         | Low-complexity scene, capped pixel ratio, visibility pause, adaptive fallback, actual device review                              |
+| WebGL or motion failure             | Static network always available; reduced-motion and WebGL-disabled/context-loss checks                                           |
+| Hydration and accessibility defects | Deterministic server markup; isolated client state; keyboard and screen-reader checks; progressive enhancement                   |
+| Inaccurate or unapproved content    | Typed status and provenance, explicit pending items, human content review before public push/deploy                              |
+| Version/adapter incompatibility     | Stable peer-compatible releases, committed lockfile, clean CI build, isolated Netlify verification                               |
+| Missed old URLs                     | Do not infer URL inventory from an inaccessible site; audit later and test redirects before migration                            |
+| Missing professional inputs         | Honest pending states permit review; launch readiness remains conditional                                                        |
+| Future synth scope expansion        | No audio engine or controls in initial release; inspect actual DSP source only under separate authorization                      |
 
 ## Quality and review plan
 
