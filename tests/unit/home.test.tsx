@@ -10,10 +10,6 @@ describe("portfolio introduction", () => {
       screen.getByRole("heading", { level: 1, name: /I build\s*things\./ }),
     ).toBeVisible();
     expect(screen.getByText("AI Engineer & Builder of Things")).toBeVisible();
-    expect(screen.getByRole("link", { name: "Brady Dorsey" })).toHaveAttribute(
-      "href",
-      "/",
-    );
   });
 
   it("offers the confirmed professional profiles without inventing contact details", () => {

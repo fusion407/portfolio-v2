@@ -1,6 +1,6 @@
 # Milestone 2 — Homepage and navigation
 
-Date: 2026-10-28. Status: implemented and locally validated; awaiting Brady's review and merge approval.
+Date: 2026-10-28. Status: completed and accepted. Brady approved the current work, deferred copywriting refinements, and explicitly authorized merging PR #2 and starting Milestone 3. Merge commit: `d8d4a459d076e0e2a6fb78e47e3f181a493b5009`; Linux CI passed before merge.
 
 ## Delivered
 
@@ -77,4 +77,4 @@ The CLI was run with `--chrome-flags="--headless" --only-categories=performance,
 - ESLint 9's upstream deprecation limitation remains as documented in M1. No peer-validation or install-script policy bypass is added.
 - Automated Chromium emulation and axe scans do not replace real mobile hardware, other browsers, screen-reader review, or complete accessibility evaluation.
 
-PR #1 was merged with Brady's explicit authorization. This milestone has no deployment job and changes no live site, hosting configuration, domain, or DNS. Pause for review before merging M2 or beginning M3.
+PR #1 was merged with Brady's explicit authorization. This milestone has no deployment job and changes no live site, hosting configuration, domain, or DNS. The review gate for [PR #2](https://github.com/fusion407/portfolio-v2/pull/2) was subsequently satisfied by Brady's explicit approval to merge and begin M3. M3 has its own review gate.

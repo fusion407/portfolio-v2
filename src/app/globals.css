@@ -358,7 +358,7 @@ summary {
   background: rgb(18 27 48 / 70%);
   font-size: 0.5625rem;
 }
-.project-card h3 {
+.project-card-title {
   margin-top: 1.25rem;
   font-size: clamp(1.5rem, 2.6vw, 2rem);
   letter-spacing: -0.04em;
@@ -812,6 +812,19 @@ summary {
 }
 
 @media (width < 40rem) {
+  .header-inner {
+    gap: 1rem;
+  }
+  .wordmark {
+    gap: 0.5rem;
+  }
+  .wordmark > span:last-child {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .mobile-navigation {
+    flex-shrink: 0;
+  }
   .hero-grid {
     min-height: auto;
     padding-block: 4rem;
@@ -910,5 +923,394 @@ summary {
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Project routes and shared case-study presentation. */
+.projects-page,
+.case-page {
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 2rem;
+  color: var(--color-muted);
+  font-size: 0.6875rem;
+  line-height: 1.8;
+}
+.breadcrumbs a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+}
+.breadcrumbs a:hover {
+  color: var(--color-foreground);
+}
+.breadcrumbs [aria-current] {
+  color: var(--color-foreground);
+}
+.projects-intro {
+  padding-block: 3rem 4rem;
+}
+.projects-intro h1,
+.case-intro h1 {
+  margin-top: 1.25rem;
+  font-size: clamp(2.75rem, 6.5vw, 5.5rem);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 1.08;
+}
+.projects-intro h1 span {
+  color: var(--color-muted);
+}
+.case-study-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.25rem;
+  min-height: 2.75rem;
+  color: var(--color-foreground);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.case-study-link span {
+  color: var(--color-cyan);
+}
+.case-study-link:hover {
+  color: var(--color-cyan);
+}
+.project-card .case-study-link {
+  margin-top: 0.75rem;
+}
+.section-end-link {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+.section-end-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  min-height: 2.75rem;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+.section-end-link a span {
+  color: var(--color-cyan);
+}
+.index-contact {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+.case-intro {
+  padding-block: 3rem;
+}
+.case-summary-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(2rem, 7vw, 6rem);
+  margin-top: 2.5rem;
+}
+.case-lead {
+  max-width: 40rem;
+  color: var(--color-muted);
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+.case-facts {
+  font-size: 0.8125rem;
+}
+.case-facts div {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 1rem;
+  padding-block: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.case-facts div:first-child {
+  padding-top: 0;
+}
+.case-facts dt {
+  color: var(--color-muted);
+  font-size: 0.625rem;
+  font-family: var(--font-mono);
+}
+.case-facts dd {
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.case-facts .status-badge {
+  margin: 0;
+}
+.case-cover {
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-subtle);
+}
+.case-cover .project-artwork {
+  border: 0;
+}
+.case-cover figcaption {
+  bottom: 1rem;
+  left: 1.5rem;
+  font-size: 0.625rem;
+}
+.case-body {
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 1fr);
+  gap: 5rem;
+  padding-top: 4rem;
+}
+.case-sidebar {
+  align-self: start;
+  position: sticky;
+  top: 7.5rem;
+}
+.case-sidebar nav {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.case-sidebar .eyebrow {
+  margin-bottom: 1rem;
+}
+.case-sidebar a {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-block: 0.5rem;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+.case-sidebar a:hover {
+  color: var(--color-cyan);
+}
+.case-section {
+  padding-block: 2.5rem;
+  border-top: 1px solid var(--border-subtle);
+  scroll-margin-top: 7rem;
+}
+.case-section:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.case-section h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+}
+.case-section p {
+  margin-top: 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  color: var(--color-muted);
+}
+.case-section .eyebrow {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  color: var(--color-cyan);
+  font-size: 0.625rem;
+  line-height: 1.8;
+}
+.contribution-list {
+  margin-top: 1.5rem;
+}
+.contribution-list li {
+  position: relative;
+  padding: 1rem 0 1rem 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+.contribution-list li::before {
+  position: absolute;
+  left: 0;
+  content: "↗";
+  color: var(--color-cyan);
+}
+.migration-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.migration-comparison article {
+  padding: 1.5rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.75rem;
+  background: rgb(18 27 48 / 40%);
+}
+.migration-comparison article:last-child {
+  border-color: rgb(115 87 245 / 45%);
+}
+.migration-comparison h3 {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.025em;
+}
+.migration-comparison ul {
+  margin-top: 1rem;
+}
+.migration-comparison li {
+  margin-top: 0.75rem;
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+  line-height: 1.8;
+}
+.playground-slot,
+.trailer-panel {
+  margin-top: 1rem;
+  padding: 2rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 1rem;
+  background: radial-gradient(
+    ellipse at top right,
+    rgb(115 87 245 / 10%),
+    transparent 80%
+  );
+}
+.playground-slot {
+  border-style: dashed;
+}
+.playground-slot .playground-status {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.6875rem;
+}
+.playground-status span {
+  color: var(--color-cyan);
+  font-size: 1.25rem;
+}
+.trailer-panel .button {
+  margin-top: 1.5rem;
+}
+.project-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+}
+.next-project {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+  max-width: 65%;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+.next-project > span:last-child {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  letter-spacing: -0.035em;
+  line-height: 1.3;
+}
+.not-found-page {
+  min-height: calc(100svh - 12rem);
+  padding-block: clamp(3rem, 6vw, 6rem);
+}
+.not-found-number {
+  margin-top: 1rem;
+  color: var(--color-muted);
+  font-size: clamp(7rem, 24vw, 16rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.09em;
+}
+.not-found-number span {
+  color: var(--color-purple);
+}
+.not-found-page h1 {
+  margin-top: 1.5rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+}
+
+@media (width < 56rem) {
+  .case-summary-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+  .case-body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+    padding-top: 2.5rem;
+  }
+  .case-sidebar {
+    position: static;
+  }
+  .case-sidebar nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .case-sidebar .eyebrow {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+@media (width < 40rem) {
+  .breadcrumbs {
+    padding-top: 1.25rem;
+    font-size: 0.625rem;
+    gap: 0.5rem;
+  }
+  .projects-intro,
+  .case-intro {
+    padding-block: 2rem 2.5rem;
+  }
+  .case-lead {
+    font-size: 1rem;
+  }
+  .case-facts div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem;
+  }
+  .case-cover figcaption {
+    font-size: 0.5rem;
+    left: 1rem;
+    bottom: 0.65rem;
+  }
+  .case-section {
+    padding-block: 2rem;
+  }
+  .case-section p {
+    font-size: 0.875rem;
+  }
+  .migration-comparison {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .playground-slot,
+  .trailer-panel {
+    padding: 1.5rem;
+  }
+  .project-pagination {
+    gap: 1rem;
+  }
+  .case-study-link {
+    gap: 0.75rem;
   }
 }

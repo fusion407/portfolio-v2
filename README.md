@@ -6,7 +6,9 @@ Primary headline: **I build things.**
 
 ## Current status
 
-Milestone 1 is accepted and merged. Milestone 2 adds the complete responsive homepage and navigation, with four project summaries, a readable eight-stage process, experience, technology groups, about, and contact. Its review report is in [docs/MILESTONE-2.md](docs/MILESTONE-2.md). Dedicated case studies, interactive workflow details, 3D, and the command palette remain in later milestones. This repository is independent of `fusion407/portfolio`; the existing portfolio and production hosting remain unchanged.
+Milestones 1–2 are accepted and merged. Milestone 3 adds the project listing, four static case studies, shared layout, and branded 404; see its [review report](docs/MILESTONE-3.md). Existing homepage wording remains intact, with copywriting refinements deferred by Brady. Interactive workflow details, 3D, the command palette, resume, and production SEO remain later work. This repository is independent of `fusion407/portfolio`; the existing portfolio and production hosting remain unchanged.
+
+Current routes: `/`, `/projects`, `/projects/geovis`, `/projects/neonsynth`, `/projects/titanforge-studio`, and `/projects/swordbound-protocol`. Unknown paths, including `/404`, return a branded HTTP 404 response.
 
 ## Local setup
 
@@ -83,3 +85,5 @@ Development and eventual Netlify previews must stay isolated from the live portf
 ## Licensing and assets
 
 A license has not been selected. Public repository visibility does not grant blanket permission to reuse personal content or third-party/company materials. Only approved assets may be added; project statuses and public-content permissions remain subject to review.
+
+See the [asset inventory](docs/ASSETS.md) for conceptual artwork, pending screenshots, trailer attribution, and the retained Geist font license notice. The passive future NeonSynth extension boundary lives in `src/features/neonsynth/`; it contains no audio implementation.

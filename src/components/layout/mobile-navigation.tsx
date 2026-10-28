@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { navigation } from "@/content/navigation";
 
 export function MobileNavigation() {
@@ -25,18 +26,31 @@ export function MobileNavigation() {
         </span>
       </summary>
       <nav aria-label="Mobile navigation">
-        {navigation.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            onClick={() => {
-              if (disclosure.current) disclosure.current.open = false;
-            }}
-          >
-            {item.label}
-            <span aria-hidden="true">↗</span>
-          </a>
-        ))}
+        {navigation.map((item) =>
+          item.href === "/projects" ? (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => {
+                if (disclosure.current) disclosure.current.open = false;
+              }}
+            >
+              {item.label}
+              <span aria-hidden="true">↗</span>
+            </Link>
+          ) : (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => {
+                if (disclosure.current) disclosure.current.open = false;
+              }}
+            >
+              {item.label}
+              <span aria-hidden="true">↗</span>
+            </a>
+          ),
+        )}
       </nav>
     </details>
   );
