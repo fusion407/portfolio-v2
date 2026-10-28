@@ -68,6 +68,14 @@ The shared case template renders optional capabilities from data rather than dup
 
 All project covers remain conceptual SVGs. See `ASSETS.md` for source/provenance and outstanding approvals. The installed Geist OFL notice is retained with public assets; no code license is assumed. No dependency changes are needed.
 
+## Milestone 4 — Progressive workflow explorer
+
+The interactive workflow uses a small client boundary with typed stage data and a shared detail renderer. Ordinary pressed-state buttons control one labeled detail region; keyboard behavior stays local to those buttons and preserves modifier shortcuts. A concise status announcement avoids reading the entire detail panel after every selection. The explicit feedback action selects and focuses implementation rather than implying a terminal “done” stage.
+
+For progressive enhancement, stable `useSyncExternalStore` server/client snapshots render native stage fragment links in server HTML, then upgrade them to identically styled buttons after hydration. The native full-reference disclosure is always available. Fragment navigation without JavaScript invokes the browser's ancestor-revealing behavior, opening the disclosure and focusing the referenced stage. This avoids effect-driven initial hiding, inert server controls, layout-sized loading placeholders, or a diagram library.
+
+Purpose/input/output data follows the supplied methodology. It does not make new claims about completed work or automatic code security. FatalFox Studios is a separately confirmed employer correction, documented in `CONTENT-DECISIONS.md`; the Swordbound project title and route are unchanged.
+
 ## References checked
 
 - [Node release support](https://nodejs.org/en/about/previous-releases)
@@ -77,5 +85,7 @@ All project covers remain conceptual SVGs. See `ASSETS.md` for source/provenance
 - [Next.js on Netlify](https://docs.netlify.com/build/frameworks/framework-setup-guides/nextjs/overview/)
 - [Static project parameters](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)
 - [Next.js not-found behavior](https://nextjs.org/docs/app/api-reference/functions/not-found)
+- [React server/client snapshots](https://react.dev/reference/react/useSyncExternalStore)
+- [HTML fragment navigation and ancestor reveal](https://html.spec.whatwg.org/multipage/browsing-the-web.html#scroll-to-fragid)
 
 Package metadata was checked before installation. The lockfile records exact resolution; actual validation results belong in the milestone report.

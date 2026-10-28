@@ -12,9 +12,9 @@ export const experience = [
     ],
   },
   {
-    organization: "Swordbound: Protocol",
+    organization: "FatalFox Studios",
     role: "Technical Artist and Gameplay Contributor",
-    context: "Unreleased mobile game",
+    context: "Swordbound: Protocol · unreleased mobile game",
     description:
       "Contributing to the visual experience, performance, cinematics, and selected gameplay mechanics in Unreal Engine.",
     contributions: [

@@ -6,7 +6,7 @@ Primary headline: **I build things.**
 
 ## Current status
 
-Milestones 1–2 are accepted and merged. Milestone 3 adds the project listing, four static case studies, shared layout, and branded 404; see its [review report](docs/MILESTONE-3.md). Existing homepage wording remains intact, with copywriting refinements deferred by Brady. Interactive workflow details, 3D, the command palette, resume, and production SEO remain later work. This repository is independent of `fusion407/portfolio`; the existing portfolio and production hosting remain unchanged.
+Milestones 1–3 are accepted and merged. Milestone 4 adds the interactive eight-stage workflow, purpose/input/output details, and a readable fallback; see its [review report](docs/MILESTONE-4.md). It also corrects the Experience employer to FatalFox Studios and identifies Swordbound: Protocol as the project; see [confirmed content decisions](docs/CONTENT-DECISIONS.md). Broader copywriting refinements remain deferred by Brady. 3D, the command palette, resume, and production SEO remain later work. This repository is independent of `fusion407/portfolio`; the existing portfolio and production hosting remain unchanged.
 
 Current routes: `/`, `/projects`, `/projects/geovis`, `/projects/neonsynth`, `/projects/titanforge-studio`, and `/projects/swordbound-protocol`. Unknown paths, including `/404`, return a branded HTTP 404 response.
 

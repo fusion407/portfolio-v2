@@ -1,6 +1,6 @@
 # Portfolio 2.0 — Milestone tracker
 
-Updated: 2026-10-28. Milestones 1–2 accepted and merged; Milestone 3 implemented and locally validated, awaiting review.
+Updated: 2026-10-28. Milestones 1–3 accepted and merged; Milestone 4 implemented and verified, awaiting review.
 
 Specification: `source/product-requirements-v1.0.md`. Process: `source/master-prompt.md`. Proposed architecture and inventories: `DISCOVERY.md`.
 
@@ -46,7 +46,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M3 — Project showcase system
 
-- Status: awaiting review; listing, four statically generated case studies, passive NeonSynth extension boundary, and branded 404 implemented. Formatting, lint, types, 2 unit tests, 40 browser checks, build, and audit passed locally. See `MILESTONE-3.md`; do not merge or advance automatically.
+- Status: completed and accepted; Brady confirmed the work and authorized M4 with the employer correction. PR #3 merged at `acf6142ed01d1f26d03f27ae5d4775ab606f1aeb` after Linux CI passed. See `MILESTONE-3.md` and `CONTENT-DECISIONS.md`.
 - Objective: represent all four projects accurately through a reusable content system.
 - Scope: project index, statically generated case studies, status/role/contribution metadata, approved media or conceptual placeholders, future NeonSynth slot, branded 404.
 - Files/components: `content/projects.ts`, `app/projects/page.tsx`, `app/projects/[slug]/page.tsx`, `app/not-found.tsx`, `components/projects/`, approved `public/` assets and safe attribution records.
@@ -57,7 +57,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M4 — Interactive AI workflow
 
-- Status: not started.
+- Status: awaiting review. Includes the FatalFox Studios company correction and interactive stage explorer with readable fallback. Format, lint, TypeScript, production build, 4 unit tests, and 52 browser checks pass; audit reports zero vulnerabilities. See `MILESTONE-4.md`. Do not merge or advance automatically.
 - Objective: explain human-led development and continuous verification interactively.
 - Scope: eight selectable connected stages, purpose/input/output details, visible feedback loop to implementation; semantic nonanimated representation.
 - Files/components: `content/workflow.ts`, `components/workflow/`, HowIBuild section, behavioral tests.

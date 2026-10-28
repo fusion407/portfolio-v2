@@ -1,6 +1,6 @@
 # Milestone 3 — Project showcase system
 
-Date: 2026-10-28. Status: implementation and local validation complete; awaiting Brady's review.
+Date: 2026-10-28. Status: completed and accepted. Brady confirmed the work and authorized M4, with the FatalFox Studios employer correction carried into M4. PR #3 was merged at `acf6142ed01d1f26d03f27ae5d4775ab606f1aeb` after its Linux quality workflow passed.
 
 ## Delivered
 
@@ -57,4 +57,4 @@ GitHub Actions repeats checks and all 40 browser tests on the PR. PR checks are 
 - The documented ESLint 9 deprecation limitation remains. No peer or install-script validation bypass is added.
 - Chromium emulation and scans do not replace real devices, other browsers, screen readers, or guarantee vulnerability-free software.
 
-PR #2 was merged only after explicit approval, at `d8d4a459d076e0e2a6fb78e47e3f181a493b5009`. This milestone changes no old repository, live site, Netlify configuration, domain, or DNS. Pause for review before merge and before M4, the interactive eight-stage AI workflow explorer.
+PR #2 was merged only after explicit approval, at `d8d4a459d076e0e2a6fb78e47e3f181a493b5009`. This milestone changes no old repository, live site, Netlify configuration, domain, or DNS. The M3 review gate was subsequently satisfied by Brady's confirmation and instruction to proceed with M4. The employer correction is recorded in `CONTENT-DECISIONS.md`; M4 has a separate review gate.
