@@ -6,7 +6,7 @@ Primary headline: **I build things.**
 
 ## Current status
 
-Milestone 1 establishes the application foundation and a minimal introduction. The complete homepage, case studies, workflow, 3D scene, and command palette will be developed in sequential milestones with human review. See the milestone tracker for verified status and remaining inputs. This repository is independent of `fusion407/portfolio`; the existing portfolio and production hosting remain unchanged.
+Milestone 1 is accepted and merged. Milestone 2 adds the complete responsive homepage and navigation, with four project summaries, a readable eight-stage process, experience, technology groups, about, and contact. Its review report is in [docs/MILESTONE-2.md](docs/MILESTONE-2.md). Dedicated case studies, interactive workflow details, 3D, and the command palette remain in later milestones. This repository is independent of `fusion407/portfolio`; the existing portfolio and production hosting remain unchanged.
 
 ## Local setup
 
@@ -49,10 +49,12 @@ On Linux CI, `npx playwright install --with-deps chromium` installs required sys
 ## Architecture
 
 ```text
-src/app/                 App Router layout, introduction, global tokens
-src/content/             Confirmed local content
+src/app/                 App Router layout, homepage, global tokens, icon
+src/content/             Identity, navigation, projects, experience, process
 src/components/layout/   Layout helpers and skip navigation
 src/components/ui/       Reusable presentation components
+src/components/sections/ Seven homepage sections
+src/components/projects/ Shared project cards and conceptual SVG artwork
 tests/unit/              Vitest and Testing Library
 tests/e2e/               Playwright and axe accessibility checks
 .github/workflows/       Quality checks; no deployment steps

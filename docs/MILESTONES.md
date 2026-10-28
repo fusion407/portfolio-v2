@@ -1,6 +1,6 @@
 # Portfolio 2.0 — Milestone tracker
 
-Updated: 2026-10-28. Milestone 1 implemented and locally validated; awaiting review.
+Updated: 2026-10-28. Milestone 1 accepted and merged; Milestone 2 implemented and locally validated, awaiting review.
 
 Specification: `source/product-requirements-v1.0.md`. Process: `source/master-prompt.md`. Proposed architecture and inventories: `DISCOVERY.md`.
 
@@ -24,7 +24,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M1 — Foundation
 
-- Status: awaiting review; implementation and local acceptance checks passed. See `MILESTONE-1.md` for evidence and known limits. Do not advance or merge before Brady's review.
+- Status: completed and accepted; Brady explicitly authorized merging PR #1 and continuing. Merge commit `10f12eb29d9ef5e3c41092a69df1319cc0b5a634`. Local verification and GitHub Linux CI passed; see `MILESTONE-1.md`.
 - Objective: establish a reproducible, maintainable application foundation.
 - Scope: Next.js/TypeScript/Tailwind, tokens, directory boundaries, tooling, baseline tests, local docs and CI; no advanced feature implementation.
 - Files/components: package/lockfile, runtime version file, TypeScript/Next/PostCSS/ESLint/Prettier/test configs, `src/app/layout.tsx`, initial `page.tsx`/`globals.css`, `src/components/ui/`, `.gitignore`, `.github/workflows/`, `README.md`, architecture decisions. License only after decision.
@@ -35,7 +35,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M2 — Homepage and navigation
 
-- Status: not started.
+- Status: awaiting review; all seven sections and responsive navigation implemented. Local formatting, lint, types, 2 unit tests, 20 browser checks, build, and audit passed. See `MILESTONE-2.md` for evidence and remaining scope. Do not merge or advance automatically.
 - Objective: deliver the complete responsive introduction before expensive effects.
 - Scope: hero copy, seven homepage sections, header/mobile navigation, footer, shared cards/type/buttons, static hero visual.
 - Files/components: `src/app/page.tsx`, `globals.css`, `content/site.ts`, initial projects/experience/tool content, `components/layout/`, `ui/`, `sections/`, navigation registry.

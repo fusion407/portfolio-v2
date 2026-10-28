@@ -42,6 +42,20 @@ GitHub Actions runs locked installation, formatting, lint, type checks, unit tes
 
 ESLint 10 was checked against the installed dependency tree. Although `eslint-config-next` declares a broad ESLint range, its bundled import, JSX accessibility, and React plugins declare peer ranges ending at ESLint 9. Use exact ESLint 9.39.5 without peer overrides for now. Its registry deprecation notice is a maintenance limitation; revisit when the plugin set supports a maintained newer major. Do not suppress peer validation or claim the deprecated tool is supported. The current dependency audit result is recorded separately from this compatibility decision.
 
+## Milestone 2 — Homepage decisions
+
+The homepage now composes seven server-rendered section components. Typed local modules separate navigation, project summaries, workflow stages, and experience/tool groups from layout. Shared section headings and project cards keep presentation consistent without adding packages.
+
+Project summaries use native `details`/`summary` elements. They provide useful content and touch/keyboard disclosure now without sending visitors to case-study routes that do not exist until M3. All four visuals are authored decorative SVGs with a visible conceptual-artwork label; they are not screenshots, actual product interfaces, or demonstrations of implemented capabilities.
+
+The hero uses an abstract static SVG node network. Three.js and animated/cursor-driven rendering remain M5. The eight-stage methodology is a readable ordered list with a visible feedback-to-implementation note; the selectable detailed explorer remains M4.
+
+Mobile navigation is a native disclosure with one small client helper for Escape, trigger-focus restoration, and closing on selection. Browser-native fragment anchors deliberately preserve focus transfer to section targets. The shared registry retains root-relative section URLs for future reuse from case-study pages. Core links and disclosures still work with JavaScript disabled; in that case the mobile disclosure is closed manually using its summary after navigation.
+
+The supplied purple remains the primary button background. A separate white on-accent token meets small-text contrast requirements; the standard primary text token alone measured 4.36:1 on that purple. All original seven palette tokens remain intact. SVG formatting is configured explicitly and no dependency or lockfile change is needed.
+
+The favicon is an authored SVG App Router metadata asset. The browser and Lighthouse checks use the same loopback-only production build. Performance scores are local baselines, not claims about a deployed site; preview noindex remains intentional.
+
 ## References checked
 
 - [Node release support](https://nodejs.org/en/about/previous-releases)
