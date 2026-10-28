@@ -15,12 +15,12 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 - Status: awaiting review; planning prepared, existing-site/configuration audit incomplete.
 - Objective: turn the specification into a concrete, reviewable implementation plan without application code.
 - Scope: source review, workspace/asset inventory, documented compatibility, architecture, routes/components, risks, deployment boundaries, milestone gates.
-- Files affected: `docs/DISCOVERY.md`, `docs/MILESTONES.md`, immutable source copies in `docs/source/`.
+- Files affected: `README.md`, `docs/DISCOVERY.md`, `docs/MILESTONES.md`, immutable source copies in `docs/source/`.
 - Dependencies: supplied specification and master prompt; public documentation; existing site/configuration when accessible.
 - Steps: read sources; inspect workspace/instructions; attempt public-site audit; verify documented platform support; inventory unknowns; propose architecture and tests; request M1 approval.
 - Testing: documentation consistency review, source-copy verification, workspace inspection, official compatibility documentation checks. No application tests apply.
 - Acceptance: proposal accounts for all required routes, sections, interactions, content constraints, and production safeguards; missing information and audit limitations are explicit; Brady approves proceeding.
-- Result: source documents read; empty non-Git workspace confirmed; no assets found; documented compatibility checked; site/robots/sitemap retrieval failed through the research tool. No build/install or account changes performed.
+- Result: source documents read; initially empty non-Git workspace confirmed; no assets found; documented compatibility checked; site/robots/sitemap retrieval failed through the research tool. Later, under explicit authorization, created public `fusion407/portfolio-v2`, initialized local Git, and pushed the discovery documents to `main`. Old repository inspected read-only; live configuration/URL audit remains incomplete. No application build, dependency install, or deployment performed.
 
 ## M1 — Foundation
 

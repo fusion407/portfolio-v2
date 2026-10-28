@@ -181,12 +181,14 @@ Read-only inspection of its main tree at `800441d33ddc3508244ec56f5b5bf62a3917f7
 
 The GitHub connector supports repository reads and content operations but exposes no repository-creation tool. GitHub CLI authentication initially failed inside the sandbox. A subsequent check outside the failing sandbox helper confirmed a valid `fusion407` login using the existing keyring. No new credentials or permissions were created. Milestone 1 application-code approval is still pending.
 
-Brady subsequently approved creating the public repository `fusion407/portfolio-v2` and pushing the discovery documents there. Repository name, account, new-repository choice, and publication of these discovery documents are confirmed. The separate repository was created through GitHub's signed-in creation form at https://github.com/fusion407/portfolio-v2. The discovery-only initial commit is prepared for upload. This authorization does not include Milestone 1 application implementation or any deployment.
+Brady subsequently approved creating the public repository `fusion407/portfolio-v2` and pushing the discovery documents there. Repository name, account, new-repository choice, and publication of these discovery documents are confirmed. The separate repository was created through GitHub's signed-in creation form at https://github.com/fusion407/portfolio-v2. Discovery-only initial commit `24e6a3a` was successfully pushed to `main`; the local branch tracks `origin/main`. This authorization does not include Milestone 1 application implementation or any deployment.
+
+The initial Git push selected an unrelated saved `BradyKohola` credential and was rejected with HTTP 403. The successful push used the already authenticated `fusion407` GitHub CLI credential helper for that command only. Global credential settings and other accounts were not changed.
 
 The browser automation surface could not access the existing signed-in Chrome session. Brady completed sign-in himself in the separate in-app browser; repository creation then succeeded. No credentials were read or changed. No existing repository, production hosting configuration, domain assignment, or DNS settings were modified.
 
 1. Approve this architecture and Milestone 1 scope before any application code.
-2. Remote setup approved and repository created: public `fusion407/portfolio-v2`; upload the discovery-only initial commit. Code licensing remains undecided; do not add a license grant automatically.
+2. Remote setup complete: public `fusion407/portfolio-v2` created and discovery documents pushed to `main`. Code licensing remains undecided; do not add a license grant automatically.
 3. Before completing professional content: public email, updated resume, confirmed dates/education, approved project assets and public GeoVis details. GitHub profile is confirmed above.
 4. Before preview: confirm separate Netlify preview site/account access and verify no production linkage.
 5. Before production readiness: complete current URL/configuration audit and backup; separately authorize production migration later.
