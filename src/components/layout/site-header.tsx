@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/container";
 import { navigation } from "@/content/navigation";
 import { site } from "@/content/site";
 import { MobileNavigation } from "./mobile-navigation";
+import { CommandPalette } from "@/components/command/command-palette";
 
 export function SiteHeader() {
   return (
@@ -27,7 +28,10 @@ export function SiteHeader() {
             ),
           )}
         </nav>
-        <MobileNavigation />
+        <div className="header-tools">
+          <CommandPalette />
+          <MobileNavigation />
+        </div>
       </Container>
     </header>
   );
