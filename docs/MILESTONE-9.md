@@ -35,3 +35,5 @@ Production migration remains a separate approval. Manual screen-reader/physical-
 ## Completed local preflight
 
 Format, lint, strict TypeScript, all 33 unit tests, and the static production build passed after adding the preview configuration/tests. Python `tomllib` parsed the deployment configuration. The live-domain rejection and 28-case listing checks passed without launching a remote browser. The deployed smoke cases remain **not run**, not passing or skipped. Repository/dependency scans and GitHub CI are tracked on the draft review PR. No application runtime behavior or dependency resolution was changed by this preparation.
+
+A public DNS follow-up returned Vercel nameserver hostnames and apex/www A answers; the time and exact observations are in `LEGACY-URL-AUDIT.md`. This is a partial public snapshot, not an authenticated zone export or recovery proof. No DNS settings were changed.

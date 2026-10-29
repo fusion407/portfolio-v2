@@ -39,3 +39,7 @@ This sequence is a plan, not authorization to execute it.
 7. Monitor against agreed acceptance criteria. If core routes, HTTPS, redirects, assets, or primary navigation/games fail, use the verified rollback path. Retain old source/configuration/deploy until the agreed review window ends; do not delete the old project as a migration step.
 
 M9 can establish a reviewed preview while production readiness remains incomplete. Never infer migration authorization from approval to merge a development PR.
+
+## Public DNS follow-up
+
+Read-only queries at 2026-10-29 18:19 UTC returned Vercel nameserver hostnames (`ns1.vercel-dns.com`, `ns2.vercel-dns.com`) and public apex/www A answers recorded in `LEGACY-URL-AUDIT.md`. This narrows the provider investigation but does not establish owner/team/registrar access, complete zone contents, original TTL settings, or a recoverable export. Account identity and authenticated configuration backup remain required. No record was changed.

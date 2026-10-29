@@ -33,3 +33,9 @@ No `_redirects`, middleware, Next redirects, domain assignment, or live deployme
 ## M9 preparation update
 
 A fresh read-only check on 2026-10-29 confirmed the same old main revision, www root 200 HTML with Vercel headers, and apex 308 to www. Account/provider/DNS identity and a recoverable deployment/configuration backup remain missing. The M9 `netlify.toml` prepares the three narrow redirects for the isolated new preview only; hosted query/fragment behavior must pass `test:preview` before it is called verified. Existing live hosting does not consume this repository configuration. No catch-all, live redirect, DNS change, or production migration was applied.
+
+### Public DNS observation — 2026-10-29 18:19 UTC
+
+Read-only Windows DNS queries returned `ns1.vercel-dns.com` and `ns2.vercel-dns.com` as the domain NS records. Apex A answers were `216.198.79.65` and `64.29.17.65`; www A answers were `216.198.79.1` and `64.29.17.1`. These are observations of public answers through the local resolver at this time, not proposed new-site records or an instruction to change DNS. Resolver TTLs were not treated as authoritative configured TTLs.
+
+The nameserver answers reinforce the responding Vercel infrastructure evidence. They do not identify the owner/team, registrar account, complete zone, aliases/proxy settings, certificate configuration, or recovery access. No MX/TXT/AAAA/other-service inventory or authenticated zone export was taken, and no complete DNS/configuration backup or recoverability is claimed. Capture the full owner-controlled zone/configuration before any separately approved migration; preserve unrelated records.
