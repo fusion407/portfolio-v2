@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 
 const git = (args, options = {}) =>
   execFileSync("git", args, { maxBuffer: 64 * 1024 * 1024, ...options });
@@ -39,7 +39,7 @@ const files = [
       .split("\0")
       .filter(Boolean),
   ),
-];
+].filter((file) => existsSync(file));
 for (const file of files) inspect(file, readFileSync(file), "working tree");
 
 const objects = git(["rev-list", "--objects", "--all"])

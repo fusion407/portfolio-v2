@@ -1,41 +1,32 @@
-# Milestone 9 — Isolated preview and launch preparation
+# Milestone 9 — Isolated Vercel preview and launch preparation
 
-Date: 2026-10-29. Status: **in progress; hosted deployment awaits Netlify account access**. Do not mark this milestone complete from the prepared configuration/documents alone.
+Date: 2026-10-29. Status: in progress. Brady corrected the original Netlify assumption, supplied the existing Vercel project URL, and approved access to team fusion407s-projects. The user connected GitHub, and the separate project/source link is created; deployment verification is in progress.
 
-## Accepted dependency
+## Accepted dependency and isolation
 
-Brady authorized beginning M9. Approved M8 PR #9, head `d88523911b55d163e694fcc0411403c4f57e7449`, had successful Linux CI (33 unit tests and 216 browser checks) and was merged at `3c6f365c11bddc96c79ba1c702ffda47e7ebad44`. M9 starts from that accepted merge on `milestone-9-preview`.
+M8 PR #9 passed Linux CI (33 unit tests / 216 browser checks) and was accepted/merged at `3c6f365c11bddc96c79ba1c702ffda47e7ebad44`. M9 is on milestone-9-preview in draft PR #10. Earlier Netlify preparation was never deployed and is superseded by the current Vercel configuration; supplied source documents remain unchanged.
 
-## Prepared work
+Read-only Vercel inspection verified the live team/project/domain identities and the READY deployment serving both domains. See PREVIEW.md and ROLLBACK.md for exact IDs. A newer ERROR record is not the active restore candidate. Project Node 18.x/old-runtime warning was recorded without upgrading or rebuilding the old project. No existing project/source/domain/DNS setting changed.
 
-- `netlify.toml`: isolated Next.js build/publish configuration, pinned Node/npm, disabled indexing across contexts, three exact preview compatibility redirects. No site ID, production domain, DNS setting, SPA catch-all, or runtime dependency was added.
-- `playwright.preview.config.ts`, `tests/preview/deployment.spec.ts`, package command: a separate deployed smoke matrix with a required HTTPS Netlify origin. It refuses the live domain before starting a browser. Seven cases across four browser configurations cover routes/metadata/social PNGs, noindex/security, 404s, legacy queries/fragments, navigation/search/contact, both games, assets/axe/reflow. Listing 28 checks is not a passing deployed run.
-- `PREVIEW.md`: exact source/revision, account/site/deploy evidence fields, isolated setup steps, command, and acceptance checks.
-- `LAUNCH.md`: explicit production approval gate, content/manual-device decisions, provider/DNS/backup prerequisites, proposed future migration and SEO steps.
-- `ROLLBACK.md`: required private backup manifest, preview recovery, and production restore procedure that remains conditional on actual host/DNS identities and recovery evidence.
-- README, accepted M8/arcade/tracker, architecture, SEO, asset, and legacy-audit records updated.
+## Prepared implementation
 
-## Evidence and limits
+- Removed unused netlify.toml; added vercel.json with native Next.js configuration, pinned npm clean install, preview-only build wrapper, and three exact legacy 301 redirects. No custom domain, project ID, catch-all rewrite, adapter dependency, or secret is committed.
+- scripts/build-preview.mjs forces PORTFOLIO_INDEXING disabled in the child build without writing environment files, even if the parent requests indexing. A future production launch must deliberately change this preview configuration after separate approval.
+- site-policy.ts supports validated VERCEL_URL/VERCEL_BRANCH_URL origins; VERCEL_ENV overrides legacy CONTEXT. Preview/development cannot inherit a stale production signal. Existing backward-compatible legacy tests remain.
+- test:preview accepts only a clean HTTPS vercel.app origin, without a default server or live-domain fallback. Seven hosted smoke cases per browser (28 total) cover six routes/metadata/PNGs, exclusions/security, 404s, legacy queries/fragments, navigation/search/contact, both games, assets/axe/reflow.
+- .vercel and legacy .netlify generated output/linkage are excluded from Git and authored-source formatting/lint/type discovery.
+- PREVIEW.md, LAUNCH.md, ROLLBACK.md and current README/tracker/architecture/SEO/legacy-audit records reflect the corrected host and actual evidence. No dependency lockfile or supplied source-document changes.
 
-The Netlify login page is reachable but no authenticated account/new project/deploy has been verified. Plugin discovery returned no Netlify connector. The browser is open for the user to sign in; no credential, new access grant, paid plan, or new account was created. No preview URL, adapter compatibility, hosted headers/origins/redirects, PR preview integration, or deployed performance result is claimed.
+## Validation and remaining work
 
-Read-only M9 verification: legacy repo main remains `800441d33ddc3508244ec56f5b5bf62a3917f7a0`; live www root returns 200 HTML with Vercel headers; apex returns 308 to www. Current owner/provider/DNS identities and immutable deployment/configuration backups remain missing. Source and HTTP checks do not establish a recoverable backup.
+After the provider-policy changes, format/lint/strict types and all 36 unit tests passed. A build:preview run succeeded with parent production indexing flags enabled; the wrapper still forces the child to disable indexing. Hosted tests must run against the actual new project, not a placeholder URL. Updated local/deployed/CI results are recorded here when complete.
 
-TOML parsed successfully with Python `tomllib`. The preview command rejected `https://www.bradydorsey.dev` before browser launch, then listed 28 cases against a placeholder Netlify origin without making requests. Final local code/build/scan and PR CI results are recorded below when completed. No supplied source-document, dependency lockfile, live project, domain, or DNS change.
+Team authorization succeeded. Native Git import returned repo-not-found; read-only account inspection showed no GitHub sign-in connection, and the user was asked to connect GitHub as fusion407. A name-filtered project list confirmed the failed import created no project. No paid plan, app repository grant, source link, or protected preview bypass was silently applied.
 
-## Remaining work
+Remaining: create the separate portfolio-v2-preview project with no live domains; link only fusion407/portfolio-v2; deploy the reviewed M9 revision; verify deployment identities/protection and PR integration; run all hosted checks and representative performance/visual/input review; recheck unchanged live domain/project state; fill evidence fields and request M9 review.
 
-1. Establish the user Netlify session; verify the intended account/team and create a separate project linked only to portfolio-v2, with no production custom domain.
-2. Deploy the reviewed revision, record project/deploy/commit/adapter identities, and verify actual PR-preview linkage.
-3. Run the deployed smoke matrix, review desktop/mobile games and navigation, measure deployed performance, and fix observed deployment issues.
-4. Recheck empty production-domain assignments and unchanged existing live behavior. Fill actual evidence fields and request M9 review.
+Production migration is not authorized. Full private configuration/zone backup, restore rehearsal, manual screen-reader/physical-device/actual Safari/native zoom and real-media permissions remain launch decisions. Resume is explicitly deferred.
 
-Production migration remains a separate approval. Manual screen-reader/physical-device/actual Safari/native zoom and absent real media permissions remain visible launch decisions; resume remains explicitly deferred.
+The user completed the GitHub connection. Created `portfolio-v2-preview` / `prj_0RJ1hIENY9vVGLaiW7leECjEOE9v` in the verified team, linked to repository ID 1437641219 (portfolio-v2), and verified its only domain is generated `portfolio-v2-preview-two.vercel.app`. Node 24.x is selected; default `all_except_custom_domains` deployment protection is retained. An attempted combined update to system-variable exposure was rejected by automatic approval review, so that setting was left unchanged and the Node-only update succeeded. No old-project setting was changed.
 
-## Completed local preflight
-
-Format, lint, strict TypeScript, all 33 unit tests, and the static production build passed after adding the preview configuration/tests. Python `tomllib` parsed the deployment configuration. The live-domain rejection and 28-case listing checks passed without launching a remote browser. The deployed smoke cases remain **not run**, not passing or skipped. Repository/dependency scans and GitHub CI are tracked on the draft review PR. No application runtime behavior or dependency resolution was changed by this preparation.
-
-A public DNS follow-up returned Vercel nameserver hostnames and apex/www A answers; the time and exact observations are in `LEGACY-URL-AUDIT.md`. This is a partial public snapshot, not an authenticated zone export or recovery proof. No DNS settings were changed.
-
-Generated `.netlify/` output is now excluded explicitly from Prettier, ESLint, and TypeScript source discovery. `npm run check` passed with a temporary intentionally invalid file inside that ignored output directory; the exact probe file was removed afterward. This validates the tooling boundary without adding a runtime dependency or weakening checks on authored source.
+The production-flagged preview build passed all 24 local metadata/security browser checks. The repository scan now ignores missing working-tree paths (such as the intentionally deleted Netlify draft) while still scanning their historical blobs.

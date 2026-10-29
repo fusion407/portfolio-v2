@@ -39,3 +39,9 @@ A fresh read-only check on 2026-10-29 confirmed the same old main revision, www 
 Read-only Windows DNS queries returned `ns1.vercel-dns.com` and `ns2.vercel-dns.com` as the domain NS records. Apex A answers were `216.198.79.65` and `64.29.17.65`; www A answers were `216.198.79.1` and `64.29.17.1`. These are observations of public answers through the local resolver at this time, not proposed new-site records or an instruction to change DNS. Resolver TTLs were not treated as authoritative configured TTLs.
 
 The nameserver answers reinforce the responding Vercel infrastructure evidence. They do not identify the owner/team, registrar account, complete zone, aliases/proxy settings, certificate configuration, or recovery access. No MX/TXT/AAAA/other-service inventory or authenticated zone export was taken, and no complete DNS/configuration backup or recoverability is claimed. Capture the full owner-controlled zone/configuration before any separately approved migration; preserve unrelated records.
+
+## Confirmed Vercel ownership context
+
+Brady supplied https://vercel.com/fusion407s-projects/portfolio and approved team access. Read-only API inspection verified team `team_TizSOAhTKyZkUv6hnUm9kd7M`, project `prj_FOG6G19vkehUJo5q6QFTrb41XcD6`, and verified apex/www custom-domain assignments with the existing 308 direction. READY deployment `dpl_GAW3G5JHmJqrwryc9DhZcEXVQJA1` serves both aliases and corresponds to old source main `800441d33ddc3508244ec56f5b5bf62a3917f7a0`. A newer ERROR deployment exists; do not use newest as a recovery assumption. Project Node 18.x and an old-runtime dashboard warning were observed without changing them.
+
+The original Netlify host assumption and undeployed M9 Netlify draft are superseded. New Vercel configuration applies only to the isolated v2 project. No old project/domain/source/DNS mutation occurred. Full environment/configuration/DNS export and restore rehearsal remain incomplete; see ROLLBACK.md.

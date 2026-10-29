@@ -152,8 +152,10 @@ The cover uses an accessible icon-only play button; a registry-driven inline pic
 
 Asteroids separates a pure bounded-step simulation from Canvas rendering and React controls. It wraps positions/collision distances, splits rocks, caps ship speed and shot cadence/lifetime/count, advances bounded waves, and freezes the simulation after game over. Only HUD changes enter React state. A queued fire input makes short touch/pointer taps survive a frame boundary. Lifecycle pause/cleanup follows Pong. No new runtime dependency or imported game media is needed; see `ARCADE-SELECTOR.md`.
 
-## M9 isolated deployment boundary
+## M9 isolated Vercel deployment boundary
 
-Netlify configuration publishes `.next` through the automatically detected OpenNext adapter, pins the existing Node/npm versions, and explicitly disables indexing even on the new site main-branch context. Three exact legacy-path redirects are prepared for preview verification; there is no catch-all rewrite. No site ID or production domain is committed.
+Brady corrected the original Netlify assumption. Vercel configuration selects native Next.js builds, a clean install through pinned npm, and a build:preview wrapper that forces indexing off regardless of a parent production flag. Three exact legacy redirects are tested on the isolated project; there is no catch-all. No project ID or live domain is committed.
 
-The separate `test:preview` command uses a required HTTPS `*.netlify.app` origin and no local server. It rejects the live custom domain before browser startup and runs seven deployed smoke cases in the existing four-browser matrix. Local app tests remain under `tests/e2e`; remote checks do not run in CI without an explicitly supplied verified preview target. Account/project/deploy/adapter evidence and actual results belong in `PREVIEW.md`. Production provider/DNS/backup/rollback remain separate launch gates.
+Vercel metadata uses a validated immutable VERCEL_URL origin, with validated branch/legacy fallbacks. VERCEL_ENV takes precedence over legacy CONTEXT. The separately gated production policy still needs the explicit flag, production environment and approved domain. Generated .vercel output/linkage is excluded from source tooling and Git.
+
+The separate test:preview command requires a verified HTTPS vercel.app origin and starts no local server. It rejects the live custom domain and runs seven smoke cases in four browser configurations. Hosted evidence and protected-access handling belong in PREVIEW.md. The old Vercel project/domain/serving artifact were inspected read-only; full private backup, recovery rehearsal and production migration remain separate gates.
