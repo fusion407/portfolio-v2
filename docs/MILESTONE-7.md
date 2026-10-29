@@ -1,6 +1,6 @@
 # Milestone 7 — Professional contact and SEO preparation
 
-Date: 2026-10-29. Status: implemented and verified; awaiting review.
+Date: 2026-10-29. Status: accepted and merged as PR #8 at `f254213c0c32ec8be8fd84645870369bea5a0d3f` after Linux CI passed.
 
 ## Delivered scope
 
@@ -41,4 +41,4 @@ The legacy repository at `800441d33ddc3508244ec56f5b5bf62a3917f7a0` and live rou
 
 Broader copy refinements remain deferred; absent employment dates, education, and approved real project media are not invented. Résumé absence is an explicit scope deferral, not a fake download or silent acceptance claim. Full manual screen-reader, physical-device, Safari/Firefox, deployed adapter/CDN/canonical behavior, provider/DNS identity, backups, and migration rollback remain later QA/launch work. Preview indexing guidance is not confidentiality protection.
 
-Stop for review before merging M7 or beginning M8. No production deployment is authorized by this milestone.
+Brady authorized merging M7 and beginning M8; that review gate is satisfied. No production deployment is authorized by this milestone.

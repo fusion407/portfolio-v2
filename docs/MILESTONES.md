@@ -1,6 +1,6 @@
 # Portfolio 2.0 — Milestone tracker
 
-Updated: 2026-10-29. Milestones 1–6 and the additional Pong change are accepted and merged. M7 is verified and awaiting review, with the public email confirmed and résumé explicitly deferred by Brady.
+Updated: 2026-10-29. Milestones 1–7 and the additional Pong change are accepted and merged. M8 is verified and awaiting review, with the public email confirmed and résumé explicitly deferred by Brady.
 
 Specification: `source/product-requirements-v1.0.md`. Process: `source/master-prompt.md`. Proposed architecture and inventories: `DISCOVERY.md`.
 
@@ -91,13 +91,13 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 ## Additional approved change — Homepage arcade
 
 - Status: completed and accepted. PR #7 was retargeted to main after M6 merged, then merged at `6d2aab1a2f38b1e5c16d42e1194d235ede6a86b8` under Brady's approval. See `HOMEPAGE-ARCADE.md`.
-- Scope: opt-in lazy-loaded Pong against the computer, first-to-five scoring, keyboard/mouse/touch controls, pause/resume, restart, exit and focus restoration, responsive layout, and a registry for future random game selection. Pong is currently the only registered game.
+- Scope: opt-in lazy-loaded Pong against the computer, first-to-five scoring, keyboard/mouse/touch controls, pause/resume, restart, exit and focus restoration, responsive layout, and a registry for future random game selection. This original delivery had only Pong; the subsequent `ARCADE-SELECTOR.md` extension adds explicit game selection and Asteroids during M8.
 - Result: original 3D components/dependencies removed; restrained general motion retained. Format, lint, strict TypeScript, 13 unit tests, static build, and 84 browser checks pass with no skips; audit reports zero vulnerabilities. Local mobile Lighthouse: 98 Performance / 100 Accessibility / 100 Best Practices / 60 SEO (intentional noindex). See `HOMEPAGE-ARCADE.md`.
 - Review: satisfied. Brady authorized proceeding to M7; production deployment remains separately gated.
 
 ## M7 — Professional content and SEO
 
-- Status: awaiting review. Confirmed public email, metadata/share images, preview-safe indexing policy, structured identity data, and legacy URL audit/draft map delivered. Format, lint, TypeScript, 26 unit tests, static build, and 94 browser checks pass; audit reports zero vulnerabilities. Résumé page/download explicitly deferred until Brady updates it. See `MILESTONE-7.md` and `SEO.md`. Pause for review before M8.
+- Status: completed and accepted; Brady authorized merging PR #8 and beginning M8. Merged at `f254213c0c32ec8be8fd84645870369bea5a0d3f` after Linux CI passed. Confirmed public email, metadata/share images, preview-safe indexing policy, structured identity data, and legacy URL audit/draft map delivered. Format, lint, TypeScript, 26 unit tests, static build, and 94 browser checks pass; audit reports zero vulnerabilities. Résumé page/download explicitly deferred until Brady updates it. See `MILESTONE-7.md` and `SEO.md`. Review gate satisfied.
 - Objective: validate professional facts and make pages discoverable and shareable.
 - Scope: confirmed experience/tools/about/contact; resume page/PDF when supplied; titles, descriptions, canonical/OG metadata, structured data where justified, sitemap/robots, legacy URL review.
 - Files/components: `content/site.ts`, `experience.ts`, professional sections, `app/resume/`, metadata helpers, sitemap/robots, social assets, approved PDF, draft redirect inventory.
@@ -108,7 +108,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M8 — Quality assurance
 
-- Status: not started.
+- Status: awaiting review. Local checks passed: 33 unit tests, 216 browser checks, 24 additional reflow checks, build, dependency audit, and repository/history pattern scan. Two focus bugs fixed; browser policy added. The subsequent minimal cover, game picker, and Asteroids extension is implemented and included in QA. See `MILESTONE-8.md` and `QA.md` for measured performance, SEO conditions, and outstanding manual/deployed checks.
 - Objective: verify release behavior, accessibility, performance, and public-repository hygiene.
 - Scope: functional/browser tests, accessibility, representative mobile/desktop Lighthouse, dependency review, responsive/manual review, links, fallbacks, permissions and secret review, headers.
 - Files/components: tests/configs, targeted application fixes, security header configuration, `docs/QA.md`, updated asset/permission inventory and tracker.

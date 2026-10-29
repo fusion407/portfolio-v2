@@ -128,7 +128,7 @@ test("responsive and enlarged text layouts do not overflow", async ({
 }) => {
   await page.goto("/");
   await page.evaluate(() => document.fonts.ready);
-  for (const width of [360, 390, 768, 1280, 1536]) {
+  for (const width of [320, 360, 390, 768, 1280, 1536]) {
     await page.setViewportSize({ width, height: 900 });
     expect(
       await page.evaluate(

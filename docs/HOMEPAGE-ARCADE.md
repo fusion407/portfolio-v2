@@ -50,3 +50,7 @@ The lazy Pong chunk is **6,472 bytes raw / 2,773 bytes gzip** in this build. Bro
 Pong is a visual real-time game; named controls, keyboard input, score announcements, pause/exit, and text fallback do not establish equivalent nonvisual gameplay. Physical touch devices, manual screen-reader use, Safari/Firefox, background throttling on real devices, and deployed performance remain later QA. No audio, multiplayer, persistence, additional game titles, production deployment, domain changes, or M7 work is included.
 
 The M6 and arcade review gates are satisfied by Brady's approval to continue. Production deployment remains separately gated.
+
+## Subsequent requested extension
+
+The original delivery above is historical. Brady's 2026-10-29 request replaces its invitation/caption and visible Play Pong label with a minimal icon-only cover, and replaces random selection with a visitor-controlled picker for Pong and Asteroids. See `ARCADE-SELECTOR.md` for current behavior and `MILESTONE-8.md` for current QA.

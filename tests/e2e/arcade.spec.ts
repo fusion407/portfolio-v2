@@ -35,13 +35,18 @@ test("Pong is opt-in, deferred, focused, and leaves hero navigation available", 
   const requests: string[] = [];
   page.on("request", (request) => requests.push(request.url()));
   await page.goto("/");
-  await expect(page.getByRole("button", { name: "Play Pong" })).toBeEnabled();
+  await expect(
+    page.getByRole("button", { name: "Choose a game", exact: true }),
+  ).toBeEnabled();
   await expect(page.locator("canvas")).toHaveCount(0);
   expect(gameChunks.length).toBeGreaterThan(0);
   expect(
     requests.some((url) => gameChunks.some((chunk) => url.includes(chunk))),
   ).toBe(false);
-  await page.getByRole("button", { name: "Play Pong" }).click();
+  await page
+    .getByRole("button", { name: "Choose a game", exact: true })
+    .click();
+  await page.getByRole("button", { name: /^Pong/ }).click();
   await expect(
     page.getByRole("application", { name: "Pong court" }),
   ).toBeFocused();
@@ -53,7 +58,9 @@ test("Pong is opt-in, deferred, focused, and leaves hero navigation available", 
   ).toBeVisible();
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
   await page.getByRole("button", { name: "Exit game" }).click();
-  await expect(page.getByRole("button", { name: "Play Pong" })).toBeFocused();
+  await expect(
+    page.getByRole("button", { name: "Choose a game", exact: true }),
+  ).toBeFocused();
   await expect(page.locator("canvas")).toHaveCount(0);
 });
 
@@ -61,14 +68,19 @@ test("keyboard controls move the paddle and pause freezes the court", async ({
   page,
 }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: "Play Pong" }).click();
+  await page
+    .getByRole("button", { name: "Choose a game", exact: true })
+    .click();
+  await page.getByRole("button", { name: /^Pong/ }).click();
   const court = page.getByRole("application", { name: "Pong court" });
   await expect(court).toBeFocused();
   const initial = await paddleY(court);
   await page.keyboard.down("ArrowUp");
-  await page.waitForTimeout(180);
-  await page.keyboard.up("ArrowUp");
-  expect(await paddleY(court)).toBeLessThan(initial - 25);
+  try {
+    await expect.poll(() => paddleY(court)).toBeLessThan(initial - 25);
+  } finally {
+    await page.keyboard.up("ArrowUp");
+  }
   await page.keyboard.press("Escape");
   await expect(page.getByRole("button", { name: "Resume Pong" })).toBeFocused();
   const paused = await court.evaluate((element) =>
@@ -92,7 +104,10 @@ test("pointer or touch controls the paddle, a missed ball scores, and restart re
 }) => {
   test.setTimeout(45000);
   await page.goto("/");
-  await page.getByRole("button", { name: "Play Pong" }).click();
+  await page
+    .getByRole("button", { name: "Choose a game", exact: true })
+    .click();
+  await page.getByRole("button", { name: /^Pong/ }).click();
   const court = page.getByRole("application", { name: "Pong court" });
   await expect(court).toBeFocused();
   const box = (await court.boundingBox())!;
@@ -124,7 +139,10 @@ test("focus loss, search, hidden pages, and leaving the hero pause play", async 
   page,
 }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: "Play Pong" }).click();
+  await page
+    .getByRole("button", { name: "Choose a game", exact: true })
+    .click();
+  await page.getByRole("button", { name: /^Pong/ }).click();
   await expect(page.getByRole("application")).toBeFocused();
   await page.keyboard.press("Control+k");
   await expect(page.getByRole("dialog")).toBeVisible();
@@ -159,8 +177,11 @@ test("arcade reflows on mobile and enlarged text; reduced motion never starts a 
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   await expect(page.locator("canvas")).toHaveCount(0);
-  await page.getByRole("button", { name: "Play Pong" }).click();
-  for (const width of [360, 390, 768, 1280, 1536]) {
+  await page
+    .getByRole("button", { name: "Choose a game", exact: true })
+    .click();
+  await page.getByRole("button", { name: /^Pong/ }).click();
+  for (const width of [320, 360, 390, 768, 1280, 1536]) {
     await page.setViewportSize({ width, height: 900 });
     expect(
       await page.evaluate(
@@ -176,7 +197,9 @@ test("arcade reflows on mobile and enlarged text; reduced motion never starts a 
     ),
   ).toBe(true);
   await page.getByRole("button", { name: "Exit game" }).click();
-  await expect(page.getByRole("button", { name: "Play Pong" })).toBeFocused();
+  await expect(
+    page.getByRole("button", { name: "Choose a game", exact: true }),
+  ).toBeFocused();
 });
 
 test("failed game download and unavailable canvas preserve an exit", async ({
@@ -188,7 +211,10 @@ test("failed game download and unavailable canvas preserve an exit", async ({
       : route.continue(),
   );
   await page.goto("/");
-  await page.getByRole("button", { name: "Play Pong" }).click();
+  await page
+    .getByRole("button", { name: "Choose a game", exact: true })
+    .click();
+  await page.getByRole("button", { name: /^Pong/ }).click();
   await expect(page.locator(".hero-arcade").getByRole("alert")).toContainText(
     "The game couldn’t load",
   );
@@ -206,12 +232,17 @@ test("failed game download and unavailable canvas preserve an exit", async ({
     } as typeof original;
   });
   await page.reload();
-  await page.getByRole("button", { name: "Play Pong" }).click();
+  await page
+    .getByRole("button", { name: "Choose a game", exact: true })
+    .click();
+  await page.getByRole("button", { name: /^Pong/ }).click();
   await expect(page.locator(".hero-arcade").getByRole("alert")).toContainText(
     "couldn’t open the court",
   );
   await page.getByRole("button", { name: "Exit game" }).click();
-  await expect(page.getByRole("button", { name: "Play Pong" })).toBeFocused();
+  await expect(
+    page.getByRole("button", { name: "Choose a game", exact: true }),
+  ).toBeFocused();
 });
 
 test("no-JavaScript visitors retain the portfolio and a clear game availability note", async ({
@@ -221,7 +252,9 @@ test("no-JavaScript visitors retain the portfolio and a clear game availability 
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto(baseURL!);
-  await expect(page.getByRole("button", { name: "Play Pong" })).toBeDisabled();
+  await expect(
+    page.getByRole("button", { name: "Choose a game", exact: true }),
+  ).toBeDisabled();
   await expect(
     page.getByText(
       "Enable JavaScript to play. The portfolio is ready to explore below.",

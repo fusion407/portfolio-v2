@@ -6,7 +6,7 @@ Primary headline: **I build things.**
 
 ## Current status
 
-Milestones 1–6 and the additional Pong arcade are accepted and merged. Milestone 7 adds the confirmed public email, page-specific metadata and social images, structured identity data, preview-safe robots/sitemap behavior, and a draft legacy URL map; see its [review report](docs/MILESTONE-7.md). Résumé work is deferred at Brady's request until he updates it. Confirmed facts are tracked in [content decisions](docs/CONTENT-DECISIONS.md); broader copywriting refinements remain deferred. This repository is independent of `fusion407/portfolio`; production remains unchanged.
+Milestones 1–7 and the additional Pong arcade are accepted and merged. The [arcade extension](docs/ARCADE-SELECTOR.md) adds an icon-only cover and a picker for Pong and Asteroids. Milestone 8 adds cross-browser QA, keyboard-focus fixes, CSP headers, and repository/history checks; see its [review report](docs/MILESTONE-8.md) and [QA evidence](docs/QA.md). Milestone 7 added the confirmed public email, page-specific metadata and social images, structured identity data, preview-safe robots/sitemap behavior, and a draft legacy URL map; see its [review report](docs/MILESTONE-7.md). Résumé work is deferred at Brady's request until he updates it. Confirmed facts are tracked in [content decisions](docs/CONTENT-DECISIONS.md); broader copywriting refinements remain deferred. This repository is independent of `fusion407/portfolio`; production remains unchanged.
 
 Content routes: `/`, `/projects`, `/projects/geovis`, `/projects/neonsynth`, `/projects/titanforge-studio`, and `/projects/swordbound-protocol`. Generated metadata routes include `/robots.txt`, `/sitemap.xml`, and six `/og/<slug>` PNGs. Unknown paths, including `/404` and the deferred `/resume`, return a branded HTTP 404 response. Preview indexing remains disabled; see [SEO policy](docs/SEO.md).
 
@@ -23,30 +23,31 @@ Open [http://127.0.0.1:3000](http://127.0.0.1:3000). Servers bind to loopback by
 
 ## Commands
 
-| Command                | Purpose                                                   |
-| ---------------------- | --------------------------------------------------------- |
-| `npm run dev`          | Local development server                                  |
-| `npm run build`        | Production build and static page generation               |
-| `npm start`            | Serve an existing production build locally                |
-| `npm run lint`         | ESLint checks with no warnings                            |
-| `npm run format:check` | Verify formatting                                         |
-| `npm run format`       | Format authored files; supplied source documents excluded |
-| `npm run typecheck`    | Generate route types and run strict TypeScript            |
-| `npm test`             | Unit tests once                                           |
-| `npm run test:watch`   | Unit tests in watch mode                                  |
-| `npm run check`        | Formatting, lint, type checks, and unit tests             |
-| `npm run test:e2e`     | Production browser and accessibility checks               |
-| `npm audit`            | Inspect dependency advisories                             |
+| Command                | Purpose                                                                                                 |
+| ---------------------- | ------------------------------------------------------------------------------------------------------- |
+| `npm run dev`          | Local development server                                                                                |
+| `npm run build`        | Production build and static page generation                                                             |
+| `npm start`            | Serve an existing production build locally                                                              |
+| `npm run lint`         | ESLint checks with no warnings                                                                          |
+| `npm run format:check` | Verify formatting                                                                                       |
+| `npm run format`       | Format authored files; supplied source documents excluded                                               |
+| `npm run typecheck`    | Generate route types and run strict TypeScript                                                          |
+| `npm test`             | Unit tests once                                                                                         |
+| `npm run test:watch`   | Unit tests in watch mode                                                                                |
+| `npm run check`        | Formatting, lint, type checks, and unit tests                                                           |
+| `npm run test:e2e`     | Production browser and accessibility checks                                                             |
+| `npm run audit:repo`   | Scan current files and available Git history for recognized credential patterns and forbidden artifacts |
+| `npm audit`            | Inspect dependency advisories                                                                           |
 
-Browser tests need a production build and Chromium:
+Browser tests need a production build and Chromium, Firefox, and WebKit:
 
 ```sh
-npx playwright install chromium
+npx playwright install chromium firefox webkit
 npm run build
 npm run test:e2e
 ```
 
-On Linux CI, `npx playwright install --with-deps chromium` installs required system libraries too. The test runner starts and stops its own production server on port 3100; keep that port free.
+On Linux CI, `npx playwright install --with-deps chromium firefox webkit` installs required system libraries too. The test runner starts and stops its own production server on port 3100; keep that port free.
 
 ## Architecture
 

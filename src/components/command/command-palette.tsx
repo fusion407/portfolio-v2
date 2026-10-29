@@ -42,11 +42,6 @@ export function CommandPalette() {
           .catch(() => {
             setFailed(true);
             setOpen(false);
-            window.requestAnimationFrame(() =>
-              document
-                .querySelector<HTMLElement>(".command-trigger")
-                ?.focus({ preventScroll: true }),
-            );
           })
           .finally(() => {
             loading.current = false;
@@ -87,7 +82,14 @@ export function CommandPalette() {
           <span className="command-trigger-label">Search</span>
         </button>
       ) : (
-        <Link className="command-trigger" href="/projects" prefetch={false}>
+        <Link
+          className="command-trigger"
+          href="/projects"
+          prefetch={false}
+          ref={(element) => {
+            if (failed) element?.focus({ preventScroll: true });
+          }}
+        >
           Browse projects
         </Link>
       )}

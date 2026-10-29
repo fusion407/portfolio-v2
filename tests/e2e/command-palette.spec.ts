@@ -212,7 +212,7 @@ test("search reflows on narrow screens, enlarged text, and reduced motion", asyn
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/projects");
-  for (const width of [360, 390, 768, 1280, 1536]) {
+  for (const width of [320, 360, 390, 768, 1280, 1536]) {
     await page.setViewportSize({ width, height: 800 });
     await page.getByRole("button", { name: "Search portfolio" }).click();
     const box = await page.getByRole("dialog").boundingBox();

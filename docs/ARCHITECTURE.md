@@ -96,7 +96,7 @@ Radix's explicit focus lifecycle APIs provide containment, input focus, invoker 
 
 ## Additional approved change — Homepage arcade
 
-Brady's subsequent instruction replaces the 3D hero with an opt-in arcade after M6. `HeroArcade` renders a static court invitation and only imports a game after Play. A typed registry holds loaders and metadata; selection is random over registered games, currently only Pong. An exit unmounts the game and restores Play focus. The completed M6 work is a separate review PR; the arcade branch depends on it.
+Brady's subsequent instruction replaces the 3D hero with an opt-in arcade after M6. `HeroArcade` renders a static court invitation and only imports a game after Play and title selection. A typed registry holds loaders and metadata; the current extension presents an explicit picker with Pong and Asteroids. This supersedes the original random-selection plan. An exit unmounts the game and restores Play focus. The completed M6 work is a separate review PR; the arcade branch depends on it.
 
 Pong uses Canvas 2D with a pure, bounded-step simulation. The logical court is 800×480, the player has keyboard or pointer/touch input, and the speed-limited computer has imperfect tracking. The ball's contact position controls its return angle; speed is capped, score resets include a serve delay, and the first side to five ends the match. The UI updates score/status only at meaningful state changes rather than on every frame. Canvas pixels adapt to layout with DPR capped at 2. No audio, server, storage, third-party assets, or new runtime package is needed.
 
@@ -139,3 +139,15 @@ The read-only legacy source/HTTP audit and inactive redirect map are in `LEGACY-
 - [Netlify build metadata](https://docs.netlify.com/build/configure-builds/environment-variables/)
 
 Package metadata was checked before installation. The lockfile records exact resolution; actual validation results belong in the milestone report.
+
+## M8 browser and policy decisions
+
+Playwright now covers Chromium desktop/mobile emulation, Firefox, and WebKit. Explicit skip-link tab order and a committed fallback-anchor ref address observed browser focus failures. The repository check examines current files and available history for limited credential patterns and forbidden artifacts; CI fetches full history. It is not a comprehensive secret audit.
+
+Production CSP restricts resource origins and embedding while retaining inline scripts/styles needed by static Next bootstrap and styling. A strict nonce policy would require a different rendering tradeoff; no universal XSS protection is claimed. Development omits this CSP for HMR. Browser tests verify policy-compatible palette/Pong use and headers on metadata, image, page, and 404 responses. See [QA evidence](QA.md), [Playwright browser coverage](https://playwright.dev/docs/browsers), and [Next CSP guidance](https://nextjs.org/docs/app/guides/content-security-policy).
+
+## Arcade picker and Asteroids extension
+
+The cover uses an accessible icon-only play button; a registry-driven inline picker offers two lazy game loaders. The common header stays outside the active game. Exit unmounts the renderer and a committed button ref restores focus. Future titles implement `GameProps` and register metadata plus a loader.
+
+Asteroids separates a pure bounded-step simulation from Canvas rendering and React controls. It wraps positions/collision distances, splits rocks, caps ship speed and shot cadence/lifetime/count, advances bounded waves, and freezes the simulation after game over. Only HUD changes enter React state. A queued fire input makes short touch/pointer taps survive a frame boundary. Lifecycle pause/cleanup follows Pong. No new runtime dependency or imported game media is needed; see `ARCADE-SELECTOR.md`.

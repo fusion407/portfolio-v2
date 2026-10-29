@@ -33,3 +33,7 @@ Brady confirmed `fusion407@gmail.com` for public contact on 2026-10-29; `src/con
 Broader wording changes remain deferred. The legacy audit and draft redirects are in `LEGACY-URL-AUDIT.md`; they are not active configuration.
 
 References: [Next metadata](https://nextjs.org/docs/app/api-reference/functions/generate-metadata), [robots](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots), [sitemap](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap), [ImageResponse](https://nextjs.org/docs/app/api-reference/functions/image-response), [JSON-LD](https://nextjs.org/docs/app/guides/json-ld), and [Netlify build metadata](https://docs.netlify.com/build/configure-builds/environment-variables/).
+
+## M8 local policy verification
+
+A loopback-only future launch-mode build scored 100 in Lighthouse SEO-only runs on the homepage, project index, and Swordbound case study. The three policy inputs were set only in child-process environments, with no environment file or hosting change. The server was then stopped and the default preview build restored. Preview SEO remains intentionally limited by crawl/index exclusions and omitted canonicals. Public-origin redirects, CDN headers, deployment adapters, and real crawler behavior still require deployment checks; local scores do not activate or establish production indexing.

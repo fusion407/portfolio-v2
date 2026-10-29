@@ -236,7 +236,7 @@ test("project layouts reflow across screen sizes and enlarged text", async ({
   ]) {
     await page.goto(path);
     await page.evaluate(() => document.fonts.ready);
-    for (const width of [360, 768, 1280]) {
+    for (const width of [320, 360, 768, 1280]) {
       await page.setViewportSize({ width, height: 900 });
       expect(
         await page.evaluate(
