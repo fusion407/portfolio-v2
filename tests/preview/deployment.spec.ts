@@ -2,6 +2,9 @@ import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { portfolioPages } from "../../src/content/pages";
 
+const indexable = process.env.PORTFOLIO_EXPECT_INDEXABLE === "true";
+const canonicalOrigin = "https://www.bradydorsey.dev";
+
 test.beforeEach(async ({ context, request, baseURL }) => {
   const access = process.env.PORTFOLIO_PREVIEW_ACCESS_URL;
   if (!access) return;
@@ -26,7 +29,7 @@ test.beforeEach(async ({ context, request, baseURL }) => {
   }
 });
 
-test("deployed content routes keep metadata, indexing exclusions, and security headers", async ({
+test("deployed content routes keep metadata, indexing policy, and security headers", async ({
   page,
   baseURL,
 }) => {
@@ -41,14 +44,22 @@ test("deployed content routes keep metadata, indexing exclusions, and security h
     );
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
       "content",
-      "noindex, nofollow",
+      indexable ? "index, follow" : "noindex, nofollow",
     );
-    await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+    if (indexable) {
+      const canonical = await page
+        .locator('link[rel="canonical"]')
+        .getAttribute("href");
+      expect(new URL(canonical!).href).toBe(
+        new URL(entry.path, canonicalOrigin).href,
+      );
+    } else await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
     const openGraphURL = await page
       .locator('meta[property="og:url"]')
       .getAttribute("content");
     expect(new URL(openGraphURL!).href).toBe(new URL(entry.path, baseURL).href);
-    expect(response?.headers()["x-robots-tag"]).toContain("noindex");
+    if (indexable) expect(response?.headers()["x-robots-tag"]).toBeUndefined();
+    else expect(response?.headers()["x-robots-tag"]).toContain("noindex");
     expect(response?.headers()["x-content-type-options"]).toBe("nosniff");
     expect(response?.headers()["x-frame-options"]).toBe("DENY");
     expect(response?.headers()["referrer-policy"]).toBe(
@@ -67,7 +78,7 @@ test("deployed content routes keep metadata, indexing exclusions, and security h
   }
 });
 
-test("all deployed social cards resolve on the preview origin with correct dimensions", async ({
+test("all deployed social cards resolve on the deployment origin with correct dimensions", async ({
   page,
   request,
   baseURL,
@@ -89,18 +100,27 @@ test("all deployed social cards resolve on the preview origin with correct dimen
   }
 });
 
-test("deployed robots, sitemap, and unknown routes preserve preview and 404 behavior", async ({
+test("deployed robots, sitemap, and unknown routes preserve indexing and 404 behavior", async ({
   request,
 }) => {
   const robots = await request.get("/robots.txt");
   expect(robots.status()).toBe(200);
   expect(robots.headers()["content-type"]).toContain("text/plain");
-  expect(await robots.text()).toContain("Disallow: /");
+  if (indexable) {
+    expect(await robots.text()).toContain("Allow: /");
+    expect(await robots.text()).not.toContain("Disallow: /");
+    expect(await robots.text()).toContain(`${canonicalOrigin}/sitemap.xml`);
+  } else expect(await robots.text()).toContain("Disallow: /");
   const sitemap = await request.get("/sitemap.xml");
   expect(sitemap.status()).toBe(200);
   expect(sitemap.headers()["content-type"]).toContain("xml");
   expect(await sitemap.text()).toContain("<urlset");
-  expect(await sitemap.text()).not.toContain("<loc>");
+  if (indexable) {
+    const xml = await sitemap.text();
+    expect(xml.match(/<loc>/g)).toHaveLength(portfolioPages.length);
+    for (const entry of portfolioPages)
+      expect(xml).toContain(`<loc>${canonicalOrigin}${entry.path}</loc>`);
+  } else expect(await sitemap.text()).not.toContain("<loc>");
   for (const path of [
     "/missing-preview-check",
     "/404",

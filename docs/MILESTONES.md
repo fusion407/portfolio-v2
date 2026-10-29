@@ -1,6 +1,6 @@
 # Portfolio 2.0 — Milestone tracker
 
-Updated: 2026-10-29. Milestones 1–8 and the arcade extensions are accepted and merged. M9 is awaiting review on Vercel: the protected preview passed manual review, all 28 hosted checks, and six representative performance measurements, with the public email confirmed and résumé explicitly deferred by Brady.
+Updated: 2026-10-29. Milestones 1–8 and the arcade extensions are accepted and merged. M9 is accepted and merged; the production release is authorized and in progress (see PRODUCTION-RELEASE.md). Its Vercel evidence: the protected preview passed manual review, all 28 hosted checks, and six representative performance measurements, with the public email confirmed and résumé explicitly deferred by Brady.
 
 Specification: `source/product-requirements-v1.0.md`. Process: `source/master-prompt.md`. Proposed architecture and inventories: `DISCOVERY.md`.
 
@@ -119,7 +119,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M9 — Isolated preview and launch readiness
 
-- Status: awaiting review. The separate READY protected Vercel Preview and automatic PR deployments are verified. All 28 hosted HTTP/header/status/axe/interaction cases passed after correcting a native mobile disclosure selector in the new test. Six hosted Lighthouse measurements scored Performance 98–100, Accessibility 100, Best Practices 100; protected preview SEO is 54. Private temporary test access was explicitly authorized. Live project/domain/serving-deploy identities were rechecked unchanged; launch/rollback plans retain open recovery/manual review gates. See `MILESTONE-9.md` and `PREVIEW.md`.
+- Status: completed and accepted by Brady's deployment request; PR #10 merged at 3cb8a5b72ad7209768cc96c4dad25d97906f66e9 after final CI passed all 36 unit and 216 browser checks. The separate READY protected Vercel Preview and automatic PR deployments are verified. All 28 hosted HTTP/header/status/axe/interaction cases passed after correcting a native mobile disclosure selector in the new test. Six hosted Lighthouse measurements scored Performance 98–100, Accessibility 100, Best Practices 100; protected preview SEO is 54. Private temporary test access was explicitly authorized. Live project/domain/serving-deploy identities were rechecked unchanged; launch/rollback plans retain open recovery/manual review gates. See `MILESTONE-9.md` and `PREVIEW.md`.
 - Objective: demonstrate the release on an isolated Vercel project and document remaining launch decisions.
 - Scope: separate preview site, PR previews where configured, deploy-specific verification, launch checklist, migration and rollback plans; no production-domain deployment.
 - Files/components: new-project-only Vercel settings/configuration, `docs/PREVIEW.md`, `docs/LAUNCH.md`, `docs/ROLLBACK.md`, verified redirect plan, milestone report.
@@ -141,7 +141,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## Separate future task — Production migration
 
-- Status: not authorized.
+- Status: authorized and in progress by Brady's request to deploy the working portfolio; see PRODUCTION-RELEASE.md for the exact project/domain/indexing/recovery scope.
 - Objective: replace the current site through a controlled, reversible migration.
 - Scope: only the approved migration procedure after preview acceptance.
 - Files/components: verified redirects, approved production-only configuration, migration/rollback evidence; exact live changes require explicit approval.

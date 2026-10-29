@@ -1,6 +1,6 @@
 # Production launch readiness
 
-Updated: 2026-10-29. Status: **not ready / not authorized**. M9 prepares a separate Vercel preview. Approval to continue M9 does not authorize changing the current portfolio or its domains.
+Updated: 2026-10-29. Status: **production release authorized; preflight in progress**. Brady accepted the working preview and requested deployment on 2026-10-29. The concrete scope, backup/recovery evidence, target production project and live verification are tracked in [PRODUCTION-RELEASE.md](PRODUCTION-RELEASE.md). Historical gates below describe the original preview handoff; the release record supersedes their authorization/backup status.
 
 ## Confirmed live identity
 
