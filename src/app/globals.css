@@ -205,69 +205,6 @@ summary {
   background: var(--color-surface);
   border-color: var(--color-muted);
 }
-.hero-network {
-  position: relative;
-  padding-bottom: 3.5rem;
-  width: 110%;
-  margin-left: -3%;
-}
-.hero-network svg {
-  width: 100%;
-  height: auto;
-}
-.hero-network-canvas {
-  position: absolute;
-  inset: 0 0 auto;
-  aspect-ratio: 600 / 560;
-  opacity: 0;
-  transition: opacity 450ms ease;
-}
-.hero-network[data-scene="active"] .hero-network-canvas,
-.hero-network[data-scene="paused"] .hero-network-canvas {
-  opacity: 1;
-}
-.hero-network-fallback svg {
-  transition: opacity 450ms ease;
-}
-.hero-network[data-scene="active"] .hero-network-fallback svg,
-.hero-network[data-scene="paused"] .hero-network-fallback svg {
-  opacity: 0;
-}
-.network-motion-control {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  translate: -50% 0;
-  display: block;
-  margin: 0.75rem auto 0;
-  min-height: 2.75rem;
-  padding: 0.4rem 0.8rem;
-  color: var(--color-muted);
-  background: var(--color-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 0.5rem;
-  font-size: 0.6875rem;
-  cursor: pointer;
-}
-.network-motion-control:hover {
-  color: var(--color-foreground);
-  border-color: var(--color-muted);
-}
-.network-caption {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.625rem;
-  font: 0.625rem var(--font-mono);
-  color: var(--color-muted);
-  letter-spacing: 0.04em;
-}
-.network-caption span {
-  width: 0.3rem;
-  height: 0.3rem;
-  border-radius: 50%;
-  background: var(--color-cyan);
-}
 .hero-footnote {
   display: flex;
   justify-content: space-between;
@@ -757,17 +694,6 @@ summary {
   }
   .hero-heading {
     font-size: clamp(4.5rem, 14vw, 7.5rem);
-  }
-  .hero-network {
-    position: absolute;
-    width: 34rem;
-    right: -15rem;
-    top: 3rem;
-    opacity: 0.22;
-    pointer-events: none;
-  }
-  .network-caption {
-    display: none;
   }
   .project-grid {
     gap: 1rem;
@@ -1848,5 +1774,174 @@ summary {
   }
   .command-dialog-header h2 {
     font-size: 1.25rem;
+  }
+}
+
+/* Opt-in homepage arcade. The game is loaded only after Play. */
+.hero-arcade {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgb(157 171 207 / 24%);
+  border-radius: 1rem;
+  background: linear-gradient(145deg, #10172a, #080b14);
+  box-shadow: 0 20px 80px rgb(0 0 0 / 20%);
+  overflow: hidden;
+}
+.arcade-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.arcade-heading > span {
+  font: 0.625rem var(--font-mono);
+  color: var(--color-muted);
+}
+.arcade-preview {
+  position: relative;
+  aspect-ratio: 5 / 3;
+  min-height: 19rem;
+  overflow: hidden;
+}
+.arcade-preview > svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0.45;
+}
+.arcade-invitation {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  background: radial-gradient(ellipse, rgb(8 11 20 / 90%), transparent 75%);
+}
+.arcade-invitation h2 {
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  letter-spacing: -0.055em;
+  font-weight: 550;
+}
+.arcade-invitation p,
+.arcade-caption {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  line-height: 1.7;
+}
+.arcade-invitation .button {
+  margin-top: 0.5rem;
+}
+.arcade-caption {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+}
+.arcade-error {
+  padding: 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+}
+.arcade-error button {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.arcade-exit {
+  min-height: 2.75rem;
+  color: var(--color-muted);
+  font-size: 0.6875rem;
+  cursor: pointer;
+}
+.arcade-exit:hover {
+  color: var(--color-foreground);
+}
+.pong-score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  font: 0.6875rem var(--font-mono);
+  color: var(--color-muted);
+}
+.pong-score span {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.pong-score strong {
+  font-size: 1.75rem;
+  color: var(--color-cyan);
+  font-weight: 500;
+}
+.pong-score span:last-child strong {
+  color: #947cff;
+}
+.pong-game canvas {
+  scroll-margin-block: 6rem 1rem;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 3;
+  touch-action: none;
+  cursor: crosshair;
+  border-block: 1px solid var(--border-subtle);
+}
+.pong-game canvas:focus-visible {
+  outline-offset: -4px;
+}
+.pong-instructions {
+  color: var(--color-muted);
+  font-size: 0.6875rem;
+  line-height: 1.8;
+  padding: 1rem 1.25rem 0;
+}
+.pong-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  padding: 1rem 1.25rem 0;
+}
+.pong-controls .button {
+  font-size: 0.6875rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.8rem;
+}
+.pong-status {
+  min-height: 3rem;
+  padding: 0.85rem 1.25rem;
+  font-size: 0.6875rem;
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+@media (min-width: 1024px) {
+  .hero-grid {
+    gap: 2.5rem;
+  }
+}
+@media (max-width: 1023px) {
+  .hero-grid {
+    gap: 2.5rem;
+  }
+  .hero-arcade {
+    max-width: 38rem;
+  }
+}
+@media (max-width: 639px) {
+  .arcade-heading {
+    padding: 0.8rem 1rem;
+    gap: 0.5rem;
+  }
+  .arcade-preview {
+    min-height: 18rem;
+  }
+  .pong-score {
+    padding: 0.8rem 1rem;
   }
 }

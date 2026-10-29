@@ -88,6 +88,13 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 - Testing: both shortcuts, arrows/Enter/Escape, filtering/empty state, focus containment/restoration, pointer/touch trigger, cross-route section navigation, accessible naming; no unavailable download actions.
 - Acceptance: fully usable with keyboard and pointer; no dead actions or stranded focus.
 
+## Additional approved change — Homepage arcade
+
+- Status: implemented and verified; awaiting review after the separate M6 PR. Brady explicitly requested replacing the interactive web animation with a play button and a game, starting with Pong, once M6 was finished.
+- Scope: opt-in lazy-loaded Pong against the computer, first-to-five scoring, keyboard/mouse/touch controls, pause/resume, restart, exit and focus restoration, responsive layout, and a registry for future random game selection. Pong is currently the only registered game.
+- Result: original 3D components/dependencies removed; restrained general motion retained. Format, lint, strict TypeScript, 13 unit tests, static build, and 84 browser checks pass with no skips; audit reports zero vulnerabilities. Local mobile Lighthouse: 98 Performance / 100 Accessibility / 100 Best Practices / 60 SEO (intentional noindex). See `HOMEPAGE-ARCADE.md`.
+- Review: separate dependent PR, based on M6. Neither M6 nor the arcade is automatically merged. M7 and production deployment remain gated.
+
 ## M7 — Professional content and SEO
 
 - Status: not started.

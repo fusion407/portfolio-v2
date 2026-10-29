@@ -13,7 +13,7 @@ Date: 2026-10-28. Status: implemented and verified; awaiting review.
 
 ## Files and dependencies
 
-`src/components/command/`, `src/content/commands.ts`, shared header, global styles, exact dependency/lockfile updates, command unit/browser tests, scoped workflow status assertion, and milestone/architecture/README records. cmdk 1.1.1 and its Radix dialog dependency 1.3.1 support React 19; the dialog is declared directly because its focus lifecycle API is used explicitly. Registry peer requirements and official documentation were checked. No peer overrides, hosting changes, or supplied source-document edits.
+`src/components/command/`, `src/content/commands.ts`, shared header, global styles, exact dependency/lockfile updates, command unit/browser tests, scoped workflow status assertion, and milestone/README records. cmdk 1.1.1 and its Radix dialog dependency 1.3.1 support React 19; the dialog is declared directly because its focus lifecycle API is used explicitly. Registry peer requirements and official documentation were checked. No peer overrides, hosting changes, or supplied source-document edits.
 
 ## Verification
 

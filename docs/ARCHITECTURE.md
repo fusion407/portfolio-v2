@@ -88,6 +88,22 @@ Motion 14.7.1 is used through its deferred `motion/mini` entry point for brief h
 
 Performance and bundle evidence, platform limits, and manual review are recorded in `MILESTONE-5.md`.
 
+## Milestone 6 — Deferred command palette
+
+A small shared header client component handles Ctrl/Cmd+K and a visible trigger. Its initial server snapshot offers a project-index link; the cmdk/Radix dialog and command registry are imported only when requested. Download failure announces the issue and focuses a working fallback link. The registry derives confirmed navigation, project titles, and professional profile destinations from existing content; unavailable resume/email destinations are omitted.
+
+Radix's explicit focus lifecycle APIs provide containment, input focus, invoker restoration, and navigation after modal cleanup. Native location navigation then preserves homepage fragment focus from any route. Command filtering is a case-insensitive substring match over titles and explicit aliases, avoiding unrelated fuzzy subsequences. Dialog content is unmounted on close, clearing its search state. No search backend or data transmission is involved.
+
+## Additional approved change — Homepage arcade
+
+Brady's subsequent instruction replaces the 3D hero with an opt-in arcade after M6. `HeroArcade` renders a static court invitation and only imports a game after Play. A typed registry holds loaders and metadata; selection is random over registered games, currently only Pong. An exit unmounts the game and restores Play focus. The completed M6 work is a separate review PR; the arcade branch depends on it.
+
+Pong uses Canvas 2D with a pure, bounded-step simulation. The logical court is 800×480, the player has keyboard or pointer/touch input, and the speed-limited computer has imperfect tracking. The ball's contact position controls its return angle; speed is capped, score resets include a serve delay, and the first side to five ends the match. The UI updates score/status only at meaningful state changes rather than on every frame. Canvas pixels adapt to layout with DPR capped at 2. No audio, server, storage, third-party assets, or new runtime package is needed.
+
+Input is scoped to the focused court, with Tab available to leave it. Leaving the game, opening search, window blur, page hiding, or scrolling the game out of view pauses it. Resuming is explicit. Frame requests, observers, and event listeners are cleaned up; paused and completed matches do not keep a render loop running. Restart creates a fresh simulation; exit releases the entire game. Initial HTML explains JavaScript availability, and download/canvas failures preserve navigation or an exit.
+
+The removed Three/Fiber implementation and its obsolete WebGL tests remain recoverable in Git history. Its dependencies and styles are removed; the independent Motion mini/CSS enhancements remain. The historical M5 architecture above describes the previously delivered feature. Current validation and performance evidence are in `HOMEPAGE-ARCADE.md`.
+
 ## References checked
 
 - [Node release support](https://nodejs.org/en/about/previous-releases)
@@ -103,5 +119,7 @@ Performance and bundle evidence, platform limits, and manual review are recorded
 - [Fiber demand rendering and performance](https://r3f.docs.pmnd.rs/advanced/scaling-performance)
 - [Canvas lifecycle and renderer configuration](https://r3f.docs.pmnd.rs/api/canvas)
 - [Motion mini animation API](https://motion.dev/docs/animate)
+- [cmdk command menu API](https://github.com/dip/cmdk)
+- [Radix dialog focus and modal behavior](https://www.radix-ui.com/primitives/docs/components/dialog)
 
 Package metadata was checked before installation. The lockfile records exact resolution; actual validation results belong in the milestone report.
