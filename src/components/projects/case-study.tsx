@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { getNextProject, projectHref, type Project } from "@/content/projects";
-import { NeonSynthPlaygroundSlot } from "@/features/neonsynth/playground-slot";
 import { ProjectArtwork } from "./project-artwork";
 
 export function CaseStudy({ project }: { project: Project }) {
@@ -12,9 +11,6 @@ export function CaseStudy({ project }: { project: Project }) {
       ? [{ id: "migration", title: "Cloud to local" }]
       : []),
     ...project.sections.map(({ id, title }) => ({ id, title })),
-    ...(project.playground
-      ? [{ id: "playground", title: "Future playground" }]
-      : []),
     ...(project.trailer ? [{ id: "trailer", title: "Official trailer" }] : []),
   ];
 
@@ -33,12 +29,14 @@ export function CaseStudy({ project }: { project: Project }) {
         <div className="case-summary-grid">
           <p className="case-lead">{project.summary}</p>
           <dl className="case-facts">
-            <div>
-              <dt>Status</dt>
-              <dd>
-                <span className="status-badge">{project.status}</span>
-              </dd>
-            </div>
+            {project.id !== "neonsynth" && (
+              <div>
+                <dt>Status</dt>
+                <dd>
+                  <span className="status-badge">{project.status}</span>
+                </dd>
+              </div>
+            )}
             <div>
               <dt>Role / context</dt>
               <dd>{project.role}</dd>
@@ -50,7 +48,11 @@ export function CaseStudy({ project }: { project: Project }) {
           </dl>
         </div>
       </header>
-      <div className="case-cover">
+      <div
+        className="case-cover"
+        id={project.trailer ? "trailer" : undefined}
+        tabIndex={project.trailer ? -1 : undefined}
+      >
         <ProjectArtwork kind={project.id} />
       </div>
       <div className="case-body">
@@ -131,25 +133,6 @@ export function CaseStudy({ project }: { project: Project }) {
               )}
             </section>
           ))}
-          {project.playground && (
-            <NeonSynthPlaygroundSlot content={project.playground} />
-          )}
-          {project.trailer && (
-            <section
-              id="trailer"
-              className="case-section trailer-panel"
-              aria-labelledby="trailer-heading"
-              tabIndex={-1}
-            >
-              <p className="eyebrow">Swordbound: Protocol / Official trailer</p>
-              <h2 id="trailer-heading">See the game in motion.</h2>
-              <p>{project.trailer.attribution}</p>
-              <a className="button button-secondary" href={project.trailer.url}>
-                Watch official trailer on YouTube{" "}
-                <span aria-hidden="true">↗</span>
-              </a>
-            </section>
-          )}
         </div>
       </div>
       <nav className="project-pagination" aria-label="Project navigation">

@@ -17,3 +17,9 @@ After M6 development resumed, Brady explicitly requested replacing the homepage'
 ## Public contact and résumé deferral — 2026-10-29
 
 Brady explicitly confirmed **fusion407@gmail.com** as the public contact email. It may appear in the portfolio's mailto link, command palette, and structured identity metadata. He asked to leave the résumé out until he updates it. Accordingly, no résumé page, download, placeholder, command, sitemap entry, or social card is published in M7. Employment dates, education, and other missing biographical details remain omitted. His approval to continue after reviewing Pong authorizes M7, while production deployment remains separately gated.
+
+## Project media and copy refresh — 2026-10-29
+
+Brady supplied a GeoVis map screenshot, actual NeonSynth interface screenshot and generated TitanForge Studio logo and requested replacing the conceptual artwork with those assets. He asked to put the official Swordbound trailer at the top of its case study for in-site playback, retain its link, remove the entire An unreleased game/trailer callout area and all third-party-authorship disclaimer copy, including the homepage overview. The trailer is now the project media on all three surfaces, loaded on viewer activation with a direct YouTube fallback.
+
+He also asked to remove NeonSynth's Development status and Web Playground sections and focus its copy on the instrument. Its visible status badge/fact row and future-playground overview paragraph are removed; internal project metadata does not invent a release or browser engine. The supplied product screenshot supports the description of oscillators, filters, envelopes, modulation controls and keyboard. These presentation decisions supersede older on-page disclaimer/playground requirements while preserving supplied source documents and the confirmed nine Swordbound contributions. The official trailer is not described as Brady's individually authored footage.
