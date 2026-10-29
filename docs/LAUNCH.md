@@ -1,43 +1,23 @@
-# Production launch readiness
+# Production launch record
 
-Updated: 2026-10-29. Status: **production release authorized; preflight in progress**. Brady accepted the working preview and requested deployment on 2026-10-29. The concrete scope, backup/recovery evidence, target production project and live verification are tracked in [PRODUCTION-RELEASE.md](PRODUCTION-RELEASE.md). Historical gates below describe the original preview handoff; the release record supersedes their authorization/backup status.
+Updated: 2026-10-29. Status: **live and verified** at https://www.bradydorsey.dev. Brady explicitly authorized deployment after reviewing the protected preview. M9 and release PR #11 are merged.
 
-## Confirmed live identity
+## Verified launch
 
-Brady supplied `https://vercel.com/fusion407s-projects/portfolio` and approved Vercel team access. Read-only API inspection verified team `team_TizSOAhTKyZkUv6hnUm9kd7M`, project `prj_FOG6G19vkehUJo5q6QFTrb41XcD6` / portfolio, and both live domains assigned there. Apex redirects 308 to www. READY deployment `dpl_GAW3G5JHmJqrwryc9DhZcEXVQJA1` has both domain aliases and source main `800441d33ddc3508244ec56f5b5bf62a3917f7a0` in fusion407/portfolio.
+The separate production project portfolio-v2 / prj_5R6dkwsBC6xJTUxsVbKJgazLZ9E7 serves both business domains in team fusion407s-projects. Main release 0321758073bf909f025c6018d46e7afaad465e75 deployed as READY production artifact dpl_5mVGTTY16d5EtWqLojji7NPzEHHa. The canonical www alias was verified against that artifact. Apex retains its HTTPS 308 redirect to www.
 
-The project's newest deployment record is ERROR (`dpl_4wAPhuS211LcNEreFSP4UtejruFp`), so newest is not the restore target. Its project setting reports Node 18.x and the dashboard warns about old Node versions; no runtime was upgraded. Do not assume a fresh build of the old source will succeed. Preserve the verified serving artifact and validate recovery separately.
+All 36 unit and 216 source browser tests passed before cutover. All 28 public production checks passed after cutover. Six public Lighthouse samples on home, projects and Swordbound scored Performance 98–100 and Accessibility/Best Practices/SEO 100. Production canonicals, social origins/PNGs, index/follow, robots, sitemap, security headers, redirects, 404s, navigation/contact and both games are verified. The separate protected preview stays non-indexable.
 
-The earlier Netlify assumption is superseded. New source is fusion407/portfolio-v2; the intended separate Vercel project is portfolio-v2-preview. New project/deploy evidence belongs in PREVIEW.md. Existing identity evidence is not a complete private configuration/DNS backup.
+The owner-controlled private backup contains original settings, complete five-record DNS inventory, domain/registrar metadata, empty environment inventory, exact deployment identity and verified source history. A recovery alias was assigned to the old artifact and rendered successfully without a rebuild. The old project, artifact, source and build/runtime settings remain retained. See [PRODUCTION-RELEASE.md](PRODUCTION-RELEASE.md) for identities, evidence and exact managed DNS behavior; see [ROLLBACK.md](ROLLBACK.md) for recovery.
 
-## Required gates
+No manual DNS or nameserver changes occurred. Vercel automatically updated its system-managed apex ALIAS target during the domain move; the other four records, their TTLs, nameservers and registrar settings remain unchanged. The private pre-launch snapshot is preserved. Do not overwrite the working managed target with the old value as an improvised recovery.
 
-| Gate                  | Current status / required action                                                                                                                           |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| M8                    | Accepted; PR #9 merged at `3c6f365c11bddc96c79ba1c702ffda47e7ebad44`                                                                                       |
-| Isolated preview      | Separate READY protected Preview, automatic PR association and hosted QA verified; M9 awaits review                                                        |
-| Hosted behavior       | Manual review and all 28 hosted checks passed; six hosted Lighthouse runs: Performance 98–100, Accessibility/Best Practices 100                            |
-| Live provider/project | Vercel team/project/domain identities verified read-only; no settings changed                                                                              |
-| DNS                   | Public Vercel NS and apex/www A answers recorded; registrar access, full zone, configured TTLs, mail/verification records, and secure export still missing |
-| Recovery              | Serving READY deploy identified; full config/env/domain/DNS backup and restore rehearsal still unverified                                                  |
-| Copy                  | Core wording approved for now; later refinements optional. Confirm facts again before launch                                                               |
-| Media                 | Use only existing conceptual art and attributed external trailer link. No permission inferred for absent company/project captures                          |
-| Resume                | Explicitly deferred; no mandatory placeholder or download                                                                                                  |
-| Manual QA             | Screen-reader, physical Android/iOS, actual Safari, native zoom remain unverified; remediate or record explicit acceptance before launch                   |
-| Legacy inventory      | Five known old content routes; confirm any additional inbound asset/route URLs with the owner                                                              |
-| License               | Undecided; public visibility grants no blanket content/media license                                                                                       |
-| Production approval   | Must name exact old/new project IDs, release SHA, domain/routing/indexing operations, window, and rollback target                                          |
+## Remaining review limits
 
-## Proposed future launch sequence
+- Manual screen-reader, physical Android/iOS, actual Safari and native zoom remain unverified. Automated emulation and lab scores do not replace those checks.
+- Core wording and existing conceptual media are the accepted content. Later copy refinements and new real media require their own verification/permissions.
+- Resume remains explicitly deferred, with no placeholder/download added.
+- Additional historical inbound asset URLs may still need owner confirmation; the five known legacy content routes are covered.
+- No blanket media/content license is inferred from the public repository.
 
-This is a plan, not authorization to execute it.
-
-1. Accept the isolated preview and exact release SHA. Close or explicitly accept remaining content/device/accessibility decisions. Record its immutable deployment ID and protection/access behavior.
-2. Securely capture the old hosted configuration, environment scopes/values, all domain assignments, DNS/registrar records and TTLs outside the public repository. Verify the serving artifact can be restored without relying on an unsupported-runtime rebuild. See ROLLBACK.md.
-3. Agree the exact future Vercel project and www canonical direction. Review the three narrow legacy redirects, preserved project index, new case studies, query/fragment handling, and genuine 404s. Keep unrelated DNS/mail/verification records intact.
-4. Present the concrete domain-transfer/routing/indexing and rollback actions to Brady for separate production approval. Same-provider migration may avoid a nameserver change, but do not assume that before actual domain/DNS checks. Never change nameservers just to attach a new project.
-5. Only after approval: apply the named production actions. Change the preview-only build wrapper/config deliberately, set the explicit indexing flag and VERCEL_ENV production with the approved SITE_URL, and rebuild metadata, robots, sitemap, and headers together. Do not activate indexing on the preview project as a shortcut.
-6. Verify apex/www HTTPS, canonical host and six page canonicals, OG origins/PNGs, six-URL sitemap, robots allow behavior, headers, legacy redirects/queries/fragments, 404s, navigation/contact and both games. Confirm actual deployed indexing before search-engine submission.
-7. Monitor against agreed acceptance criteria and use the verified rollback if core behavior fails. Keep the old project, serving artifact, and backup through the review window; do not delete them as a migration step.
-
-M9 may deliver an accepted preview while production readiness remains incomplete. Production migration still requires separate approval.
+Keep the retained original site and private backup through the owner's review window. No deletion, paid plan, domain purchase/transfer or registration change is part of this release. Future application changes follow the normal tested Git/preview workflow; main is the new production branch.

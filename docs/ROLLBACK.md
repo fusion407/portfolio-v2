@@ -1,52 +1,43 @@
-# Rollback and recovery plan
+# Production rollback and recovery
 
-Updated: 2026-10-29. Status: live identity/serving artifact verified read-only; **complete backup and production restore rehearsal remain unverified**. No live change or rollback was performed.
+Updated: 2026-10-29 after the authorized launch. The new site is live and verified. No live rollback was performed. Original configuration/source is backed up privately, and retained-artifact/alias recovery was rehearsed without changing live traffic.
 
-## Verified old restore candidate
+## Current and retained identities
 
-- Team: fusion407s-projects / `team_TizSOAhTKyZkUv6hnUm9kd7M`.
-- Existing project: portfolio / `prj_FOG6G19vkehUJo5q6QFTrb41XcD6`.
-- Serving READY deployment: `dpl_GAW3G5JHmJqrwryc9DhZcEXVQJA1`, `portfolio-ei0sva0p3-fusion407s-projects.vercel.app`.
-- Its API aliases include www.bradydorsey.dev, bradydorsey.dev, and the existing generated hostnames. Source SHA: `800441d33ddc3508244ec56f5b5bf62a3917f7a0`.
-- Both custom domains are verified on that old project; apex uses a 308 redirect to www.
-- A newer ERROR deployment exists. Do not select newest blindly. The old project reports Node 18.x and the dashboard has an old-runtime warning; do not depend on rebuilding the source as the only recovery strategy. No runtime setting was changed.
+| Role                       | Identity                                                                                        |
+| -------------------------- | ----------------------------------------------------------------------------------------------- |
+| Team                       | fusion407s-projects / team_TizSOAhTKyZkUv6hnUm9kd7M                                             |
+| Current production project | portfolio-v2 / prj_5R6dkwsBC6xJTUxsVbKJgazLZ9E7                                                 |
+| Initial live release       | 0321758073bf909f025c6018d46e7afaad465e75; dpl_5mVGTTY16d5EtWqLojji7NPzEHHa                      |
+| Current business domains   | www.bradydorsey.dev; bradydorsey.dev redirects 308 to www                                       |
+| Protected preview          | portfolio-v2-preview / prj_0RJ1hIENY9vVGLaiW7leECjEOE9v; no business domains; indexing disabled |
+| Retained original project  | portfolio / prj_FOG6G19vkehUJo5q6QFTrb41XcD6                                                    |
+| Retained READY artifact    | dpl_GAW3G5JHmJqrwryc9DhZcEXVQJA1; portfolio-ei0sva0p3-fusion407s-projects.vercel.app            |
+| Original source            | fusion407/portfolio at 800441d33ddc3508244ec56f5b5bf62a3917f7a0                                 |
+| Rehearsed recovery alias   | portfolio-rollback-20261029-fusion407s-projects.vercel.app                                      |
 
-These facts identify a concrete restore candidate. They do not prove restore permissions, continued artifact retention, complete configuration recovery, or successful rollback.
+The old project's newer ERROR artifact is not a recovery target. Its Node 18.x project setting is discontinued, with a production override present. Do not rebuild, upgrade or delete the old site as part of recovery. The working READY artifact, original generated hostname and rehearsal alias remain the recovery route. Later documentation-only v2 deployments may share the same application content; record the actual current artifact before any future application rollback.
 
-## Isolated preview recovery
+## Backup and rehearsal
 
-Use only the new portfolio-v2-preview project and fusion407/portfolio-v2 source. A failed preview build does not justify touching the old portfolio project. Inspect the new build log, fix on milestone-9-preview, and redeploy the exact revised SHA. Retain recorded good immutable preview URLs while fixing a failed build. Preserve deployment protection; use authorized temporary access for testing rather than disabling it.
+The local task visualization directory contains launch-backup-2026-10-29 outside the public repository. Its SHA-256 manifest covers the captured old project/domain/registrar/DNS/environment/deployment inventories and dashboard build settings, with recovery proof and a bare source backup. Hashes were checked; git fsck passed and the exact serving source commit exists. Both environment and hidden-production counts are zero. All five DNS records were captured with no pagination remainder and 60-second configured TTLs. No credential values or private backup contents belong in Git.
 
-If noindex, metadata origins, headers, legacy redirects, or game/navigation checks fail, correct and rebuild before review. No site/deploy deletion, domain transfer, old-runtime upgrade, production promotion, or DNS change is necessary for M9.
+The dashboard capture supplements the connector's partial project response: Create React App; build npm run build --force; install npm install --force; development npm start; default output; empty root; Node 18.x setting. No build/runtime/source setting was changed.
 
-## Required private backup manifest
+A non-production rehearsal assigned a new Vercel alias to the retained old READY artifact, then rendered the original site through that alias in the authenticated browser. This proves retained artifact usability and alias controls; it is not a timed live-domain rollback drill or a guarantee of future artifact retention.
 
-Store a complete export in an owner-controlled location outside this public repository. Public docs contain only redacted identity/status evidence.
+## Rollback procedure
 
-| Item                        | Current evidence / remaining requirement                                                                                                                        |
-| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Source                      | Exact old main SHA verified; not a full hosted/configuration backup                                                                                             |
-| Provider/team/project       | Vercel identities above verified read-only                                                                                                                      |
-| Serving artifact            | READY deploy and active aliases identified; confirm retention and recoverability                                                                                |
-| Build/runtime configuration | Node 18.x project setting observed; complete current settings/export and effective build runtime still need capture                                             |
-| Environment                 | Names/scopes and secure recoverability not captured; never commit values or expose them in logs/screenshots                                                     |
-| Domains/certificates        | Current project assignment and apex redirect verified; capture complete domain/TLS configuration and reassignment recovery                                      |
-| DNS/registrar               | Partial public NS/A observations only; secure full zone export, actual configured TTLs, registrar identity, access, unrelated mail/verification records missing |
-| Routes/headers/proxies      | Full hosted configuration/export remains incomplete                                                                                                             |
-| Assets/content              | Known route/source audit is not a complete recoverable deployment/configuration export                                                                          |
-| Integrity/access            | Record backup hashes/time and verify the authorized operator can restore the artifact, project/domain routing and DNS                                           |
+Use rollback when a release causes critical HTTPS/route/asset failures, broken essential navigation/games, incorrect canonical/indexing behavior, or another core acceptance failure. The authorized operator uses the same Vercel account/team. Preserve evidence and avoid unrelated changes.
 
-## Future production rollback procedure
+1. Confirm the exact live www alias, project and failing deployment. Verify the retained old artifact and generated/recovery alias still render. Do not select newest blindly.
+2. To undo the project migration, open Domains on the retained old portfolio project, add www.bradydorsey.dev with apex-to-www redirect selected, and confirm Vercel's Move Domain dialog lists exactly www.bradydorsey.dev and bradydorsey.dev, moving from portfolio-v2 back to portfolio. Preserve the 308 redirect. Do not remove team/domain registration or delete either project.
+3. Verify both project-domain assignments returned to the old project and www resolves to dpl_GAW3G5JHmJqrwryc9DhZcEXVQJA1. If alias repair is necessary, assign the recorded old artifact, not a rebuild or ERROR deployment.
+4. Verify public HTTPS, apex 308 direction, the root/four known old content routes, old assets, and contact/navigation behavior. Record actual recovery time and status. Preserve v2 for diagnosis and obtain the appropriate authorization before retrying a failed migration.
+5. Compare DNS with the private snapshot. The forward move automatically changed Vercel's system-managed apex ALIAS target; a project-domain rollback may update it automatically again. Preserve wildcard ALIAS, CAA records, TTLs, nameservers and unrelated records. Do not force the old target into the current new-project assignment. Make a manual DNS restore only for a verified unintended change using the correct current project and captured values.
 
-Finalize this against actual approved migration actions before launch. Do not execute it during M9.
+For a later application release within portfolio-v2, use that project's recorded good production deployment and its Instant Rollback/promotion controls. That is a different operation from moving domains back to the old project. A Git revert cannot restore domain assignments by itself.
 
-1. Define rollback triggers, operator and window. Pin the old project and the READY deployment above, plus the accepted v2 release, in the approval record. Verify that Vercel still retains the old artifact and that the operator has the exact required controls.
-2. If only a deployment changed within one project, use that project's verified Instant Rollback/promotion controls to restore its recorded good deployment. An old project's artifact cannot be assumed interchangeable with a new project's deployment.
-3. If live domains moved from old portfolio to the new project, restore their captured assignment to `prj_FOG6G19vkehUJo5q6QFTrb41XcD6` and the recorded serving artifact, preserving apex-to-www behavior and TLS. Review the exact Vercel reassignment actions before approval. Do not rebuild or upgrade the old runtime as an improvised rollback.
-4. If any DNS record changed, restore only the captured prior values at the verified authoritative provider. Respect TTL/propagation uncertainty and preserve unrelated records. A Git revert alone cannot restore domain assignments, DNS, or certificates.
-5. Verify apex/www HTTPS, 308 direction, root/four known old routes, old assets and application behavior, actual project/deploy/alias state, and restoration time. Keep v2 non-indexable while investigating.
-6. Preserve the failed release/logs without secrets; fix and re-review on the isolated preview. Obtain new approval before retrying production migration.
+## Current outcome
 
-## Recovery rehearsal
-
-Before launch, demonstrate that the owner can locate the old artifact and private backup and identify/use the exact restore controls safely. Use a non-production rehearsal when possible without live routing changes. Until then, rollback is a concrete draft with a known candidate, not a validated recovery guarantee.
+The live cutover passed all 28 public checks; source CI passed all 36 unit/216 browser checks. Six public Lighthouse samples met targets, including SEO 100. No rollback was triggered. Keep the old project, artifact and private backup through the owner's review window. Manual screen-reader, physical-device, actual Safari and native-zoom limitations remain recorded in the release report.

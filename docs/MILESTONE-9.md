@@ -1,6 +1,6 @@
 # Milestone 9 — Isolated Vercel preview and launch preparation
 
-Date: 2026-10-29. Status: verification completed; awaiting Brady's review. PR #10 is ready for review. Production migration remains a separate, unauthorized task.
+Date: 2026-10-29. Status: completed and accepted by Brady's request to deploy the working preview. PR #10 merged at 3cb8a5b72ad7209768cc96c4dad25d97906f66e9. The subsequently authorized and verified production launch is recorded in PRODUCTION-RELEASE.md; it was separate from the original M9 scope.
 
 ## Delivered preview
 
@@ -53,6 +53,6 @@ Lighthouse used fresh headless Chromium instances, mobile defaults and the expli
 
 ## Review and remaining launch decisions
 
-Review PR #10 and the protected preview. Milestone acceptance and merge await Brady's review; production migration is not included. The temporary test link was explicitly authorized and expires after 23 hours; the clean review URL retains normal Vercel sign-in.
+Brady accepted the protected preview and authorized deployment. PR #10 is merged; production release PR #11 and the live verification are recorded in PRODUCTION-RELEASE.md. The temporary test link was explicitly authorized and expires after 23 hours; the clean review URL retains normal Vercel sign-in.
 
-Complete private configuration/zone backup and recovery rehearsal, manual screen-reader/physical-device/actual Safari/native zoom, additional real-media permission, and any unconfirmed legacy URLs remain launch decisions. Resume is explicitly deferred. Production changes require a separately approved release, domain/indexing operations, and rollback plan.
+The subsequent authorized production release completed the private configuration/zone/source backup, retained-artifact recovery rehearsal and live verification; see PRODUCTION-RELEASE.md. Manual screen-reader/physical-device/actual Safari/native zoom, additional real-media permission and unconfirmed legacy URLs remain documented limits. Resume stays deferred.

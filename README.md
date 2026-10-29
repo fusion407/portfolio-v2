@@ -6,7 +6,7 @@ Primary headline: **I build things.**
 
 ## Current status
 
-Milestones 1–8 and the arcade extensions are accepted and merged. [Milestone 9](docs/MILESTONE-9.md) is accepted and merged: the protected preview passed all 28 hosted checks; six Lighthouse measurements scored 98–100 Performance and 100 Accessibility/Best Practices. The authorized [production release](docs/PRODUCTION-RELEASE.md) is being prepared. Launch/rollback plans retain separate production approval. The [arcade extension](docs/ARCADE-SELECTOR.md) adds an icon-only cover and a picker for Pong and Asteroids. Milestone 8 adds cross-browser QA, keyboard-focus fixes, CSP headers, and repository/history checks; see its [review report](docs/MILESTONE-8.md) and [QA evidence](docs/QA.md). Milestone 7 added the confirmed public email, page-specific metadata and social images, structured identity data, preview-safe robots/sitemap behavior, and a draft legacy URL map; see its [review report](docs/MILESTONE-7.md). Résumé work is deferred at Brady's request until he updates it. Confirmed facts are tracked in [content decisions](docs/CONTENT-DECISIONS.md); broader copywriting refinements remain deferred. This repository is independent of `fusion407/portfolio`; production remains unchanged.
+Milestones 1–8 and the arcade extensions are accepted and merged. [Milestone 9](docs/MILESTONE-9.md) is accepted and merged: the protected preview passed all 28 hosted checks; six Lighthouse measurements scored 98–100 Performance and 100 Accessibility/Best Practices. The authorized [production release](docs/PRODUCTION-RELEASE.md) is live at **https://www.bradydorsey.dev**. Both live domains now belong to the separate portfolio-v2 production project; the old site is retained for rollback. The [arcade extension](docs/ARCADE-SELECTOR.md) adds an icon-only cover and a picker for Pong and Asteroids. Milestone 8 adds cross-browser QA, keyboard-focus fixes, CSP headers, and repository/history checks; see its [review report](docs/MILESTONE-8.md) and [QA evidence](docs/QA.md). Milestone 7 added the confirmed public email, page-specific metadata and social images, structured identity data, preview-safe robots/sitemap behavior, and a draft legacy URL map; see its [review report](docs/MILESTONE-7.md). Résumé work is deferred at Brady's request until he updates it. Confirmed facts are tracked in [content decisions](docs/CONTENT-DECISIONS.md); broader copywriting refinements remain deferred. This repository is independent of `fusion407/portfolio`; the original project and deployment are retained while its two business domains now serve v2.
 
 Content routes: `/`, `/projects`, `/projects/geovis`, `/projects/neonsynth`, `/projects/titanforge-studio`, and `/projects/swordbound-protocol`. Generated metadata routes include `/robots.txt`, `/sitemap.xml`, and six `/og/<slug>` PNGs. Unknown paths, including `/404` and the deferred `/resume`, return a branded HTTP 404 response. Preview indexing remains disabled; see [SEO policy](docs/SEO.md).
 
@@ -23,23 +23,25 @@ Open [http://127.0.0.1:3000](http://127.0.0.1:3000). Servers bind to loopback by
 
 ## Commands
 
-| Command                 | Purpose                                                                                                     |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `npm run dev`           | Local development server                                                                                    |
-| `npm run build`         | Production build and static page generation                                                                 |
-| `npm run build:preview` | Build an isolated hosted preview with indexing forcibly disabled                                            |
-| `npm start`             | Serve an existing production build locally                                                                  |
-| `npm run lint`          | ESLint checks with no warnings                                                                              |
-| `npm run format:check`  | Verify formatting                                                                                           |
-| `npm run format`        | Format authored files; supplied source documents excluded                                                   |
-| `npm run typecheck`     | Generate route types and run strict TypeScript                                                              |
-| `npm test`              | Unit tests once                                                                                             |
-| `npm run test:watch`    | Unit tests in watch mode                                                                                    |
-| `npm run check`         | Formatting, lint, type checks, and unit tests                                                               |
-| `npm run test:e2e`      | Production browser and accessibility checks                                                                 |
-| `npm run audit:repo`    | Scan current files and available Git history for recognized credential patterns and forbidden artifacts     |
-| `npm run test:preview`  | Deployed smoke checks against a required isolated Vercel HTTPS origin; see [preview setup](docs/PREVIEW.md) |
-| `npm audit`             | Inspect dependency advisories                                                                               |
+| Command                   | Purpose                                                                                                     |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `npm run dev`             | Local development server                                                                                    |
+| `npm run build`           | Production build and static page generation                                                                 |
+| `npm run build:hosted`    | Hosted build using explicit production indexing gates; otherwise force preview exclusions                   |
+| `npm run test:production` | Read-only verification of the approved public www domain                                                    |
+| `npm run build:preview`   | Build an isolated hosted preview with indexing forcibly disabled                                            |
+| `npm start`               | Serve an existing production build locally                                                                  |
+| `npm run lint`            | ESLint checks with no warnings                                                                              |
+| `npm run format:check`    | Verify formatting                                                                                           |
+| `npm run format`          | Format authored files; supplied source documents excluded                                                   |
+| `npm run typecheck`       | Generate route types and run strict TypeScript                                                              |
+| `npm test`                | Unit tests once                                                                                             |
+| `npm run test:watch`      | Unit tests in watch mode                                                                                    |
+| `npm run check`           | Formatting, lint, type checks, and unit tests                                                               |
+| `npm run test:e2e`        | Production browser and accessibility checks                                                                 |
+| `npm run audit:repo`      | Scan current files and available Git history for recognized credential patterns and forbidden artifacts     |
+| `npm run test:preview`    | Deployed smoke checks against a required isolated Vercel HTTPS origin; see [preview setup](docs/PREVIEW.md) |
+| `npm audit`               | Inspect dependency advisories                                                                               |
 
 Browser tests need a production build and Chromium, Firefox, and WebKit:
 

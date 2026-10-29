@@ -159,3 +159,7 @@ Brady corrected the original Netlify assumption. Vercel configuration selects na
 Vercel metadata uses a validated immutable VERCEL_URL origin, with validated branch/legacy fallbacks. VERCEL_ENV takes precedence over legacy CONTEXT. The separately gated production policy still needs the explicit flag, production environment and approved domain. Generated .vercel output/linkage is excluded from source tooling and Git.
 
 The separate test:preview command requires a verified HTTPS vercel.app origin and starts no local server. It rejects the live custom domain and runs seven smoke cases in four browser configurations. Hosted evidence and protected-access handling belong in PREVIEW.md. The old Vercel project/domain/serving artifact were inspected read-only; full private backup, recovery rehearsal and production migration remain separate gates.
+
+## Authorized production launch — 2026-10-29
+
+The separate portfolio-v2 production project now serves www.bradydorsey.dev with the preserved apex 308 redirect. The hosted build selects production only through the existing explicit indexing/context/canonical gates; other contexts retain forced preview exclusions. The portfolio-v2-preview project stays protected, non-indexable and free of business domains. The old portfolio project/artifact remain for recovery. Main is the production branch. See PRODUCTION-RELEASE.md for identities, public verification and the platform-managed apex routing update.

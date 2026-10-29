@@ -83,3 +83,22 @@ Lighthouse 13.6.0 ran six sequential hosted lab samples using fresh headless Pla
 | Swordbound | Desktop | 100         | 100           | 100            | 54          | 0.269 s | 0 ms   | 0.0013 |
 
 Performance/accessibility/best-practice targets are met. Preview SEO includes deliberate noindex and protected crawling restrictions; it is not a production SEO measurement. These single samples are not field data, physical-device/frame-rate testing, actual Safari, screen-reader equivalence, or native zoom validation. The M8 loopback launch-mode SEO evidence remains historical. Full private configuration/DNS backup and recovery rehearsal remain separate production prerequisites. No production migration occurred.
+
+## Public production verification — 2026-10-29
+
+After Brady authorized deployment, release PR #11 passed all 36 unit and 216 source browser checks and merged at 0321758073bf909f025c6018d46e7afaad465e75. The initial live production artifact is dpl_5mVGTTY16d5EtWqLojji7NPzEHHa in the separate portfolio-v2 project. Both business domains moved together after this main artifact reported READY; apex preserved its HTTPS 308 to www. Authoritative alias inspection confirmed www points to that artifact. See PRODUCTION-RELEASE.md for backup, isolation, managed DNS update and retained recovery evidence.
+
+All **28 public production checks passed**, without skips/retries, across desktop Chromium, mobile Chromium emulation, Firefox and WebKit. They verify six content routes/canonicals/social origins, indexing/header policy, six PNGs, sitemap/robots, numeric 404s, legacy 301 queries/fragments/sections, navigation/search/contact/mobile disclosure, both games/focus/pause/restart/exit under CSP, axe, assets and narrow layouts. These calls used the public custom domain without authentication or share links.
+
+Lighthouse 13.6.0 ran six sequential public lab samples using fresh headless Chromium processes and mobile defaults or explicit desktop API configuration. Results:
+
+| Page                          | Mode    | Performance | Accessibility | Best practices | SEO | LCP     | TBT    | CLS    |
+| ----------------------------- | ------- | ----------- | ------------- | -------------- | --- | ------- | ------ | ------ |
+| /                             | mobile  | 98          | 100           | 100            | 100 | 1.134 s | 136 ms | 0.0243 |
+| /                             | desktop | 100         | 100           | 100            | 100 | 0.324 s | 0 ms   | 0.0069 |
+| /projects                     | mobile  | 99          | 100           | 100            | 100 | 0.929 s | 115 ms | 0.0027 |
+| /projects                     | desktop | 100         | 100           | 100            | 100 | 0.276 s | 0 ms   | 0.0018 |
+| /projects/swordbound-protocol | mobile  | 99          | 100           | 100            | 100 | 0.930 s | 134 ms | 0.0210 |
+| /projects/swordbound-protocol | desktop | 100         | 100           | 100            | 100 | 0.271 s | 0 ms   | 0.0013 |
+
+All four score targets are met on these representative pages. These are single hosted lab samples, not field Core Web Vitals, physical-device gameplay or screen-reader equivalence. Manual screen-reader/Android/iOS/actual Safari/native zoom remain unverified. Copy/media/resume limits remain unchanged. Credential-free summaries and the live-home screenshot are saved in the local task visualization directory outside Git. Local production-test processes were stopped and the default preview build restored.

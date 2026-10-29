@@ -1,6 +1,8 @@
 # Isolated Vercel preview
 
-Updated: 2026-10-29. Status: protected Vercel Preview verified and awaiting review; all 28 hosted cases passed, with six Lighthouse measurements at 98–100 Performance and 100 Accessibility/Best Practices. Brady corrected the original Netlify assumption and supplied the existing Vercel project; this replaces the earlier Netlify draft.
+Updated: 2026-10-29. Status: protected Vercel Preview verified, accepted and merged; all 28 hosted cases passed, with six Lighthouse measurements at 98–100 Performance and 100 Accessibility/Best Practices. Brady corrected the original Netlify assumption and supplied the existing Vercel project; this replaces the earlier Netlify draft.
+
+The following isolation/old-domain table records the M9 preview handoff. Current production assignments and completed launch gates are in PRODUCTION-RELEASE.md; the preview project itself still has no business domains.
 
 ## Verified separation
 
@@ -10,7 +12,7 @@ Updated: 2026-10-29. Status: protected Vercel Preview verified and awaiting revi
 | Existing live project — read-only | `portfolio` / `prj_FOG6G19vkehUJo5q6QFTrb41XcD6`                                                                                                                                                                            |
 | Existing live domains — preserve  | `bradydorsey.dev` redirects 308 to `www.bradydorsey.dev`; both verified on the old project                                                                                                                                  |
 | Existing serving deployment       | `dpl_GAW3G5JHmJqrwryc9DhZcEXVQJA1`, READY, source `800441d33ddc3508244ec56f5b5bf62a3917f7a0`, aliases include both live domains                                                                                             |
-| New source                        | `fusion407/portfolio-v2`, M9 branch `milestone-9-preview`, PR #10 awaiting review                                                                                                                                           |
+| New source                        | `fusion407/portfolio-v2`, M9 branch `milestone-9-preview`, PR #10 merged                                                                                                                                                    |
 | Accepted M8                       | `3c6f365c11bddc96c79ba1c702ffda47e7ebad44`                                                                                                                                                                                  |
 | Intended separate project         | `portfolio-v2-preview` / `prj_0RJ1hIENY9vVGLaiW7leECjEOE9v`; only generated domain `portfolio-v2-preview-two.vercel.app`; READY Preview dpl_62tSpNgiTJJF9UYgvMDWoCQvpiUH at source fc189487a9375e8c8cccd5c456fc14b4f6aa0496 |
 | New custom domains                | Must contain no business/custom domain; only generated Vercel hostnames                                                                                                                                                     |
@@ -46,7 +48,7 @@ The command accepts only a clean HTTPS `*.vercel.app` origin and never defaults 
 
 ## Remaining acceptance
 
-The separate project and source link are created, Node 24.x selected, and generated-only domain verified. READY Preview deployment, signed-in browser access and automatic PR association are verified. All 28 hosted HTTP/header/status/axe/interaction checks passed; six Lighthouse measurements scored 98–100 Performance and 100 Accessibility/Best Practices. Milestone acceptance awaits Brady's review. Production migration, complete authenticated configuration/zone backup, restore rehearsal, and manual screen-reader/physical-device/actual Safari/native zoom remain separate open launch gates. Resume stays deferred. See `LAUNCH.md`, `ROLLBACK.md`, and `MILESTONE-9.md`.
+The separate project and source link are created, Node 24.x selected, and generated-only domain verified. READY Preview deployment, signed-in browser access and automatic PR association are verified. All 28 hosted HTTP/header/status/axe/interaction checks passed; six Lighthouse measurements scored 98–100 Performance and 100 Accessibility/Best Practices. M9 is accepted and merged; the subsequently authorized production release is documented separately. Production migration, complete authenticated configuration/zone backup, restore rehearsal, and manual screen-reader/physical-device/actual Safari/native zoom remain separate open launch gates. Resume stays deferred. See `LAUNCH.md`, `ROLLBACK.md`, and `MILESTONE-9.md`.
 
 References: [Vercel configuration](https://vercel.com/docs/project-configuration/vercel-json), [system environment variables](https://vercel.com/docs/environment-variables/system-environment-variables), [Git deployments](https://vercel.com/docs/git), [deployment protection](https://vercel.com/docs/deployment-protection).
 
@@ -65,3 +67,7 @@ Authenticated browser review confirmed all six page titles, noindex/nofollow, no
 ## Protected test access
 
 Keep Vercel protection enabled. The optional test:preview:protected runner receives a one-line JSON payload containing the clean origin and an explicitly authorized temporary access URL through stdin. It disables terminal input echo and never uses a credential file or CLI argument. The configuration accepts only a share parameter for the same exact origin; isolated browser/API contexts bootstrap their own cookies, authentication errors omit URLs, and traces are disabled when access is supplied. Do not put access URLs, tokens, cookies, or storage state in Git or public reports. Brady explicitly authorized the 23-hour test link, which was created and used for the passing hosted matrix and Lighthouse measurements. Its value is omitted from Git, reports and final links; normal protection remains enabled. Lighthouse summaries omit authentication settings and full reports were not retained.
+
+## Subsequent production launch
+
+M9 was accepted and merged as PR #10. The separately authorized production project portfolio-v2 now serves both business domains; this protected preview project remains independent and non-indexable. See PRODUCTION-RELEASE.md for live deployment, public QA and rollback evidence. Earlier preview-only restrictions and historical identity records above describe the M9 boundary, not the current live assignment.

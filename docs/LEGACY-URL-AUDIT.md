@@ -45,3 +45,7 @@ The nameserver answers reinforce the responding Vercel infrastructure evidence. 
 Brady supplied https://vercel.com/fusion407s-projects/portfolio and approved team access. Read-only API inspection verified team `team_TizSOAhTKyZkUv6hnUm9kd7M`, project `prj_FOG6G19vkehUJo5q6QFTrb41XcD6`, and verified apex/www custom-domain assignments with the existing 308 direction. READY deployment `dpl_GAW3G5JHmJqrwryc9DhZcEXVQJA1` serves both aliases and corresponds to old source main `800441d33ddc3508244ec56f5b5bf62a3917f7a0`. A newer ERROR deployment exists; do not use newest as a recovery assumption. Project Node 18.x and an old-runtime dashboard warning were observed without changing them.
 
 The original Netlify host assumption and undeployed M9 Netlify draft are superseded. New Vercel configuration applies only to the isolated v2 project. No old project/domain/source/DNS mutation occurred. Full environment/configuration/DNS export and restore rehearsal remain incomplete; see ROLLBACK.md.
+
+## Production migration update — 2026-10-29
+
+The approved new production project now owns both business domains. Public checks verified the three exact 301 redirects, preserved queries/fragments and destination sections, project index/case studies, and real missing/resume 404 responses. Apex retains 308 to www. The old project/source/artifact remain for recovery; the private configuration/DNS/source backup and platform-managed ALIAS update are recorded in PRODUCTION-RELEASE.md. Earlier assignment/provider observations remain historical evidence.

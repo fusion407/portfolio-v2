@@ -1,6 +1,6 @@
 # Portfolio 2.0 — Milestone tracker
 
-Updated: 2026-10-29. Milestones 1–8 and the arcade extensions are accepted and merged. M9 is accepted and merged; the production release is authorized and in progress (see PRODUCTION-RELEASE.md). Its Vercel evidence: the protected preview passed manual review, all 28 hosted checks, and six representative performance measurements, with the public email confirmed and résumé explicitly deferred by Brady.
+Updated: 2026-10-29. Milestones 1–8 and the arcade extensions are accepted and merged. M9 is accepted and merged; the production release is live and verified (see PRODUCTION-RELEASE.md). Its Vercel evidence: the protected preview passed manual review, all 28 hosted checks, and six representative performance measurements, with the public email confirmed and résumé explicitly deferred by Brady.
 
 Specification: `source/product-requirements-v1.0.md`. Process: `source/master-prompt.md`. Proposed architecture and inventories: `DISCOVERY.md`.
 
@@ -141,7 +141,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## Separate future task — Production migration
 
-- Status: authorized and in progress by Brady's request to deploy the working portfolio; see PRODUCTION-RELEASE.md for the exact project/domain/indexing/recovery scope.
+- Status: completed. Brady authorized deployment; PR #11 merged at 0321758073bf909f025c6018d46e7afaad465e75 after 36 unit/216 browser checks passed. Both domains serve the new production project; all 28 public checks and six Lighthouse measurements passed. See PRODUCTION-RELEASE.md for exact identities, DNS routing update, retained rollback artifact and manual limits.
 - Objective: replace the current site through a controlled, reversible migration.
 - Scope: only the approved migration procedure after preview acceptance.
 - Files/components: verified redirects, approved production-only configuration, migration/rollback evidence; exact live changes require explicit approval.
