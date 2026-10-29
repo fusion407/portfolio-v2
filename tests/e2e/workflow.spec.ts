@@ -115,7 +115,9 @@ test("testing and feedback lead back to implementation with focus", async ({
   await expect(
     page.getByRole("region", { name: "Selected stage: Implement with agents" }),
   ).toBeVisible();
-  await expect(page.getByRole("status")).toHaveText(/Showing stage 6 of 8/);
+  await expect(page.locator("#process").getByRole("status")).toHaveText(
+    /Showing stage 6 of 8/,
+  );
 });
 
 test("the complete readable view exposes all stages and stays accessible", async ({

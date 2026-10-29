@@ -6,7 +6,7 @@ Primary headline: **I build things.**
 
 ## Current status
 
-Milestones 1–4 are accepted and merged. Milestone 5 adds the deferred 3D hero, static fallbacks, pause/resume control, and restrained motion; see its [review report](docs/MILESTONE-5.md). FatalFox Studios is the confirmed Experience employer and Swordbound: Protocol is its project; see [content decisions](docs/CONTENT-DECISIONS.md). Broader copywriting refinements remain deferred by Brady. The command palette, resume, and production SEO remain later work. This repository is independent of `fusion407/portfolio`; the existing portfolio and production hosting remain unchanged.
+Milestones 1–5 are accepted and merged. Milestone 6 adds the command palette for section/project navigation, title search, and confirmed profiles; see its [review report](docs/MILESTONE-6.md). FatalFox Studios is the confirmed Experience employer and Swordbound: Protocol is its project; see [content decisions](docs/CONTENT-DECISIONS.md). Broader copywriting refinements remain deferred by Brady. Resume and production SEO remain later work. Brady has also authorized replacing the homepage animation with an opt-in arcade, starting with Pong, after completing M6. This repository is independent of `fusion407/portfolio`; the existing portfolio and production hosting remain unchanged.
 
 Current routes: `/`, `/projects`, `/projects/geovis`, `/projects/neonsynth`, `/projects/titanforge-studio`, and `/projects/swordbound-protocol`. Unknown paths, including `/404`, return a branded HTTP 404 response.
 

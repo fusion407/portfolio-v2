@@ -1,6 +1,6 @@
 # Portfolio 2.0 — Milestone tracker
 
-Updated: 2026-10-28. Milestones 1–4 accepted and merged; Milestone 5 implemented and verified, awaiting review.
+Updated: 2026-10-28. Milestones 1–5 accepted and merged; Milestone 6 verified and awaiting review. Brady explicitly authorized a separate homepage Pong change after M6, before the remaining milestones.
 
 Specification: `source/product-requirements-v1.0.md`. Process: `source/master-prompt.md`. Proposed architecture and inventories: `DISCOVERY.md`.
 
@@ -68,7 +68,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M5 — 3D hero and motion
 
-- Status: awaiting review. Deferred 3D hero and motion implemented; format, lint, strict TypeScript, 6 unit tests, production build, and 64 browser checks pass (8 platform-inapplicable cases skipped). Audit reports zero vulnerabilities. Local Lighthouse Performance is 98 mobile / 100 desktop, with 100 Accessibility and Best Practices. See `MILESTONE-5.md`. Do not merge or begin M6 automatically.
+- Status: completed and accepted. Brady authorized merging PR #5 and continuing; merged at `f77a2e493bbcd2fa2685508960a8eb9e1b03138a` after local and Linux CI passed. See `MILESTONE-5.md`. Its original 3D hero will be superseded by the separately requested Pong enhancement after M6.
 - Objective: add the signature node network without impairing core usability.
 - Scope: isolated deferred Three/Fiber scene, gentle ambient/cursor response, restrained component motion, static and low-performance fallbacks.
 - Files/components: `components/three/`, `components/motion/`, Hero integration, dependency lockfile, relevant styles/tests.
@@ -79,7 +79,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M6 — Command palette
 
-- Status: not started.
+- Status: awaiting review. Format, lint, strict TypeScript, 8 unit tests, production build, and 82 browser checks pass (8 platform-inapplicable M5 cases skipped); audit reports zero vulnerabilities. See `MILESTONE-6.md`. M7 remains gated; Brady explicitly authorized the separate Pong change next.
 - Objective: provide fast, accessible navigation and project search.
 - Scope: Ctrl/Cmd+K, visible trigger, project-title filtering, homepage section actions from every route, supplied professional profiles, resume route and download when available.
 - Files/components: `components/command/`, shared navigation/command registry, layout mount, dependency lockfile, palette tests.

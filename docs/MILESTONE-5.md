@@ -1,6 +1,6 @@
 # Milestone 5 — 3D hero and motion
 
-Date: 2026-10-28. Status: implemented and verified; awaiting review.
+Date: 2026-10-28. Status: accepted and merged in PR #5 at `f77a2e493bbcd2fa2685508960a8eb9e1b03138a` after Brady authorized merging and continuing. Local and Linux CI checks passed. Brady subsequently requested replacing the 3D hero with an opt-in arcade after M6; this report preserves the delivered M5 record.
 
 ## Delivered
 

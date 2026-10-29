@@ -1637,3 +1637,216 @@ summary {
     transition: none;
   }
 }
+
+/* Global navigation enhancement: the dialog is deferred until requested. */
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+.command-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.5rem;
+  color: var(--color-muted);
+  background: var(--color-surface);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.command-trigger:hover {
+  color: var(--color-foreground);
+  border-color: var(--color-muted);
+}
+.command-trigger > span[aria-hidden] {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+.command-trigger kbd {
+  font: 0.5625rem var(--font-mono);
+}
+.command-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgb(3 5 12 / 82%);
+}
+.command-dialog {
+  position: fixed;
+  z-index: 101;
+  top: min(16vh, 8rem);
+  left: 50%;
+  translate: -50% 0;
+  width: min(38rem, calc(100% - 2rem));
+  max-height: calc(100dvh - min(16vh, 8rem) - 1rem);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(157 171 207 / 30%);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background: #0d1221;
+  color: var(--color-foreground);
+  box-shadow: 0 24px 100px rgb(0 0 0 / 50%);
+}
+.command-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.command-dialog-header h2 {
+  font-size: 1.375rem;
+  font-weight: 550;
+  letter-spacing: -0.04em;
+}
+.command-close {
+  display: inline-flex;
+  gap: 0.65rem;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding-inline: 0.5rem;
+  font: 0.625rem var(--font-mono);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.4rem;
+  color: var(--color-muted);
+  cursor: pointer;
+}
+.command-close:hover {
+  color: var(--color-foreground);
+}
+.command-close span {
+  font-size: 1.25rem;
+}
+.command-description {
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--color-muted);
+  margin: 0.5rem 0 1.25rem;
+}
+.command-dialog [cmdk-root] {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.command-dialog [cmdk-input] {
+  width: 100%;
+  flex-shrink: 0;
+  min-height: 3.25rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgb(56 189 248 / 50%);
+  border-radius: 0.5rem;
+  background: #080b14;
+  color: var(--color-foreground);
+  font-size: 1rem;
+}
+.command-dialog [cmdk-input]::placeholder {
+  color: var(--color-muted);
+}
+.command-dialog [cmdk-list] {
+  min-height: 0;
+  max-height: min(26rem, 45dvh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-padding-block: 0.5rem;
+  margin-top: 1rem;
+}
+.command-dialog [cmdk-group-heading] {
+  padding: 0.9rem 0.75rem 0.5rem;
+  color: var(--color-cyan);
+  font: 0.625rem var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.command-dialog [cmdk-item] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 3.5rem;
+  margin: 0.15rem 0;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.command-dialog [cmdk-item][data-selected="true"] {
+  background: rgb(115 87 245 / 15%);
+  border-color: rgb(115 87 245 / 60%);
+}
+.command-item-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.command-item-hint {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--color-muted);
+  font-size: 0.6875rem;
+}
+.command-item-arrow {
+  color: var(--color-cyan);
+}
+.command-dialog [cmdk-empty] {
+  padding: 2rem 0.75rem;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+.command-help {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--color-muted);
+  font-size: 0.625rem;
+  line-height: 1.7;
+}
+.command-help kbd {
+  font-family: var(--font-mono);
+}
+@media (max-width: 1279px) {
+  .header-inner {
+    gap: 1rem;
+  }
+  .desktop-navigation {
+    gap: 1.1rem;
+  }
+  .command-trigger kbd {
+    display: none;
+  }
+}
+@media (max-width: 639px) {
+  .header-tools {
+    gap: 0.65rem;
+  }
+  .command-trigger-label {
+    display: none;
+  }
+  .command-trigger {
+    min-width: 2.75rem;
+  }
+  .command-dialog {
+    top: 1rem;
+    max-height: calc(100dvh - 2rem);
+    padding: 1rem;
+  }
+  .command-dialog [cmdk-list] {
+    max-height: 45dvh;
+  }
+  .command-dialog-header h2 {
+    font-size: 1.25rem;
+  }
+}
