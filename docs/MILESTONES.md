@@ -1,6 +1,6 @@
 # Portfolio 2.0 — Milestone tracker
 
-Updated: 2026-10-29. Milestones 1–8 and the arcade extensions are accepted and merged. M9 is in progress on Vercel after the hosting correction; source linking and deployed verification remain pending, with the public email confirmed and résumé explicitly deferred by Brady.
+Updated: 2026-10-29. Milestones 1–8 and the arcade extensions are accepted and merged. M9 is in progress on Vercel after the hosting correction; a protected preview is deployed and manual review is complete; full hosted automation/performance awaits the access choice, with the public email confirmed and résumé explicitly deferred by Brady.
 
 Specification: `source/product-requirements-v1.0.md`. Process: `source/master-prompt.md`. Proposed architecture and inventories: `DISCOVERY.md`.
 
@@ -119,7 +119,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M9 — Isolated preview and launch readiness
 
-- Status: in progress. Preview configuration, a guarded 28-case deployed smoke matrix, and preview/launch/rollback documents are prepared. Vercel team access and live project/domain/serving-deploy identities are verified; separate source linking, hosted deploy, PR-preview integration and remote verification remain pending. See `MILESTONE-9.md` and `PREVIEW.md`.
+- Status: in progress. Preview configuration, a guarded 28-case deployed smoke matrix, and preview/launch/rollback documents are prepared. Vercel team access and live project/domain/serving-deploy identities are verified; separate source linking, READY protected Preview and automatic PR association are verified. Manual browser review is complete; full hosted automation/performance awaits the access choice. See `MILESTONE-9.md` and `PREVIEW.md`.
 - Objective: demonstrate the release on an isolated Vercel project and document remaining launch decisions.
 - Scope: separate preview site, PR previews where configured, deploy-specific verification, launch checklist, migration and rollback plans; no production-domain deployment.
 - Files/components: new-project-only Vercel settings/configuration, `docs/PREVIEW.md`, `docs/LAUNCH.md`, `docs/ROLLBACK.md`, verified redirect plan, milestone report.

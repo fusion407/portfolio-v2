@@ -2,6 +2,30 @@ import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { portfolioPages } from "../../src/content/pages";
 
+test.beforeEach(async ({ context, request, baseURL }) => {
+  const access = process.env.PORTFOLIO_PREVIEW_ACCESS_URL;
+  if (!access) return;
+  try {
+    // Each isolated context obtains its own cookie; no storage-state file or
+    // credential is persisted. Never include access URLs in assertion messages.
+    const responses = await Promise.all([
+      context.request.get(access),
+      request.get(access),
+    ]);
+    if (
+      responses.some(
+        (response) =>
+          !response.ok() || new URL(response.url()).origin !== baseURL,
+      )
+    )
+      throw new Error("Preview authentication failed");
+  } catch {
+    throw new Error(
+      "Protected preview access failed. Obtain a fresh authorized access link.",
+    );
+  }
+});
+
 test("deployed content routes keep metadata, indexing exclusions, and security headers", async ({
   page,
   baseURL,
@@ -20,10 +44,10 @@ test("deployed content routes keep metadata, indexing exclusions, and security h
       "noindex, nofollow",
     );
     await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
-    await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
-      "content",
-      `${baseURL}${entry.path}`,
-    );
+    const openGraphURL = await page
+      .locator('meta[property="og:url"]')
+      .getAttribute("content");
+    expect(new URL(openGraphURL!).href).toBe(new URL(entry.path, baseURL).href);
     expect(response?.headers()["x-robots-tag"]).toContain("noindex");
     expect(response?.headers()["x-content-type-options"]).toBe("nosniff");
     expect(response?.headers()["x-frame-options"]).toBe("DENY");
