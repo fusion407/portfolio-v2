@@ -8,12 +8,63 @@ import nextConfig from "../../next.config";
 
 afterEach(() => vi.unstubAllEnvs());
 function production() {
+  vi.stubEnv("VERCEL_ENV", "production");
   vi.stubEnv("PORTFOLIO_INDEXING", "enabled");
   vi.stubEnv("CONTEXT", "production");
   vi.stubEnv("SITE_URL", "https://www.bradydorsey.dev");
 }
 
 describe("explicit indexing policy", () => {
+  it("uses the immutable Vercel preview origin ahead of legacy hosting values", () => {
+    expect(
+      getSitePolicy({
+        VERCEL_ENV: "preview",
+        VERCEL_URL: "portfolio-v2-preview-abc-fusion407s-projects.vercel.app",
+        VERCEL_BRANCH_URL: "portfolio-v2-preview-git-feature.vercel.app",
+        DEPLOY_PRIME_URL: "https://stale.netlify.app",
+      }),
+    ).toEqual({
+      indexable: false,
+      canonicalOrigin: null,
+      origin: "https://portfolio-v2-preview-abc-fusion407s-projects.vercel.app",
+    });
+  });
+  it("rejects malformed Vercel hosts and uses only a valid fallback", () => {
+    for (const host of [
+      "https://wrong.vercel.app",
+      "user@wrong.vercel.app",
+      "wrong.vercel.app/path",
+      "wrong.vercel.app.evil.test",
+    ]) {
+      expect(getSitePolicy({ VERCEL_URL: host }).origin).toBe(
+        "http://127.0.0.1:3000",
+      );
+      expect(
+        getSitePolicy({
+          VERCEL_URL: host,
+          VERCEL_BRANCH_URL: "fallback.vercel.app",
+        }).origin,
+      ).toBe("https://fallback.vercel.app");
+    }
+  });
+  it("never lets a legacy production context override Vercel preview or development", () => {
+    for (const context of ["preview", "development"])
+      expect(
+        getSitePolicy({
+          PORTFOLIO_INDEXING: "enabled",
+          CONTEXT: "production",
+          VERCEL_ENV: context,
+          SITE_URL: "https://www.bradydorsey.dev",
+        }).indexable,
+      ).toBe(false);
+    expect(
+      getSitePolicy({
+        PORTFOLIO_INDEXING: "enabled",
+        VERCEL_ENV: "production",
+        SITE_URL: "https://www.bradydorsey.dev",
+      }).indexable,
+    ).toBe(true);
+  });
   it.each([
     {},
     { NODE_ENV: "production" },

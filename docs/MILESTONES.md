@@ -1,6 +1,6 @@
 # Portfolio 2.0 — Milestone tracker
 
-Updated: 2026-10-29. Milestones 1–7 and the additional Pong change are accepted and merged. M8 is verified and awaiting review, with the public email confirmed and résumé explicitly deferred by Brady.
+Updated: 2026-10-29. Milestones 1–8 and the arcade extensions are accepted and merged. M9 is awaiting review on Vercel: the protected preview passed manual review, all 28 hosted checks, and six representative performance measurements, with the public email confirmed and résumé explicitly deferred by Brady.
 
 Specification: `source/product-requirements-v1.0.md`. Process: `source/master-prompt.md`. Proposed architecture and inventories: `DISCOVERY.md`.
 
@@ -108,7 +108,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M8 — Quality assurance
 
-- Status: awaiting review. Local checks passed: 33 unit tests, 216 browser checks, 24 additional reflow checks, build, dependency audit, and repository/history pattern scan. Two focus bugs fixed; browser policy added. The subsequent minimal cover, game picker, and Asteroids extension is implemented and included in QA. See `MILESTONE-8.md` and `QA.md` for measured performance, SEO conditions, and outstanding manual/deployed checks.
+- Status: completed and accepted. Brady authorized M9; PR #9 merged at `3c6f365c11bddc96c79ba1c702ffda47e7ebad44` after Linux CI passed. Local checks passed: 33 unit tests, 216 browser checks, 24 additional reflow checks, build, dependency audit, and repository/history pattern scan. Two focus bugs fixed; browser policy added. The subsequent minimal cover, game picker, and Asteroids extension is implemented and included in QA. See `MILESTONE-8.md` and `QA.md` for measured performance, SEO conditions, and outstanding manual/deployed checks.
 - Objective: verify release behavior, accessibility, performance, and public-repository hygiene.
 - Scope: functional/browser tests, accessibility, representative mobile/desktop Lighthouse, dependency review, responsive/manual review, links, fallbacks, permissions and secret review, headers.
 - Files/components: tests/configs, targeted application fixes, security header configuration, `docs/QA.md`, updated asset/permission inventory and tracker.
@@ -119,12 +119,12 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M9 — Isolated preview and launch readiness
 
-- Status: not started.
-- Objective: demonstrate the release on Netlify and document remaining launch decisions.
+- Status: awaiting review. The separate READY protected Vercel Preview and automatic PR deployments are verified. All 28 hosted HTTP/header/status/axe/interaction cases passed after correcting a native mobile disclosure selector in the new test. Six hosted Lighthouse measurements scored Performance 98–100, Accessibility 100, Best Practices 100; protected preview SEO is 54. Private temporary test access was explicitly authorized. Live project/domain/serving-deploy identities were rechecked unchanged; launch/rollback plans retain open recovery/manual review gates. See `MILESTONE-9.md` and `PREVIEW.md`.
+- Objective: demonstrate the release on an isolated Vercel project and document remaining launch decisions.
 - Scope: separate preview site, PR previews where configured, deploy-specific verification, launch checklist, migration and rollback plans; no production-domain deployment.
-- Files/components: new-site-only Netlify settings/configuration, `docs/PREVIEW.md`, `docs/LAUNCH.md`, `docs/ROLLBACK.md`, verified redirect plan, milestone report.
-- Dependencies: M8 accepted; confirmed GitHub and isolated Netlify identities/linkage/access; approved public content; existing URL/config inventory and backup for migration readiness.
-- Steps: verify separate site/repo; deploy to netlify.app; verify output, images, 404s, security/noindex headers and canonical behavior; record preview URL/deploy identity; prepare launch prerequisites and rollback; request review.
+- Files/components: new-project-only Vercel settings/configuration, `docs/PREVIEW.md`, `docs/LAUNCH.md`, `docs/ROLLBACK.md`, verified redirect plan, milestone report.
+- Dependencies: M8 accepted; confirmed GitHub and isolated Vercel identities/linkage/access; approved public content; existing URL/config inventory and backup for migration readiness.
+- Steps: verify separate site/repo; deploy to a separate vercel.app hostname; verify output, images, 404s, security/noindex headers and canonical behavior; record preview URL/deploy identity; prepare launch prerequisites and rollback; request review.
 - Testing: deployed route/interaction/media checks, platform/header verification, noindex, project/resume links, mobile smoke test; verify new site has no production domain and old site remains unchanged.
 - Acceptance: isolated preview verified and reviewed; launch/rollback instructions concrete; unresolved inputs documented; no claim of launch readiness while asset permissions, required audits, backups, or checks remain open. Production migration remains separately gated.
 

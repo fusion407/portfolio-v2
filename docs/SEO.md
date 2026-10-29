@@ -37,3 +37,9 @@ References: [Next metadata](https://nextjs.org/docs/app/api-reference/functions/
 ## M8 local policy verification
 
 A loopback-only future launch-mode build scored 100 in Lighthouse SEO-only runs on the homepage, project index, and Swordbound case study. The three policy inputs were set only in child-process environments, with no environment file or hosting change. The server was then stopped and the default preview build restored. Preview SEO remains intentionally limited by crawl/index exclusions and omitted canonicals. Public-origin redirects, CDN headers, deployment adapters, and real crawler behavior still require deployment checks; local scores do not activate or establish production indexing.
+
+## M9 corrected Vercel preview configuration
+
+The unused Netlify draft was replaced after Brady confirmed Vercel. vercel.json runs build:preview, whose Node wrapper forces PORTFOLIO_INDEXING disabled in the child process without writing environment files. A new isolated project can have a production context without being the live site, so it stays excluded regardless. Future launch needs a reviewed build/configuration change and separate production approval.
+
+Preview origin precedence is validated VERCEL_URL, VERCEL_BRANCH_URL, then legacy hosting values and loopback. Vercel host values contain no scheme; only bare vercel.app hostnames are accepted before adding HTTPS. The production-project domain is not used for preview metadata. VERCEL_ENV overrides legacy CONTEXT; preview/development never inherit stale production opt-ins. Both providers remain covered by unit tests. Actual hosted images/origins/headers/robots/sitemap still require the new deployment checks in PREVIEW.md.

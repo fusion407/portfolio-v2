@@ -1,6 +1,6 @@
 # Arcade update — Pong and Asteroids
 
-Date: 2026-10-29. Status: implemented and verified locally as an extension to Milestone 8 / PR #9; awaiting review and Linux CI.
+Date: 2026-10-29. Status: accepted and merged with Milestone 8 / PR #9 at `3c6f365c11bddc96c79ba1c702ffda47e7ebad44`; final Linux CI passed 33 unit tests and 216 browser checks.
 
 ## Requested experience
 

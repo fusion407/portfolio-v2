@@ -7,6 +7,8 @@ export default defineConfig([
   ...nextTypescript,
   globalIgnores([
     ".next/**",
+    ".netlify/**",
+    ".vercel/**",
     "out/**",
     "coverage/**",
     "playwright-report/**",

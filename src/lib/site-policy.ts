@@ -20,17 +20,27 @@ export function getSitePolicy(env: BuildEnvironment = process.env) {
   const approvedHost =
     configured === "https://www.bradydorsey.dev" ||
     configured === "https://bradydorsey.dev";
-  // A new Netlify preview site also calls its main-branch context "production".
-  // Require an explicit flag and the intended domain as well before indexing.
+  // A new isolated project can also have a "production" environment. Require
+  // the explicit flag and intended domain, and never let legacy context values
+  // override Vercel's preview/development environment.
+  const productionContext = env.VERCEL_ENV
+    ? env.VERCEL_ENV === "production"
+    : env.CONTEXT === "production";
   const indexable =
-    env.PORTFOLIO_INDEXING === "enabled" &&
-    env.CONTEXT === "production" &&
-    approvedHost;
+    env.PORTFOLIO_INDEXING === "enabled" && productionContext && approvedHost;
   const origin = indexable
     ? configured!
-    : (httpsOrigin(env.DEPLOY_PRIME_URL) ??
+    : (vercelOrigin(env.VERCEL_URL) ??
+      vercelOrigin(env.VERCEL_BRANCH_URL) ??
+      httpsOrigin(env.DEPLOY_PRIME_URL) ??
       httpsOrigin(env.DEPLOY_URL) ??
       httpsOrigin(env.URL) ??
       "http://127.0.0.1:3000");
   return { indexable, origin, canonicalOrigin: indexable ? configured : null };
+}
+
+function vercelOrigin(value?: string) {
+  return value && /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.vercel\.app$/i.test(value)
+    ? httpsOrigin(`https://${value}`)
+    : null;
 }

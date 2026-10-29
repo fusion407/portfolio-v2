@@ -62,3 +62,24 @@ Final homepage Lighthouse 13.6.0 runs, measured sequentially after tests complet
 | Desktop | 100         | 100           | 100            | 63          | 0.27 s | 0 ms   | 0.007 |
 
 These initial-load lab scores meet the performance/accessibility/best-practice targets. Preview SEO exclusions remain deliberate. The earlier project-page and loopback launch-mode measurements above predate this extension; they are retained as baseline evidence, not fresh measurements of the final build. No deployed, physical-device gameplay/frame-rate, native zoom, or nonvisual-equivalence claim is made. No public indexing or hosting setting changed.
+
+## M9 — Vercel hosted verification (2026-10-29)
+
+The Netlify assumption in the earlier historical M8 notes is superseded by the user-confirmed Vercel account. The new isolated project is portfolio-v2-preview; the original live project and both live domain assignments were rechecked unchanged.
+
+Tested immutable preview: https://portfolio-v2-preview-ma0e79x3l-fusion407s-projects.vercel.app, deployment dpl_62tSpNgiTJJF9UYgvMDWoCQvpiUH, application revision fc189487a9375e8c8cccd5c456fc14b4f6aa0496. Subsequent QA/documentation changes do not change app source, the lockfile, platform configuration, or preview build wrapper. GitHub CI passed all 36 unit and 216 browser checks on 28eaf930e6fd1646dc61d85491a2ac1ff8cb323c; Vercel automatically deployed that commit too.
+
+All **28 hosted cases passed** across desktop Chromium, mobile Chromium emulation, Firefox, and WebKit, without skips/retries. Coverage includes six content routes, correct HTTP statuses and security/noindex headers, metadata/origins, six social cards, robots/empty sitemap, real 404s, legacy 301/query/fragment behavior, contact/search/mobile disclosure, both games/focus/pause/restart/exit and CSP, axe, assets and narrow layout. The first run passed 27/28 because the new mobile test assumed a button instead of the existing native summary disclosure; the corrected full run passed 28/28. Signed-in visual review additionally covered keyboard/touch game controls at desktop and 390-pixel layouts.
+
+Lighthouse 13.6.0 ran six sequential hosted lab samples using fresh headless Playwright Chromium processes, mobile defaults and the explicit desktop API configuration. The user-authorized 23-hour share link bootstrapped isolated authenticated requests; only credential-free summaries were saved outside Git. Full Lighthouse reports containing authentication settings were discarded. Initial measurement setup was corrected to isolate browser processes and select the actual desktop configuration before recording the final six-run set.
+
+| Page       | Mode    | Performance | Accessibility | Best practices | Preview SEO | LCP     | TBT    | CLS    |
+| ---------- | ------- | ----------- | ------------- | -------------- | ----------- | ------- | ------ | ------ |
+| Home       | Mobile  | 98          | 100           | 100            | 54          | 1.743 s | 78 ms  | 0      |
+| Home       | Desktop | 100         | 100           | 100            | 54          | 0.328 s | 0 ms   | 0.0069 |
+| Projects   | Mobile  | 99          | 100           | 100            | 54          | 0.931 s | 124 ms | 0.0027 |
+| Projects   | Desktop | 100         | 100           | 100            | 54          | 0.282 s | 0 ms   | 0.0018 |
+| Swordbound | Mobile  | 99          | 100           | 100            | 54          | 0.930 s | 117 ms | 0.0209 |
+| Swordbound | Desktop | 100         | 100           | 100            | 54          | 0.269 s | 0 ms   | 0.0013 |
+
+Performance/accessibility/best-practice targets are met. Preview SEO includes deliberate noindex and protected crawling restrictions; it is not a production SEO measurement. These single samples are not field data, physical-device/frame-rate testing, actual Safari, screen-reader equivalence, or native zoom validation. The M8 loopback launch-mode SEO evidence remains historical. Full private configuration/DNS backup and recovery rehearsal remain separate production prerequisites. No production migration occurred.
