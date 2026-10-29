@@ -24,9 +24,9 @@ test("visible search trigger opens an accessible focused dialog and restores foc
   });
   await expect(dialog).toBeVisible();
   await expect(input).toBeFocused();
-  await expect(dialog.getByRole("option")).toHaveCount(14);
+  await expect(dialog.getByRole("option")).toHaveCount(15);
   await expect(
-    dialog.getByRole("option", { name: /résumé|resume|email/i }),
+    dialog.getByRole("option", { name: /download|résumé|resume/i }),
   ).toHaveCount(0);
   for (let index = 0; index < 4; index++) {
     await page.keyboard.press("Tab");

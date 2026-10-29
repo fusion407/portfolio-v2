@@ -3,13 +3,10 @@ import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { ProjectCard } from "@/components/projects/project-card";
 import { projects } from "@/content/projects";
-import { site } from "@/content/site";
+import { getPortfolioPage } from "@/content/pages";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: `Projects — ${site.name}`,
-  description:
-    "Selected AI engineering, creative software, agentic tools, and technical-art projects by Brady Dorsey.",
-};
+export const metadata: Metadata = pageMetadata(getPortfolioPage("projects")!);
 
 export default function ProjectsPage() {
   return (

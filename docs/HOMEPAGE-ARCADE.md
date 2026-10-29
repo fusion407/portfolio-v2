@@ -1,6 +1,6 @@
 # Homepage arcade — Pong
 
-Date: 2026-10-28. Status: implemented and verified; awaiting review. This change is based on the separate completed M6 command-palette PR, which passed Linux CI. Merge M6 first, then this dependent change after review.
+Date: 2026-10-28. Status: accepted and merged in PR #7 at `6d2aab1a2f38b1e5c16d42e1194d235ede6a86b8` after Brady approved continuing. PR #6 was merged first, PR #7 was retargeted to main, and both passed Linux CI before merging.
 
 ## Requested change and result
 
@@ -49,4 +49,4 @@ The lazy Pong chunk is **6,472 bytes raw / 2,773 bytes gzip** in this build. Bro
 
 Pong is a visual real-time game; named controls, keyboard input, score announcements, pause/exit, and text fallback do not establish equivalent nonvisual gameplay. Physical touch devices, manual screen-reader use, Safari/Firefox, background throttling on real devices, and deployed performance remain later QA. No audio, multiplayer, persistence, additional game titles, production deployment, domain changes, or M7 work is included.
 
-Both the M6 PR and this dependent arcade PR remain open for review. Neither is automatically merged.
+The M6 and arcade review gates are satisfied by Brady's approval to continue. Production deployment remains separately gated.

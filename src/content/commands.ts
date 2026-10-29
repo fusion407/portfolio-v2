@@ -1,12 +1,13 @@
 import { navigation } from "./navigation";
 import { projects, projectHref } from "./projects";
 import { site } from "./site";
+import { professional } from "./professional";
 
 export type PortfolioCommand = {
   id: string;
   label: string;
   href: string;
-  group: "Navigate" | "Projects" | "Profiles";
+  group: "Navigate" | "Projects" | "Connect";
   hint: string;
   keywords: string[];
 };
@@ -37,10 +38,18 @@ export const commands: PortfolioCommand[] = [
     keywords: [project.title],
   })),
   {
+    id: "email",
+    label: "Email Brady",
+    href: `mailto:${professional.publicEmail}`,
+    group: "Connect",
+    hint: professional.publicEmail,
+    keywords: ["email", "contact", professional.publicEmail],
+  },
+  {
     id: "github",
     label: "GitHub",
     href: site.profiles.github,
-    group: "Profiles",
+    group: "Connect",
     hint: "fusion407 · github.com",
     keywords: ["GitHub", "fusion407"],
   },
@@ -48,13 +57,13 @@ export const commands: PortfolioCommand[] = [
     id: "linkedin",
     label: "LinkedIn",
     href: site.profiles.linkedin,
-    group: "Profiles",
+    group: "Connect",
     hint: "Professional profile · linkedin.com",
     keywords: ["LinkedIn"],
   },
 ];
 
-// Deliberately no resume/email commands until real destinations are supplied.
+// Résumé actions are deferred until Brady supplies an updated document.
 
 export function filterCommand(
   value: string,

@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { CaseStudy } from "@/components/projects/case-study";
 import { getProjectBySlug, projects } from "@/content/projects";
 import { site } from "@/content/site";
+import { getPortfolioPage } from "@/content/pages";
+import { pageMetadata } from "@/lib/metadata";
 
 type ProjectPageProps = { params: Promise<{ slug: string }> };
 
@@ -18,10 +20,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) return { title: `Project not found — ${site.name}` };
-  return {
-    title: `${project.title} — ${site.name}`,
-    description: project.summary,
-  };
+  return pageMetadata(getPortfolioPage(project.slug)!);
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {

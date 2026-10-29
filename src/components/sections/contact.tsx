@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/container";
 import { ProfileLink } from "@/components/ui/profile-link";
 import { site } from "@/content/site";
+import { professional } from "@/content/professional";
 
 export function Contact() {
   return (
@@ -21,16 +22,21 @@ export function Contact() {
             <span>something.</span>
           </h2>
           <p className="section-description">
-            Find me on GitHub or connect on LinkedIn.
+            Email me, find me on GitHub, or connect on LinkedIn.
           </p>
-          <nav aria-label="Professional profiles" className="profile-links">
+          <nav aria-label="Contact links" className="profile-links">
             <ProfileLink href={site.profiles.github}>GitHub</ProfileLink>
             <ProfileLink href={site.profiles.linkedin}>LinkedIn</ProfileLink>
+            <a
+              className="profile-link contact-email-link"
+              href={`mailto:${professional.publicEmail}`}
+            >
+              <span className="contact-email-address">
+                {professional.publicEmail}
+              </span>
+              <span aria-hidden="true">↗</span>
+            </a>
           </nav>
-          <p className="pending-contact">
-            Public email: pending<span aria-hidden="true"> / </span>Résumé
-            download: pending
-          </p>
         </div>
       </Container>
     </section>

@@ -104,6 +104,16 @@ Input is scoped to the focused court, with Tab available to leave it. Leaving th
 
 The removed Three/Fiber implementation and its obsolete WebGL tests remain recoverable in Git history. Its dependencies and styles are removed; the independent Motion mini/CSS enhancements remain. The historical M5 architecture above describes the previously delivered feature. Current validation and performance evidence are in `HOMEPAGE-ARCADE.md`.
 
+## Milestone 7 — Contact and SEO preparation
+
+Confirmed contact data lives in `src/content/professional.ts`. Brady explicitly approved `fusion407@gmail.com` for public use, so the homepage, palette, and Person JSON-LD share that value. Mailto navigation opens the visitor's mail client and sends no message automatically. The palette's connection group and help distinguish profile navigation from email. Address text wraps on narrow/enlarged layouts. Résumé work is explicitly deferred until Brady supplies an updated document; no page, placeholder, download, action, or metadata URL is added for it.
+
+`src/content/pages.ts` defines six public content pages. One metadata builder composes unique titles/descriptions, full Open Graph/Twitter fields, and per-page static PNG references. Next's bundled ImageResponse renders six authored social cards at build time, without a new dependency or third-party project image. The homepage's minimal Person schema uses confirmed identity/contact/profile facts and escapes script text; it does not infer dates, education, credentials, or employer relationships.
+
+One pure policy helper is shared by metadata, Next headers, robots, and sitemap. Previews default to noindex/nofollow, disallow crawling, an empty sitemap, and no canonical links. Production indexing requires an explicit flag, production deploy context, and a valid HTTPS origin on the intended domain. A new hosting site's main branch cannot become indexable through context alone. Tests cover mismatched/invalid configuration and consistency across all output surfaces. No production indexing, environment, or hosting setting is activated here; see `SEO.md` for the future gated procedure.
+
+The read-only legacy source/HTTP audit and inactive redirect map are in `LEGACY-URL-AUDIT.md`. Current responses identify Vercel despite the earlier Netlify assumption; deployment identity, DNS, backups, media rights, and rollback still require verification before an authorized migration. No redirect or production operation is included.
+
 ## References checked
 
 - [Node release support](https://nodejs.org/en/about/previous-releases)
@@ -121,5 +131,11 @@ The removed Three/Fiber implementation and its obsolete WebGL tests remain recov
 - [Motion mini animation API](https://motion.dev/docs/animate)
 - [cmdk command menu API](https://github.com/dip/cmdk)
 - [Radix dialog focus and modal behavior](https://www.radix-ui.com/primitives/docs/components/dialog)
+- [Next metadata API](https://nextjs.org/docs/app/api-reference/functions/generate-metadata)
+- [Next robots route](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots)
+- [Next sitemap route](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap)
+- [Next social-image generation](https://nextjs.org/docs/app/api-reference/functions/image-response)
+- [Next JSON-LD serialization](https://nextjs.org/docs/app/guides/json-ld)
+- [Netlify build metadata](https://docs.netlify.com/build/configure-builds/environment-variables/)
 
 Package metadata was checked before installation. The lockfile records exact resolution; actual validation results belong in the milestone report.

@@ -6,9 +6,9 @@ Primary headline: **I build things.**
 
 ## Current status
 
-Milestones 1–5 are accepted and merged. Milestone 6's command palette is verified in a separate review PR; see its [report](docs/MILESTONE-6.md). Brady's additional homepage request is also implemented: an opt-in arcade replaces the 3D animation, starting with Pong. See the [Pong review report](docs/HOMEPAGE-ARCADE.md). The arcade PR depends on the command-palette PR; merge in that order after review. Confirmed professional facts are tracked in [content decisions](docs/CONTENT-DECISIONS.md). Resume and production SEO remain later work, and broader copywriting refinements remain deferred. This repository is independent of `fusion407/portfolio`; the existing portfolio and production hosting remain unchanged.
+Milestones 1–6 and the additional Pong arcade are accepted and merged. Milestone 7 adds the confirmed public email, page-specific metadata and social images, structured identity data, preview-safe robots/sitemap behavior, and a draft legacy URL map; see its [review report](docs/MILESTONE-7.md). Résumé work is deferred at Brady's request until he updates it. Confirmed facts are tracked in [content decisions](docs/CONTENT-DECISIONS.md); broader copywriting refinements remain deferred. This repository is independent of `fusion407/portfolio`; production remains unchanged.
 
-Current routes: `/`, `/projects`, `/projects/geovis`, `/projects/neonsynth`, `/projects/titanforge-studio`, and `/projects/swordbound-protocol`. Unknown paths, including `/404`, return a branded HTTP 404 response.
+Content routes: `/`, `/projects`, `/projects/geovis`, `/projects/neonsynth`, `/projects/titanforge-studio`, and `/projects/swordbound-protocol`. Generated metadata routes include `/robots.txt`, `/sitemap.xml`, and six `/og/<slug>` PNGs. Unknown paths, including `/404` and the deferred `/resume`, return a branded HTTP 404 response. Preview indexing remains disabled; see [SEO policy](docs/SEO.md).
 
 ## Local setup
 

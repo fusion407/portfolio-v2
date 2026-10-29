@@ -4,14 +4,11 @@ import "@fontsource-variable/geist";
 import { SkipLink } from "@/components/layout/skip-link";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
-import { site } from "@/content/site";
+import { getPortfolioPage } from "@/content/pages";
+import { pageMetadata } from "@/lib/metadata";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  title: `${site.name} — ${site.identity}`,
-  description: site.description,
-  robots: { index: false, follow: false },
-};
+export const metadata: Metadata = pageMetadata(getPortfolioPage("home")!);
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

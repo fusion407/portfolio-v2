@@ -12,7 +12,7 @@ describe("portfolio introduction", () => {
     expect(screen.getByText("AI Engineer & Builder of Things")).toBeVisible();
   });
 
-  it("offers the confirmed professional profiles without inventing contact details", () => {
+  it("offers the confirmed email and professional profiles without a résumé download", () => {
     render(<HomePage />);
 
     expect(screen.getByRole("link", { name: "GitHub" })).toHaveAttribute(
@@ -23,6 +23,11 @@ describe("portfolio introduction", () => {
       "href",
       "https://www.linkedin.com/in/brady-dorsey-9a582279",
     );
-    expect(screen.queryByRole("link", { name: /download|email/i })).toBeNull();
+    expect(
+      screen.getByRole("link", { name: "fusion407@gmail.com" }),
+    ).toHaveAttribute("href", "mailto:fusion407@gmail.com");
+    expect(
+      screen.queryByRole("link", { name: /download|résumé|resume/i }),
+    ).toBeNull();
   });
 });

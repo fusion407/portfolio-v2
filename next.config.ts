@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { getSitePolicy } from "./src/lib/site-policy";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -10,7 +11,9 @@ const nextConfig: NextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Frame-Options", value: "DENY" },
-          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+          ...(!getSitePolicy().indexable
+            ? [{ key: "X-Robots-Tag", value: "noindex, nofollow" }]
+            : []),
           {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
