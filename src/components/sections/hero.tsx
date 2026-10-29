@@ -1,5 +1,4 @@
-import { HeroNetwork } from "@/components/three/hero-network";
-import { StaticNetwork } from "@/components/three/static-network";
+import { HeroArcade } from "@/components/arcade/hero-arcade";
 import { Container } from "@/components/ui/container";
 import { site } from "@/content/site";
 
@@ -25,9 +24,7 @@ export function Hero() {
               </a>
             </div>
           </div>
-          <HeroNetwork>
-            <StaticNetwork />
-          </HeroNetwork>
+          <HeroArcade />
         </div>
         <div className="hero-footnote">
           <p>
