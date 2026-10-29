@@ -15,6 +15,7 @@ const result = spawnSync(
     stdio: "inherit",
     env: {
       ...process.env,
+      NODE_ENV: "production",
       PORTFOLIO_INDEXING: "disabled",
       NEXT_TELEMETRY_DISABLED: "1",
     },

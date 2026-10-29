@@ -53,3 +53,5 @@ References: [Vercel configuration](https://vercel.com/docs/project-configuration
 ## Hosted build gate
 
 The first Vercel build reported a formatting failure only for vercel.json while the source file passed both local and GitHub CI formatting. Formatting therefore remains a full source-level CI gate; the hosted command runs lint, strict types, unit tests, and build:preview after platform configuration handling. Source formatting is not skipped in CI. No app behavior or test assertion was relaxed.
+
+Vercel sets NODE_ENV to production during hosted builds. The unit-test step explicitly runs with NODE_ENV=test so React Testing Library uses React's test helpers; build:preview separately forces NODE_ENV=production for the actual application build. The initial hosted test failure was environmental (React.act absent in React's production test runtime), not an omitted assertion or skipped test. All tests remain enabled.
