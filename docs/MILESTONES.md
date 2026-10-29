@@ -1,6 +1,6 @@
 # Portfolio 2.0 — Milestone tracker
 
-Updated: 2026-10-28. Milestones 1–5 accepted and merged; Milestone 6 verified and awaiting review. Brady explicitly authorized a separate homepage Pong change after M6, before the remaining milestones.
+Updated: 2026-10-29. Milestones 1–6 and the additional Pong change are accepted and merged. M7 is verified and awaiting review, with the public email confirmed and résumé explicitly deferred by Brady.
 
 Specification: `source/product-requirements-v1.0.md`. Process: `source/master-prompt.md`. Proposed architecture and inventories: `DISCOVERY.md`.
 
@@ -79,7 +79,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M6 — Command palette
 
-- Status: awaiting review. Format, lint, strict TypeScript, 8 unit tests, production build, and 82 browser checks pass (8 platform-inapplicable M5 cases skipped); audit reports zero vulnerabilities. See `MILESTONE-6.md`. M7 remains gated; Brady explicitly authorized the separate Pong change next.
+- Status: completed and accepted. PR #6 merged at `0643564bf3cc79b3e81e17a83c10033ee8b7d20a` after local and Linux CI passed; Brady approved continuing. See `MILESTONE-6.md`.
 - Objective: provide fast, accessible navigation and project search.
 - Scope: Ctrl/Cmd+K, visible trigger, project-title filtering, homepage section actions from every route, supplied professional profiles, resume route and download when available.
 - Files/components: `components/command/`, shared navigation/command registry, layout mount, dependency lockfile, palette tests.
@@ -90,14 +90,14 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## Additional approved change — Homepage arcade
 
-- Status: implemented and verified; awaiting review after the separate M6 PR. Brady explicitly requested replacing the interactive web animation with a play button and a game, starting with Pong, once M6 was finished.
+- Status: completed and accepted. PR #7 was retargeted to main after M6 merged, then merged at `6d2aab1a2f38b1e5c16d42e1194d235ede6a86b8` under Brady's approval. See `HOMEPAGE-ARCADE.md`.
 - Scope: opt-in lazy-loaded Pong against the computer, first-to-five scoring, keyboard/mouse/touch controls, pause/resume, restart, exit and focus restoration, responsive layout, and a registry for future random game selection. Pong is currently the only registered game.
 - Result: original 3D components/dependencies removed; restrained general motion retained. Format, lint, strict TypeScript, 13 unit tests, static build, and 84 browser checks pass with no skips; audit reports zero vulnerabilities. Local mobile Lighthouse: 98 Performance / 100 Accessibility / 100 Best Practices / 60 SEO (intentional noindex). See `HOMEPAGE-ARCADE.md`.
-- Review: separate dependent PR, based on M6. Neither M6 nor the arcade is automatically merged. M7 and production deployment remain gated.
+- Review: satisfied. Brady authorized proceeding to M7; production deployment remains separately gated.
 
 ## M7 — Professional content and SEO
 
-- Status: not started.
+- Status: awaiting review. Confirmed public email, metadata/share images, preview-safe indexing policy, structured identity data, and legacy URL audit/draft map delivered. Format, lint, TypeScript, 26 unit tests, static build, and 94 browser checks pass; audit reports zero vulnerabilities. Résumé page/download explicitly deferred until Brady updates it. See `MILESTONE-7.md` and `SEO.md`. Pause for review before M8.
 - Objective: validate professional facts and make pages discoverable and shareable.
 - Scope: confirmed experience/tools/about/contact; resume page/PDF when supplied; titles, descriptions, canonical/OG metadata, structured data where justified, sitemap/robots, legacy URL review.
 - Files/components: `content/site.ts`, `experience.ts`, professional sections, `app/resume/`, metadata helpers, sitemap/robots, social assets, approved PDF, draft redirect inventory.

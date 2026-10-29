@@ -585,6 +585,18 @@ summary {
   border-color: var(--color-cyan);
   color: var(--color-cyan);
 }
+.contact-email-link {
+  max-width: 100%;
+  min-width: 0;
+}
+.contact-email-address {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.command-dialog [cmdk-item] > span:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 .pending-contact {
   margin-top: 2rem;
   color: var(--color-muted);

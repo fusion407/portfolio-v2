@@ -1,6 +1,6 @@
 # Milestone 6 — Command palette
 
-Date: 2026-10-28. Status: implemented and verified; awaiting review.
+Date: 2026-10-28. Status: accepted and merged in PR #6 at `0643564bf3cc79b3e81e17a83c10033ee8b7d20a` after Brady approved continuing to the next task. Local checks and Linux CI passed.
 
 ## Delivered
 
@@ -37,4 +37,4 @@ Checks identified library-generated input labeling and visible shortcut/close te
 
 Manual screen-reader, Safari/Firefox, physical-device, and deployed Netlify verification remain later QA. Resume/download actions remain unavailable until a real destination is supplied. Existing content/media/ESLint limitations remain documented in prior reports.
 
-M6 awaits review before merging. Brady explicitly authorized beginning a separate homepage arcade/Pong change after finishing M6, superseding the original 3D hero requirement. This does not authorize M7 or production deployment.
+M6 and the separately requested Pong change have since been accepted and merged. Brady's subsequent instruction to continue authorizes M7; production deployment remains separately gated.

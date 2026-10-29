@@ -71,7 +71,7 @@ export function PaletteDialog({
               <Command.Empty role="status">
                 No results found. Try a project title or section name.
               </Command.Empty>
-              {(["Navigate", "Projects", "Profiles"] as const).map((group) => (
+              {(["Navigate", "Projects", "Connect"] as const).map((group) => (
                 <Command.Group key={group} heading={group}>
                   {commands
                     .filter((command) => command.group === group)
@@ -94,7 +94,7 @@ export function PaletteDialog({
                           </span>
                         </span>
                         <span className="command-item-arrow" aria-hidden="true">
-                          {command.group === "Profiles" ? "↗" : "↵"}
+                          {command.group === "Connect" ? "↗" : "↵"}
                         </span>
                       </Command.Item>
                     ))}
@@ -109,7 +109,7 @@ export function PaletteDialog({
             <span>
               <kbd>Enter</kbd> Open
             </span>
-            <span>Profiles open in this tab</span>
+            <span>Profiles open in this tab; email opens your mail app.</span>
           </p>
         </Dialog.Content>
       </Dialog.Portal>
