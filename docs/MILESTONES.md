@@ -1,6 +1,6 @@
 # Portfolio 2.0 — Milestone tracker
 
-Updated: 2026-10-29. Milestones 1–7 and the additional Pong change are accepted and merged. M8 is verified and awaiting review, with the public email confirmed and résumé explicitly deferred by Brady.
+Updated: 2026-10-29. Milestones 1–8 and the arcade extensions are accepted and merged. M9 is in progress; isolated deployment awaits Netlify sign-in, with the public email confirmed and résumé explicitly deferred by Brady.
 
 Specification: `source/product-requirements-v1.0.md`. Process: `source/master-prompt.md`. Proposed architecture and inventories: `DISCOVERY.md`.
 
@@ -108,7 +108,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M8 — Quality assurance
 
-- Status: awaiting review. Local checks passed: 33 unit tests, 216 browser checks, 24 additional reflow checks, build, dependency audit, and repository/history pattern scan. Two focus bugs fixed; browser policy added. The subsequent minimal cover, game picker, and Asteroids extension is implemented and included in QA. See `MILESTONE-8.md` and `QA.md` for measured performance, SEO conditions, and outstanding manual/deployed checks.
+- Status: completed and accepted. Brady authorized M9; PR #9 merged at `3c6f365c11bddc96c79ba1c702ffda47e7ebad44` after Linux CI passed. Local checks passed: 33 unit tests, 216 browser checks, 24 additional reflow checks, build, dependency audit, and repository/history pattern scan. Two focus bugs fixed; browser policy added. The subsequent minimal cover, game picker, and Asteroids extension is implemented and included in QA. See `MILESTONE-8.md` and `QA.md` for measured performance, SEO conditions, and outstanding manual/deployed checks.
 - Objective: verify release behavior, accessibility, performance, and public-repository hygiene.
 - Scope: functional/browser tests, accessibility, representative mobile/desktop Lighthouse, dependency review, responsive/manual review, links, fallbacks, permissions and secret review, headers.
 - Files/components: tests/configs, targeted application fixes, security header configuration, `docs/QA.md`, updated asset/permission inventory and tracker.
@@ -119,7 +119,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M9 — Isolated preview and launch readiness
 
-- Status: not started.
+- Status: in progress. Preview configuration, a guarded 28-case deployed smoke matrix, and preview/launch/rollback documents are prepared. Netlify is signed out; account/project identity, hosted deploy, PR-preview integration, and remote verification remain pending. See `MILESTONE-9.md` and `PREVIEW.md`.
 - Objective: demonstrate the release on Netlify and document remaining launch decisions.
 - Scope: separate preview site, PR previews where configured, deploy-specific verification, launch checklist, migration and rollback plans; no production-domain deployment.
 - Files/components: new-site-only Netlify settings/configuration, `docs/PREVIEW.md`, `docs/LAUNCH.md`, `docs/ROLLBACK.md`, verified redirect plan, milestone report.

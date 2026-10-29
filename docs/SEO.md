@@ -37,3 +37,7 @@ References: [Next metadata](https://nextjs.org/docs/app/api-reference/functions/
 ## M8 local policy verification
 
 A loopback-only future launch-mode build scored 100 in Lighthouse SEO-only runs on the homepage, project index, and Swordbound case study. The three policy inputs were set only in child-process environments, with no environment file or hosting change. The server was then stopped and the default preview build restored. Preview SEO remains intentionally limited by crawl/index exclusions and omitted canonicals. Public-origin redirects, CDN headers, deployment adapters, and real crawler behavior still require deployment checks; local scores do not activate or establish production indexing.
+
+## M9 preview configuration
+
+`netlify.toml` explicitly sets `PORTFOLIO_INDEXING=disabled` for the isolated project build. Because file configuration takes precedence, changing a dashboard flag alone is not the future launch procedure: production activation requires a reviewed configuration change plus the existing explicit context/approved-domain policy and a rebuild. Actual deployed metadata/social origins, HTTP exclusions, robots, and sitemap remain unverified until the isolated deployment is available. `PREVIEW.md` records that evidence; `LAUNCH.md` retains the separate production approval gate.

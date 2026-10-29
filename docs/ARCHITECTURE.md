@@ -151,3 +151,9 @@ Production CSP restricts resource origins and embedding while retaining inline s
 The cover uses an accessible icon-only play button; a registry-driven inline picker offers two lazy game loaders. The common header stays outside the active game. Exit unmounts the renderer and a committed button ref restores focus. Future titles implement `GameProps` and register metadata plus a loader.
 
 Asteroids separates a pure bounded-step simulation from Canvas rendering and React controls. It wraps positions/collision distances, splits rocks, caps ship speed and shot cadence/lifetime/count, advances bounded waves, and freezes the simulation after game over. Only HUD changes enter React state. A queued fire input makes short touch/pointer taps survive a frame boundary. Lifecycle pause/cleanup follows Pong. No new runtime dependency or imported game media is needed; see `ARCADE-SELECTOR.md`.
+
+## M9 isolated deployment boundary
+
+Netlify configuration publishes `.next` through the automatically detected OpenNext adapter, pins the existing Node/npm versions, and explicitly disables indexing even on the new site main-branch context. Three exact legacy-path redirects are prepared for preview verification; there is no catch-all rewrite. No site ID or production domain is committed.
+
+The separate `test:preview` command uses a required HTTPS `*.netlify.app` origin and no local server. It rejects the live custom domain before browser startup and runs seven deployed smoke cases in the existing four-browser matrix. Local app tests remain under `tests/e2e`; remote checks do not run in CI without an explicitly supplied verified preview target. Account/project/deploy/adapter evidence and actual results belong in `PREVIEW.md`. Production provider/DNS/backup/rollback remain separate launch gates.

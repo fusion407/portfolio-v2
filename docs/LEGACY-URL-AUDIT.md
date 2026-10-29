@@ -29,3 +29,7 @@ All proposed destinations exist in v2 and are covered by the browser suite. The 
 Verify provider/project/domain identities, DNS and redirect configuration, complete content/configuration backup, recovery access, additional externally linked URLs/assets, permission to reuse media, and the production canonical decision. Validate HTTPS, path/query/fragment behavior and rollback on the authorized target. Asset/permission inventory remains in `ASSETS.md`. Live-rendered accessibility, screenshot/content comparison, and production-provider configuration are not established by this HTTP/source audit.
 
 No `_redirects`, middleware, Next redirects, domain assignment, or live deployment was added here. M9 still uses a separate preview site; production replacement requires separate explicit approval.
+
+## M9 preparation update
+
+A fresh read-only check on 2026-10-29 confirmed the same old main revision, www root 200 HTML with Vercel headers, and apex 308 to www. Account/provider/DNS identity and a recoverable deployment/configuration backup remain missing. The M9 `netlify.toml` prepares the three narrow redirects for the isolated new preview only; hosted query/fragment behavior must pass `test:preview` before it is called verified. Existing live hosting does not consume this repository configuration. No catch-all, live redirect, DNS change, or production migration was applied.

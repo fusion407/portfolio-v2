@@ -1,6 +1,6 @@
 # Milestone 8 — Quality assurance
 
-Date: 2026-10-29. Status: implemented and verified locally; awaiting review and Linux CI.
+Date: 2026-10-29. Status: accepted and merged as PR #9 at `3c6f365c11bddc96c79ba1c702ffda47e7ebad44`; final Linux CI passed all 33 unit tests and 216 browser checks. Brady authorized M9.
 
 Approved Milestone 7 PR #8 was merged at `f254213c0c32ec8be8fd84645870369bea5a0d3f`. This milestone expands QA across browser engines, fixes two keyboard-focus failures, adds a production CSP and repeatable repository/history hygiene check, and includes the subsequent minimal-cover/game-picker/Asteroids request from Brady.
 
@@ -26,7 +26,7 @@ The initial extension matrix passed 212 checks. The final matrix passed all 216 
 
 Résumé remains explicitly deferred. Copy refinements and approved real project media remain pending. Manual screen-reader, physical-device/actual Safari, native zoom, and deployed checks remain unverified; automated scores do not establish full compliance or security.
 
-Next is M9: an isolated preview and launch-readiness documentation, after this milestone is reviewed. Production migration remains separately gated. No live site, DNS, domain assignment, hosting account, or public indexing setting was changed.
+Next is M9: an isolated preview and launch-readiness documentation, under the approval to begin M9. Production migration remains separately gated. No live site, DNS, domain assignment, hosting account, or public indexing setting was changed.
 
 ## Local indexing experiment
 

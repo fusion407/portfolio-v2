@@ -1,0 +1,28 @@
+# Isolated portfolio-v2 preview only. No site ID, custom domain, or DNS settings.
+# Netlify detects Next.js and installs its current OpenNext adapter automatically.
+[build]
+  command = "npm run check && npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "24.22.1"
+  NPM_VERSION = "11.19.1"
+  NEXT_TELEMETRY_DISABLED = "1"
+  PORTFOLIO_INDEXING = "disabled"
+
+# Test the three verified legacy paths on the isolated preview. Existing live
+# hosting is separate and is never linked to this repository/configuration.
+[[redirects]]
+  from = "/about"
+  to = "/#about"
+  status = 301
+
+[[redirects]]
+  from = "/skills"
+  to = "/#stack"
+  status = 301
+
+[[redirects]]
+  from = "/experience"
+  to = "/#experience"
+  status = 301
