@@ -4,6 +4,9 @@ import localConfig from "./playwright.config";
 // This command may only target the isolated Vercel preview. Never default to
 // the live domain or start a local server when deployment evidence is requested.
 const value = process.env.PORTFOLIO_PREVIEW_URL;
+// A production verification flag inherited from a terminal must never change
+// the preview assertions or relax its indexing exclusions.
+delete process.env.PORTFOLIO_EXPECT_INDEXABLE;
 if (!value)
   throw new Error(
     "Set PORTFOLIO_PREVIEW_URL to the verified isolated Vercel HTTPS origin.",
