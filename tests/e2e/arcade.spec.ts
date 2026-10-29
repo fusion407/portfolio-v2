@@ -66,9 +66,11 @@ test("keyboard controls move the paddle and pause freezes the court", async ({
   await expect(court).toBeFocused();
   const initial = await paddleY(court);
   await page.keyboard.down("ArrowUp");
-  await page.waitForTimeout(180);
-  await page.keyboard.up("ArrowUp");
-  expect(await paddleY(court)).toBeLessThan(initial - 25);
+  try {
+    await expect.poll(() => paddleY(court)).toBeLessThan(initial - 25);
+  } finally {
+    await page.keyboard.up("ArrowUp");
+  }
   await page.keyboard.press("Escape");
   await expect(page.getByRole("button", { name: "Resume Pong" })).toBeFocused();
   const paused = await court.evaluate((element) =>
