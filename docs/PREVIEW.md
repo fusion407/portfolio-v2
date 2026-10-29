@@ -20,7 +20,7 @@ A failed Git import created no project (verified by an empty name-filtered proje
 
 ## Repository configuration
 
-`vercel.json` selects Next.js, uses `npx --yes npm@11.19.1 ci`, then `npm run check && npm run build:preview`. Node 24.x comes from the existing package engines; record Vercel's actual managed patch version in build evidence rather than promising the local exact patch. No runtime adapter package is installed. `.vercel/` linkage/output is ignored by Git and source quality tools.
+`vercel.json` selects Next.js, uses `npx --yes npm@11.19.1 ci`, then lint, strict types, unit tests and `build:preview`. Node 24.x comes from the existing package engines; record Vercel's actual managed patch version in build evidence rather than promising the local exact patch. No runtime adapter package is installed. `.vercel/` linkage/output is ignored by Git and source quality tools.
 
 `build:preview` launches Next through a Node wrapper with `PORTFOLIO_INDEXING=disabled` in the child environment, regardless of a parent production flag. It writes no environment file. Set the new project's non-secret indexing variable to disabled for preview/production/development too. Do not set the live SITE_URL or attach its domains. A future launch requires a reviewed build/configuration change, explicit indexing opt-in, production context, and approved domain.
 
@@ -49,3 +49,7 @@ The command accepts only a clean HTTPS `*.vercel.app` origin and never defaults 
 The separate project and source link are created, Node 24.x selected, and generated-only domain verified. Deployment, protected access, actual hosted checks/performance, and PR-preview integration remain pending. Production migration, complete authenticated configuration/zone backup, restore rehearsal, and manual screen-reader/physical-device/actual Safari/native zoom remain separate open launch gates. Resume stays deferred. See `LAUNCH.md`, `ROLLBACK.md`, and `MILESTONE-9.md`.
 
 References: [Vercel configuration](https://vercel.com/docs/project-configuration/vercel-json), [system environment variables](https://vercel.com/docs/environment-variables/system-environment-variables), [Git deployments](https://vercel.com/docs/git), [deployment protection](https://vercel.com/docs/deployment-protection).
+
+## Hosted build gate
+
+The first Vercel build reported a formatting failure only for vercel.json while the source file passed both local and GitHub CI formatting. Formatting therefore remains a full source-level CI gate; the hosted command runs lint, strict types, unit tests, and build:preview after platform configuration handling. Source formatting is not skipped in CI. No app behavior or test assertion was relaxed.
