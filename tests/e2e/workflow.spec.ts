@@ -189,7 +189,7 @@ test("reduced-motion selection and enlarged layouts remain usable", async ({
       (element) => getComputedStyle(element).transitionDuration,
     ),
   ).toBe("0s");
-  for (const width of [360, 390, 768, 1280, 1536]) {
+  for (const width of [320, 360, 390, 768, 1280, 1536]) {
     await page.setViewportSize({ width, height: 900 });
     expect(
       await page.evaluate(

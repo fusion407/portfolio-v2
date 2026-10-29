@@ -117,7 +117,7 @@ test("public email works without JavaScript and reflows with enlarged text", asy
   await expect(noJS.locator('a[href="/resume"], a[download]')).toHaveCount(0);
   await context.close();
   await page.goto("/#contact");
-  for (const width of [360, 390, 768, 1280, 1536]) {
+  for (const width of [320, 360, 390, 768, 1280, 1536]) {
     await page.setViewportSize({ width, height: 900 });
     expect(
       await page.evaluate(

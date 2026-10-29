@@ -160,7 +160,7 @@ test("arcade reflows on mobile and enlarged text; reduced motion never starts a 
   await page.goto("/");
   await expect(page.locator("canvas")).toHaveCount(0);
   await page.getByRole("button", { name: "Play Pong" }).click();
-  for (const width of [360, 390, 768, 1280, 1536]) {
+  for (const width of [320, 360, 390, 768, 1280, 1536]) {
     await page.setViewportSize({ width, height: 900 });
     expect(
       await page.evaluate(

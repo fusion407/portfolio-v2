@@ -139,3 +139,9 @@ The read-only legacy source/HTTP audit and inactive redirect map are in `LEGACY-
 - [Netlify build metadata](https://docs.netlify.com/build/configure-builds/environment-variables/)
 
 Package metadata was checked before installation. The lockfile records exact resolution; actual validation results belong in the milestone report.
+
+## M8 browser and policy decisions
+
+Playwright now covers Chromium desktop/mobile emulation, Firefox, and WebKit. Explicit skip-link tab order and a committed fallback-anchor ref address observed browser focus failures. The repository check examines current files and available history for limited credential patterns and forbidden artifacts; CI fetches full history. It is not a comprehensive secret audit.
+
+Production CSP restricts resource origins and embedding while retaining inline scripts/styles needed by static Next bootstrap and styling. A strict nonce policy would require a different rendering tradeoff; no universal XSS protection is claimed. Development omits this CSP for HMR. Browser tests verify policy-compatible palette/Pong use and headers on metadata, image, page, and 404 responses. See [QA evidence](QA.md), [Playwright browser coverage](https://playwright.dev/docs/browsers), and [Next CSP guidance](https://nextjs.org/docs/app/guides/content-security-policy).

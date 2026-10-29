@@ -1,6 +1,6 @@
 # Portfolio 2.0 — Milestone tracker
 
-Updated: 2026-10-29. Milestones 1–6 and the additional Pong change are accepted and merged. M7 is verified and awaiting review, with the public email confirmed and résumé explicitly deferred by Brady.
+Updated: 2026-10-29. Milestones 1–7 and the additional Pong change are accepted and merged. M8 is verified and awaiting review, with the public email confirmed and résumé explicitly deferred by Brady.
 
 Specification: `source/product-requirements-v1.0.md`. Process: `source/master-prompt.md`. Proposed architecture and inventories: `DISCOVERY.md`.
 
@@ -97,7 +97,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M7 — Professional content and SEO
 
-- Status: awaiting review. Confirmed public email, metadata/share images, preview-safe indexing policy, structured identity data, and legacy URL audit/draft map delivered. Format, lint, TypeScript, 26 unit tests, static build, and 94 browser checks pass; audit reports zero vulnerabilities. Résumé page/download explicitly deferred until Brady updates it. See `MILESTONE-7.md` and `SEO.md`. Pause for review before M8.
+- Status: completed and accepted; Brady authorized merging PR #8 and beginning M8. Merged at `f254213c0c32ec8be8fd84645870369bea5a0d3f` after Linux CI passed. Confirmed public email, metadata/share images, preview-safe indexing policy, structured identity data, and legacy URL audit/draft map delivered. Format, lint, TypeScript, 26 unit tests, static build, and 94 browser checks pass; audit reports zero vulnerabilities. Résumé page/download explicitly deferred until Brady updates it. See `MILESTONE-7.md` and `SEO.md`. Review gate satisfied.
 - Objective: validate professional facts and make pages discoverable and shareable.
 - Scope: confirmed experience/tools/about/contact; resume page/PDF when supplied; titles, descriptions, canonical/OG metadata, structured data where justified, sitemap/robots, legacy URL review.
 - Files/components: `content/site.ts`, `experience.ts`, professional sections, `app/resume/`, metadata helpers, sitemap/robots, social assets, approved PDF, draft redirect inventory.
@@ -108,7 +108,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M8 — Quality assurance
 
-- Status: not started.
+- Status: awaiting review. Local checks passed: 26 unit tests, 192 browser checks, 24 additional reflow checks, build, dependency audit, and repository/history pattern scan. Two focus bugs fixed; browser policy added. See `MILESTONE-8.md` and `QA.md` for measured performance, SEO conditions, and outstanding manual/deployed checks.
 - Objective: verify release behavior, accessibility, performance, and public-repository hygiene.
 - Scope: functional/browser tests, accessibility, representative mobile/desktop Lighthouse, dependency review, responsive/manual review, links, fallbacks, permissions and secret review, headers.
 - Files/components: tests/configs, targeted application fixes, security header configuration, `docs/QA.md`, updated asset/permission inventory and tracker.
