@@ -30,9 +30,20 @@ test("production security policy permits the portfolio and its opt-in interactio
   await page.getByRole("button", { name: "Search portfolio" }).click();
   await page.getByRole("combobox").fill("Pong");
   await page.keyboard.press("Escape");
-  await page.getByRole("button", { name: "Play Pong" }).click();
+  await page
+    .getByRole("button", { name: "Choose a game", exact: true })
+    .click();
+  await page.getByRole("button", { name: /^Pong/ }).click();
   await expect(
     page.getByRole("application", { name: "Pong court" }),
+  ).toBeFocused();
+  await page.getByRole("button", { name: "Exit game" }).click();
+  await page
+    .getByRole("button", { name: "Choose a game", exact: true })
+    .click();
+  await page.getByRole("button", { name: /^Asteroids/ }).click();
+  await expect(
+    page.getByRole("application", { name: "Asteroids field" }),
   ).toBeFocused();
   await page.getByRole("button", { name: "Exit game" }).click();
   expect(

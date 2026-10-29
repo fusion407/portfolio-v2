@@ -29,3 +29,7 @@ The code license remains undecided. Do not apply a blanket license grant to pers
 ## M8 provenance review
 
 Rechecked existing conceptual SVG artwork, attributed external trailer link, and retained Geist font notice. No new project/company media or blanket license was introduced. QA screenshots and Lighthouse JSON remain outside the public repository. Approved real media and permission records remain pending as listed above.
+
+## Asteroids extension
+
+The picker illustrations and Asteroids ship, rocks, stars, and projectiles are original SVG/Canvas geometry authored in this repository. No external arcade assets, Atari artwork/logo, music, sound, footage, or new font is included. Local QA screenshots remain outside the repository.

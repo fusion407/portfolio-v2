@@ -91,7 +91,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 ## Additional approved change — Homepage arcade
 
 - Status: completed and accepted. PR #7 was retargeted to main after M6 merged, then merged at `6d2aab1a2f38b1e5c16d42e1194d235ede6a86b8` under Brady's approval. See `HOMEPAGE-ARCADE.md`.
-- Scope: opt-in lazy-loaded Pong against the computer, first-to-five scoring, keyboard/mouse/touch controls, pause/resume, restart, exit and focus restoration, responsive layout, and a registry for future random game selection. Pong is currently the only registered game.
+- Scope: opt-in lazy-loaded Pong against the computer, first-to-five scoring, keyboard/mouse/touch controls, pause/resume, restart, exit and focus restoration, responsive layout, and a registry for future random game selection. This original delivery had only Pong; the subsequent `ARCADE-SELECTOR.md` extension adds explicit game selection and Asteroids during M8.
 - Result: original 3D components/dependencies removed; restrained general motion retained. Format, lint, strict TypeScript, 13 unit tests, static build, and 84 browser checks pass with no skips; audit reports zero vulnerabilities. Local mobile Lighthouse: 98 Performance / 100 Accessibility / 100 Best Practices / 60 SEO (intentional noindex). See `HOMEPAGE-ARCADE.md`.
 - Review: satisfied. Brady authorized proceeding to M7; production deployment remains separately gated.
 
@@ -108,7 +108,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M8 — Quality assurance
 
-- Status: awaiting review. Local checks passed: 26 unit tests, 192 browser checks, 24 additional reflow checks, build, dependency audit, and repository/history pattern scan. Two focus bugs fixed; browser policy added. See `MILESTONE-8.md` and `QA.md` for measured performance, SEO conditions, and outstanding manual/deployed checks.
+- Status: awaiting review. Local checks passed: 33 unit tests, 216 browser checks, 24 additional reflow checks, build, dependency audit, and repository/history pattern scan. Two focus bugs fixed; browser policy added. The subsequent minimal cover, game picker, and Asteroids extension is implemented and included in QA. See `MILESTONE-8.md` and `QA.md` for measured performance, SEO conditions, and outstanding manual/deployed checks.
 - Objective: verify release behavior, accessibility, performance, and public-repository hygiene.
 - Scope: functional/browser tests, accessibility, representative mobile/desktop Lighthouse, dependency review, responsive/manual review, links, fallbacks, permissions and secret review, headers.
 - Files/components: tests/configs, targeted application fixes, security header configuration, `docs/QA.md`, updated asset/permission inventory and tracker.

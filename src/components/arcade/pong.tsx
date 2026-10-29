@@ -184,12 +184,6 @@ export function Pong({ onExit }: GameProps) {
           pause();
       }}
     >
-      <div className="arcade-heading">
-        <p className="eyebrow">Pong / first to five</p>
-        <button className="arcade-exit" type="button" onClick={onExit}>
-          Exit game <span aria-hidden="true">×</span>
-        </button>
-      </div>
       <div className="pong-score" aria-label="Pong score">
         <span>
           You <strong>{score.player}</strong>
@@ -249,6 +243,9 @@ export function Pong({ onExit }: GameProps) {
           disabled={unavailable}
         >
           Restart Pong
+        </button>
+        <button className="arcade-exit" type="button" onClick={onExit}>
+          Exit game <span aria-hidden="true">×</span>
         </button>
       </div>
       <p className="pong-status" role="status" aria-live="polite">

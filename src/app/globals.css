@@ -1835,25 +1835,59 @@ summary {
   text-align: center;
   background: radial-gradient(ellipse, rgb(8 11 20 / 90%), transparent 75%);
 }
-.arcade-invitation h2 {
-  font-size: clamp(1.75rem, 3vw, 2.75rem);
-  letter-spacing: -0.055em;
-  font-weight: 550;
-}
-.arcade-invitation p,
-.arcade-caption {
+.arcade-invitation p {
   color: var(--color-muted);
   font-size: 0.75rem;
   line-height: 1.7;
 }
-.arcade-invitation .button {
-  margin-top: 0.5rem;
+.arcade-play {
+  width: 4.5rem;
+  height: 4.5rem;
+  padding: 1.25rem;
+  border-radius: 50%;
+  box-shadow: 0 0 40px rgb(124 88 255 / 20%);
 }
-.arcade-caption {
-  padding: 1rem 1.25rem;
-  border-top: 1px solid var(--border-subtle);
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
+.arcade-play svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+.arcade-picker {
+  min-height: 19rem;
+  padding: 1.5rem;
+}
+.arcade-game-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
+  gap: 0.75rem;
+  margin-block: 1.25rem 0.5rem;
+}
+.arcade-game-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 0.75rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.6rem;
+  background: rgb(157 171 207 / 3%);
+  font: 0.8rem var(--font-mono);
+  cursor: pointer;
+}
+.arcade-game-option:hover {
+  border-color: var(--color-cyan);
+  background: rgb(56 189 248 / 5%);
+}
+.arcade-game-option:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+.arcade-game-option svg {
+  width: 5rem;
+  height: 4rem;
+  color: var(--color-cyan);
+}
+.arcade-game-option:nth-child(even) svg {
+  color: #947cff;
 }
 .arcade-error {
   padding: 1rem;
@@ -1895,7 +1929,8 @@ summary {
 .pong-score span:last-child strong {
   color: #947cff;
 }
-.pong-game canvas {
+.pong-game canvas,
+.asteroids-game canvas {
   scroll-margin-block: 6rem 1rem;
   display: block;
   width: 100%;
@@ -1905,7 +1940,8 @@ summary {
   cursor: crosshair;
   border-block: 1px solid var(--border-subtle);
 }
-.pong-game canvas:focus-visible {
+.pong-game canvas:focus-visible,
+.asteroids-game canvas:focus-visible {
   outline-offset: -4px;
 }
 .pong-instructions {
@@ -1931,6 +1967,32 @@ summary {
   font-size: 0.6875rem;
   color: var(--color-muted);
   line-height: 1.7;
+}
+.asteroids-score {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  color: var(--color-muted);
+  font: 0.6875rem var(--font-mono);
+}
+.asteroids-score strong {
+  color: var(--color-cyan);
+  font-weight: 500;
+}
+.asteroids-touch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem 0;
+}
+.asteroids-touch button {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.8rem;
+  touch-action: none;
+  user-select: none;
 }
 @media (min-width: 1024px) {
   .hero-grid {
