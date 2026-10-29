@@ -1,6 +1,6 @@
 # Portfolio 2.0 — Milestone tracker
 
-Updated: 2026-10-28. Milestones 1–3 accepted and merged; Milestone 4 implemented and verified, awaiting review.
+Updated: 2026-10-28. Milestones 1–4 accepted and merged; Milestone 5 implemented and verified, awaiting review.
 
 Specification: `source/product-requirements-v1.0.md`. Process: `source/master-prompt.md`. Proposed architecture and inventories: `DISCOVERY.md`.
 
@@ -57,7 +57,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M4 — Interactive AI workflow
 
-- Status: awaiting review. Includes the FatalFox Studios company correction and interactive stage explorer with readable fallback. Format, lint, TypeScript, production build, 4 unit tests, and 52 browser checks pass; audit reports zero vulnerabilities. See `MILESTONE-4.md`. Do not merge or advance automatically.
+- Status: completed and accepted. Brady authorized merging PR #4 and beginning the next milestone. Merged at `a0018bae9986d23b79bf06e220486083eda2504a` after local checks and Linux CI passed. Includes the FatalFox Studios correction; see `MILESTONE-4.md`.
 - Objective: explain human-led development and continuous verification interactively.
 - Scope: eight selectable connected stages, purpose/input/output details, visible feedback loop to implementation; semantic nonanimated representation.
 - Files/components: `content/workflow.ts`, `components/workflow/`, HowIBuild section, behavioral tests.
@@ -68,7 +68,7 @@ Statuses: awaiting review, not started, in progress, blocked, completed, deferre
 
 ## M5 — 3D hero and motion
 
-- Status: not started.
+- Status: awaiting review. Deferred 3D hero and motion implemented; format, lint, strict TypeScript, 6 unit tests, production build, and 64 browser checks pass (8 platform-inapplicable cases skipped). Audit reports zero vulnerabilities. Local Lighthouse Performance is 98 mobile / 100 desktop, with 100 Accessibility and Best Practices. See `MILESTONE-5.md`. Do not merge or begin M6 automatically.
 - Objective: add the signature node network without impairing core usability.
 - Scope: isolated deferred Three/Fiber scene, gentle ambient/cursor response, restrained component motion, static and low-performance fallbacks.
 - Files/components: `components/three/`, `components/motion/`, Hero integration, dependency lockfile, relevant styles/tests.

@@ -1,6 +1,6 @@
 # Milestone 4 — Interactive AI workflow
 
-Date: 2026-10-28. Status: implemented and verified; awaiting review.
+Date: 2026-10-28. Status: accepted and merged in PR #4 at `a0018bae9986d23b79bf06e220486083eda2504a` after Brady authorized merging and beginning M5. Local checks and GitHub Linux CI passed.
 
 ## Delivered
 
@@ -50,4 +50,4 @@ A Lighthouse 13.6.0 mobile run against the local production homepage measured **
 - Testing is presented as human verification and feedback, with defects and uncertainties recorded. It is not described as a guarantee of vulnerability-free software.
 - M5's 3D hero/motion system, command palette, browser audio, production indexing, domain/DNS, and deployment are not part of this change.
 
-PR #3 was merged after Brady's approval to proceed. Pause for review before merging M4 or beginning M5.
+PR #3 was merged after Brady's approval to proceed. The M4 review gate is satisfied by his subsequent instruction to merge and begin the next milestone.
