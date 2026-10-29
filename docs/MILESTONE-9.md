@@ -1,57 +1,58 @@
 # Milestone 9 — Isolated Vercel preview and launch preparation
 
-Date: 2026-10-29. Status: protected preview deployed and manually reviewed; full hosted automation/performance awaits an explicit temporary-access choice. PR #10 remains draft until the selected QA scope is completed. Production migration is not authorized.
+Date: 2026-10-29. Status: verification completed; awaiting Brady's review. PR #10 is ready for review. Production migration remains a separate, unauthorized task.
 
 ## Delivered preview
 
-| Item                        | Verified evidence                                                                               |
-| --------------------------- | ----------------------------------------------------------------------------------------------- |
-| Team                        | fusion407s-projects / `team_TizSOAhTKyZkUv6hnUm9kd7M`                                           |
-| New isolated project        | portfolio-v2-preview / `prj_0RJ1hIENY9vVGLaiW7leECjEOE9v`                                       |
-| Source                      | fusion407/portfolio-v2; milestone-9-preview; automatic Git/PR deployments verified              |
-| Tested application revision | `fc189487a9375e8c8cccd5c456fc14b4f6aa0496`                                                      |
-| READY Preview deployment    | `dpl_62tSpNgiTJJF9UYgvMDWoCQvpiUH`                                                              |
-| Review URL                  | https://portfolio-v2-preview-ma0e79x3l-fusion407s-projects.vercel.app (Vercel sign-in required) |
-| Production branch tracking  | main, verified read-only in the new project's environment settings                              |
-| Domains                     | Generated Vercel hostnames only; neither live business domain assigned to the new project       |
-| Protection                  | Default all_except_custom_domains retained; no public share link created                        |
-| Build                       | Native Next.js 16.4.3; project Node 24.x; pinned npm clean install; hosted build completed      |
+| Item                        | Verified evidence                                                                                                   |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Team                        | fusion407s-projects / team_TizSOAhTKyZkUv6hnUm9kd7M                                                                 |
+| Separate project            | portfolio-v2-preview / prj_0RJ1hIENY9vVGLaiW7leECjEOE9v                                                             |
+| Source                      | fusion407/portfolio-v2; milestone-9-preview; automatic Git/PR deployment verified                                   |
+| Tested application revision | fc189487a9375e8c8cccd5c456fc14b4f6aa0496                                                                            |
+| READY Preview deployment    | dpl_62tSpNgiTJJF9UYgvMDWoCQvpiUH                                                                                    |
+| Review URL                  | https://portfolio-v2-preview-ma0e79x3l-fusion407s-projects.vercel.app (Vercel sign-in required)                     |
+| Production branch tracking  | main, verified in the new project's environment settings                                                            |
+| Domains                     | Generated Vercel hostnames only; neither live domain assigned                                                       |
+| Protection                  | Default all_except_custom_domains retained; user-authorized 23-hour test link used privately                        |
+| Build                       | Native Next.js 16.4.3; project Node 24.x; pinned npm clean install; hosted lint/types/36 unit tests/build completed |
 
-Brady corrected the original Netlify assumption, supplied the old Vercel project, and approved team access and the GitHub connection. The unused Netlify draft was removed. M8 was accepted and merged at `3c6f365c11bddc96c79ba1c702ffda47e7ebad44`. Supplied source documents remain unchanged.
+M8 was accepted and merged at 3c6f365c11bddc96c79ba1c702ffda47e7ebad44. The hosting plan now uses the user-confirmed Vercel account and separate project. Supplied source documents remain unchanged. Later QA/documentation commits do not change application source, the lockfile, Vercel configuration, or the preview build wrapper relative to the tested application revision.
 
-The old portfolio project `prj_FOG6G19vkehUJo5q6QFTrb41XcD6`, its two verified domains, 308 apex-to-www rule, and READY serving deployment were inspected read-only. Exact rollback candidate and incomplete backup gates are in ROLLBACK.md. A newer ERROR deployment and old-runtime setting were recorded without changing or rebuilding them. No old project/source/domain/DNS mutation occurred.
+The old portfolio project prj_FOG6G19vkehUJo5q6QFTrb41XcD6, both verified live domains, 308 apex-to-www rule, and READY serving deployment were inspected read-only and rechecked after hosted QA. The new project still owns only its generated domain. No old project/source/domain/DNS changes occurred. See ROLLBACK.md for the serving artifact and incomplete private backup/recovery gates.
 
-## Implementation and files
+## Implementation
 
-vercel.json selects Next.js, pinned npm clean install, lint/type/unit validation and build:preview, plus three exact legacy 301 redirects without a catch-all. scripts/build-preview.mjs forces NODE_ENV production and indexing disabled in the child without environment files. Future launch requires a deliberate configuration change and separate approval.
+- vercel.json configures Next.js, pinned npm clean installation, hosted lint/types/unit checks, the preview build, and three exact legacy 301 redirects without a catch-all.
+- scripts/build-preview.mjs forces production application mode and indexing disabled, regardless of parent flags, without writing environment files. Unit tests use NODE_ENV=test independently.
+- site-policy.ts validates deployment-specific Vercel origins, prioritizes VERCEL_ENV over legacy context, and preserves explicit production indexing gates. Three added unit cases bring the total to 36.
+- Generated Vercel/Netlify linkage and output stay outside Git and source tools. The repository/history audit handles deleted tracked paths.
+- The guarded hosted Playwright configuration targets only an explicit isolated HTTPS vercel.app origin, without starting a local server or falling back to the live domain.
+- The private runner accepts authorized access through stdin, disables terminal echo and traces, bootstraps isolated API/browser cookies, and saves no credential file. Share URLs and cookies are omitted from Git, reports, and final review links.
+- Preview, launch, rollback, SEO, architecture, legacy inventory, README, and tracker records describe actual hosting and remaining launch decisions. No dependency/lockfile change.
 
-site-policy.ts validates VERCEL_URL/VERCEL_BRANCH_URL, prioritizes VERCEL_ENV over stale legacy context, and retains explicit flag/approved-domain production gates. Three new unit cases bring the total to 36. Generated .vercel/.netlify output/linkage stays outside authored-source tooling and Git. The repository audit handles deleted working-tree paths while retaining historical blob coverage.
+Source formatting remains mandatory in GitHub CI. Hosted validation runs after Vercel configuration handling; the platform reported a formatting difference only in its vercel.json copy. Both initial hosted build failures were corrected without skipping unit assertions or weakening application policy.
 
-The hosted command separates React unit-test NODE_ENV=test from production app builds. Source formatting remains mandatory in CI; the hosted environment reported a formatting difference only for its vercel.json copy. No assertion was removed or test skipped to fix the two initial hosting-only failures.
+## Verification
 
-playwright.preview.config.ts and tests/preview/deployment.spec.ts provide 28 hosted cases across the four existing browser configurations, with a strict HTTPS vercel.app target and no local/default-live fallback. Optional protected access requires a same-origin authorized share URL, receives input through stdin via scripts/verify-protected-preview.mjs, stores no credential file, disables traces for private access, and redacts authentication errors. This path has not been executed or granted a link; it is opt-in, not a protection bypass.
+| Check                               | Actual result                                                                                               |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Format/lint/strict types/unit tests | Passed; all 36 unit tests                                                                                   |
+| Production-flagged preview build    | Passed; child still disables indexing                                                                       |
+| Local metadata/security regression  | All 24 checks passed on that build                                                                          |
+| Source GitHub CI                    | Passed on fc189487 and 28eaf930; full 216 browser checks enabled                                            |
+| Vercel builds                       | READY previews for both revisions; automatic PR association verified                                        |
+| Signed-in browser review            | Six routes, metadata, six 1200x630 cards, redirects, both games/input/focus, mobile menu/contact and search |
+| Hosted matrix                       | All 28 checks passed across desktop Chromium, mobile Chromium emulation, Firefox, and WebKit                |
+| Hosted Lighthouse 13.6.0            | Six sequential measurements: Performance 98–100, Accessibility 100, Best Practices 100; preview SEO 54      |
+| Isolation                           | Both live domains and their original READY serving artifact remain on the old project                       |
 
-README, PREVIEW.md, LAUNCH.md, ROLLBACK.md and tracker/architecture/SEO/audit records document provider correction, current evidence, extension commands and open launch gates. No dependency lockfile or supplied source-document change.
+The hosted matrix verifies actual HTTP 200/301/404 statuses, security/noindex headers, metadata and origins on six content routes, social PNGs, robots/empty sitemap, preserved redirect queries/fragments and section navigation, contact/search/mobile menu, both games/focus/pause/restart/exit under CSP, asset responses, axe, and narrow layout. The initial run passed 27/28; the new test's mobile button selector was corrected to the existing native summary disclosure, then the full suite passed. No application change was required.
 
-## Validation
+Lighthouse used fresh headless Chromium instances, mobile defaults and the explicit desktop API configuration, against the exact protected deployment using temporary authenticated requests. Only credential-free summaries were saved outside Git; full reports containing authentication settings were discarded. See QA.md for per-page scores and metrics. These are single hosted lab samples, not field data or physical-device gameplay measurements. Preview SEO includes the deliberate noindex/protected crawling restrictions and is not production SEO validation.
 
-| Check                                        | Actual result                                                                                                                                                                                                                                        |
-| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Format/lint/strict types/unit tests          | Passed locally; all 36 unit tests                                                                                                                                                                                                                    |
-| Production-flagged preview build             | Passed; child still disables indexing                                                                                                                                                                                                                |
-| Metadata/security regression                 | All 24 local browser checks passed on that build                                                                                                                                                                                                     |
-| Source GitHub CI on application revision     | Passed; full 216 browser checks remain enabled                                                                                                                                                                                                       |
-| Vercel build on application revision         | READY; lint/types/unit/build completed                                                                                                                                                                                                               |
-| Authenticated browser review                 | Six routes, titles/robots/canonical omission/OG origins; six social cards at 1200x630; three redirects preserving query/fragment and target section; both games/input/pause/exit focus; mobile contact/menu and palette navigation; 390-pixel layout |
-| Hosted 28-case HTTP/header/status/axe matrix | Not run; protected access choice pending                                                                                                                                                                                                             |
-| Hosted Lighthouse performance                | Not run; protected access choice pending. M8 local measurements remain baseline only                                                                                                                                                                 |
+## Review and remaining launch decisions
 
-Browser observation of branded missing pages and redirect navigation does not establish numeric HTTP status/security headers. Manual signed-in Chromium review is not a substitute for the unrun cross-browser hosted matrix or physical devices. Screenshots remain in the local task visualization directory outside Git.
+Review PR #10 and the protected preview. Milestone acceptance and merge await Brady's review; production migration is not included. The temporary test link was explicitly authorized and expires after 23 hours; the clean review URL retains normal Vercel sign-in.
 
-## Remaining gates
-
-Finish the selected hosted access/verification scope and representative performance measurements, fix actual deployment defects, recheck unchanged old domain assignments/serving artifact, and request M9 review. Do not mark unrun hosted checks passed.
-
-Complete private configuration/zone backup and recovery rehearsal, manual screen-reader/physical-device/actual Safari/native zoom, and permission for any additional real media remain launch decisions. Resume is explicitly deferred. Production migration remains a separate approval.
-
-Rechecked old/new project domain assignments after deployment: the old project still owns both live domains with the same 308 rule; the new project still has only its generated vercel.app domain. The public www root still returns 200 HTML from Vercel. The protected runner rejected a mismatched-origin dummy link and malformed stdin without launching a browser; same-origin dummy configuration listed 28 cases without network requests. No real access credential or share link was used.
+Complete private configuration/zone backup and recovery rehearsal, manual screen-reader/physical-device/actual Safari/native zoom, additional real-media permission, and any unconfirmed legacy URLs remain launch decisions. Resume is explicitly deferred. Production changes require a separately approved release, domain/indexing operations, and rollback plan.

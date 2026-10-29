@@ -148,7 +148,7 @@ test("deployed navigation, command palette, contact, and mobile menu work", asyn
   await expect(page).toHaveURL(/\/projects\/neonsynth$/);
   await page.goto("/");
   if (isMobile) {
-    await page.getByRole("button", { name: "Menu", exact: true }).click();
+    await page.locator(".mobile-navigation > summary").click();
     await page
       .getByRole("navigation", { name: "Mobile navigation" })
       .getByRole("link", { name: "Contact", exact: true })

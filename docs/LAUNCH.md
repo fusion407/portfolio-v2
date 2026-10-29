@@ -15,8 +15,8 @@ The earlier Netlify assumption is superseded. New source is fusion407/portfolio-
 | Gate                  | Current status / required action                                                                                                                           |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | M8                    | Accepted; PR #9 merged at `3c6f365c11bddc96c79ba1c702ffda47e7ebad44`                                                                                       |
-| Isolated preview      | Separate project, READY protected Preview and automatic PR association verified; M9 QA/review not complete                                                 |
-| Hosted behavior       | Manual browser review completed; 28-case HTTP/header/status/axe matrix and performance await authorized test access                                        |
+| Isolated preview      | Separate READY protected Preview, automatic PR association and hosted QA verified; M9 awaits review                                                        |
+| Hosted behavior       | Manual review and all 28 hosted checks passed; six hosted Lighthouse runs: Performance 98–100, Accessibility/Best Practices 100                            |
 | Live provider/project | Vercel team/project/domain identities verified read-only; no settings changed                                                                              |
 | DNS                   | Public Vercel NS and apex/www A answers recorded; registrar access, full zone, configured TTLs, mail/verification records, and secure export still missing |
 | Recovery              | Serving READY deploy identified; full config/env/domain/DNS backup and restore rehearsal still unverified                                                  |
