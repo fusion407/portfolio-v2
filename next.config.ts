@@ -14,7 +14,7 @@ const contentSecurityPolicy = [
   "base-uri 'self'",
   "form-action 'none'",
   "frame-ancestors 'none'",
-  "frame-src 'none'",
+  "frame-src https://www.youtube-nocookie.com/embed/lIJIB93M_BQ",
   "media-src 'none'",
 ].join("; ");
 

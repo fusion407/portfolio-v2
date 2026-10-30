@@ -32,14 +32,31 @@ for (const project of caseStudies) {
     await expect(page.getByRole("banner")).toHaveCount(1);
     await expect(page.getByRole("main")).toHaveCount(1);
     await expect(page.getByRole("contentinfo")).toHaveCount(1);
-    await expect(
-      page.locator(".case-facts").getByText(project.status, { exact: true }),
-    ).toBeVisible();
+    if (project.slug === "neonsynth")
+      await expect(
+        page.locator(".case-facts").getByText("Status", { exact: true }),
+      ).toHaveCount(0);
+    else
+      await expect(
+        page.locator(".case-facts").getByText(project.status, { exact: true }),
+      ).toBeVisible();
     await expect(
       page.getByText("Conceptual artwork · not a product screenshot", {
         exact: true,
       }),
-    ).toBeVisible();
+    ).toHaveCount(0);
+    await expect(page.locator(".case-cover img")).toHaveCount(1);
+    await page.locator(".case-cover img").scrollIntoViewIfNeeded();
+    await expect
+      .poll(() =>
+        page
+          .locator(".case-cover img")
+          .evaluate(
+            (image: HTMLImageElement) =>
+              image.complete && image.naturalWidth > 0,
+          ),
+      )
+      .toBe(true);
     expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
     expect(errors).toEqual([]);
   });
@@ -83,7 +100,7 @@ test("project index and next-project navigation form a complete route loop", asy
   await expect(page).toHaveURL(/\/projects$/);
 });
 
-test("project-specific boundaries preserve ownership, maturity, and trailer attribution", async ({
+test("project content uses actual media and removes superseded status panels", async ({
   page,
 }) => {
   await page.goto("/projects/geovis");
@@ -107,21 +124,10 @@ test("project-specific boundaries preserve ownership, maturity, and trailer attr
   ).toBeVisible();
 
   await page.goto("/projects/neonsynth");
+  await expect(page.locator("#playground, #status")).toHaveCount(0);
   await expect(
-    page
-      .locator("#playground")
-      .getByRole("heading", { name: "A future space to play." }),
+    page.getByRole("img", { name: /NeonSynth synthesizer interface/ }),
   ).toBeVisible();
-  await expect(
-    page
-      .locator("#playground")
-      .getByText(/VST3 cannot run directly in a normal browser/),
-  ).toBeVisible();
-  await expect(
-    page
-      .locator("#playground")
-      .locator("audio, video, iframe, canvas, input, button"),
-  ).toHaveCount(0);
 
   await page.goto("/projects/titanforge-studio");
   await expect(
@@ -137,16 +143,12 @@ test("project-specific boundaries preserve ownership, maturity, and trailer attr
   });
   await page.goto("/projects/swordbound-protocol");
   await expect(page.locator("#contributions li")).toHaveCount(9);
+  await expect(page.locator("#status")).toHaveCount(0);
   await expect(
-    page.locator("#trailer").getByText(/produced by a third party/),
-  ).toBeVisible();
+    page.getByText(/produced by a third party|individual cinematic work/),
+  ).toHaveCount(0);
   await expect(
-    page
-      .locator("#trailer")
-      .getByText(/not presented as Brady’s individual cinematic work/),
-  ).toBeVisible();
-  await expect(
-    page.getByRole("link", { name: "Watch official trailer on YouTube" }),
+    page.getByRole("link", { name: "Watch on YouTube" }),
   ).toHaveAttribute("href", "https://www.youtube.com/watch?v=lIJIB93M_BQ");
   await expect(page.locator("iframe, video, audio")).toHaveCount(0);
   expect(thirdPartyRequests).toEqual([]);
@@ -175,7 +177,7 @@ test("shared mobile navigation returns from a case study to homepage sections", 
   await expect(page.locator(".mobile-navigation")).not.toHaveAttribute("open");
 });
 
-test("case studies and trailer attribution remain readable without JavaScript", async ({
+test("case studies and the trailer fallback remain usable without JavaScript", async ({
   browser,
 }) => {
   const context = await browser.newContext({
@@ -193,7 +195,7 @@ test("case studies and trailer attribution remain readable without JavaScript", 
     .click();
   await expect(page.locator("#trailer")).toBeInViewport();
   await expect(
-    page.locator("#trailer").getByText(/produced by a third party/),
+    page.locator("#trailer").getByRole("link", { name: "Watch on YouTube" }),
   ).toBeVisible();
   await context.close();
 });
@@ -271,4 +273,37 @@ test("project layouts reflow across screen sizes and enlarged text", async ({
     ),
     JSON.stringify(overflowingElements),
   ).toBe(true);
+});
+
+test("trailer loads inline only after play on homepage, index and case study", async ({
+  page,
+}) => {
+  // Provider-independent contract fixture; actual YouTube playback is reviewed separately.
+  await page.route("https://www.youtube-nocookie.com/**", (route) =>
+    route.fulfill({
+      contentType: "text/html",
+      body: "<!doctype html><html lang='en'><title>Trailer fixture</title><body>Trailer player fixture</body></html>",
+    }),
+  );
+  for (const path of ["/", "/projects", "/projects/swordbound-protocol"]) {
+    const response = await page.goto(path);
+    expect(response?.headers()["content-security-policy"]).toContain(
+      "frame-src https://www.youtube-nocookie.com/embed/lIJIB93M_BQ",
+    );
+    await expect(page.locator("iframe")).toHaveCount(0);
+    await page
+      .getByRole("button", { name: "Play trailer: Swordbound: Protocol" })
+      .click();
+    const player = page.getByTitle("Swordbound: Protocol official trailer", {
+      exact: true,
+    });
+    await expect(player).toHaveAttribute(
+      "src",
+      "https://www.youtube-nocookie.com/embed/lIJIB93M_BQ?autoplay=1&playsinline=1&rel=0",
+    );
+    await expect(player).toBeFocused();
+    await expect(
+      page.getByRole("link", { name: "Watch on YouTube" }),
+    ).toBeVisible();
+  }
 });

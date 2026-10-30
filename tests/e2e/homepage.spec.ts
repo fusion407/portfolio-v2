@@ -60,7 +60,11 @@ test("project summaries disclose accurate work without navigating to unfinished 
     page.getByText("Conceptual artwork · not a product screenshot", {
       exact: true,
     }),
-  ).toHaveCount(4);
+  ).toHaveCount(0);
+  await expect(page.locator(".project-artwork img")).toHaveCount(3);
+  await expect(
+    page.getByRole("button", { name: "Play trailer: Swordbound: Protocol" }),
+  ).toBeVisible();
   const project = page.getByRole("article", { name: "GeoVis", exact: true });
   await project.locator("summary").click();
   await expect(
@@ -118,7 +122,7 @@ test("native navigation and project disclosure work without JavaScript", async (
   const synth = page.getByRole("article", { name: "NeonSynth", exact: true });
   await synth.locator("summary").click();
   await expect(
-    synth.getByText(/no browser synthesizer in this release/),
+    synth.locator(".overview-content").getByText(/^NeonSynth is a custom VST3/),
   ).toBeVisible();
   await context.close();
 });

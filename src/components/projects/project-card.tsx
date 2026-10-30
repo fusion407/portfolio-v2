@@ -20,7 +20,9 @@ export function ProjectCard({
           <span>
             {String(index + 1).padStart(2, "0")} / {project.category}
           </span>
-          <span className="status-badge">{project.status}</span>
+          {project.id !== "neonsynth" && (
+            <span className="status-badge">{project.status}</span>
+          )}
         </div>
         <Heading className="project-card-title" id={`${project.id}-title`}>
           {project.title}

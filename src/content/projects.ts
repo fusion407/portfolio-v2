@@ -27,9 +27,13 @@ export type Project = ProjectSummary & {
     startingPoint: { title: string; items: readonly string[] };
     target: { title: string; items: readonly string[] };
   };
-  playground?: { title: string; description: string; note: string };
-  trailer?: { url: `https://${string}`; attribution: string };
+  trailer?: { url: `https://${string}`; embedUrl: `https://${string}` };
 };
+
+export const swordboundTrailer = {
+  url: "https://www.youtube.com/watch?v=lIJIB93M_BQ",
+  embedUrl: "https://www.youtube-nocookie.com/embed/lIJIB93M_BQ",
+} as const;
 
 export const projects: readonly Project[] = [
   {
@@ -97,8 +101,8 @@ export const projects: readonly Project[] = [
     tools: ["VST3", "Ableton Live", "Sound synthesis"],
     role: "Personal synthesizer project",
     overview: [
-      "NeonSynth is being developed for use with Ableton Live. The current focus is the actual plugin and its synthesis behavior.",
-      "A browser playground is a future possibility that requires a compatible implementation of the real audio engine. There is no browser synthesizer in this release.",
+      "NeonSynth is a custom VST3 synthesizer for electronic music production in Ableton Live.",
+      "The instrument brings together oscillators, filters, envelopes, modulation controls, and a keyboard in a dedicated synthesis interface.",
     ],
     sections: [
       {
@@ -109,20 +113,7 @@ export const projects: readonly Project[] = [
         ],
         items: ["Sound synthesis", "Modulation", "Audio-plugin development"],
       },
-      {
-        id: "status",
-        title: "Development status",
-        paragraphs: [
-          "The plugin is in development. Approved screenshots and further technical details can be added as they become available.",
-        ],
-      },
     ],
-    playground: {
-      title: "A future space to play.",
-      description:
-        "A browser-compatible NeonSynth playground is reserved for a future phase. It should preserve the real synthesizer’s behavior as closely as practical.",
-      note: "The VST3 cannot run directly in a normal browser. A compatible DSP port or implementation is required, with the strategy determined from the actual NeonSynth codebase. The playground is not available yet.",
-    },
   },
   {
     id: "titanforge",
@@ -161,7 +152,7 @@ export const projects: readonly Project[] = [
     role: "Technical Artist and Gameplay Contributor",
     overview: [
       "My work includes Niagara VFX, shaders, sound implementation, lighting and animation fixes, mobile graphics optimization, Sequencer cinematics, camera animation, and selected gameplay mechanics.",
-      "The official trailer was produced by a third party and presents the game generally. It is not a demonstration of my individual cinematic work. Approved in-game captures can show those contributions when available.",
+      "Swordbound: Protocol brings sword-fighting combat to mobile, combining real-time gameplay with a cinematic visual style.",
     ],
     sections: [
       {
@@ -179,20 +170,8 @@ export const projects: readonly Project[] = [
           "Designed and developed selected gameplay mechanics.",
         ],
       },
-      {
-        id: "status",
-        title: "An unreleased game",
-        paragraphs: [
-          "Swordbound: Protocol is an unreleased mobile sword-fighting game. My technical-art and gameplay contributions appear in the game itself.",
-          "Approved in-game captures can be added to illustrate individual contributions when available.",
-        ],
-      },
     ],
-    trailer: {
-      url: "https://www.youtube.com/watch?v=lIJIB93M_BQ",
-      attribution:
-        "The official trailer was produced by a third party and showcases the game generally. It is not presented as Brady’s individual cinematic work.",
-    },
+    trailer: swordboundTrailer,
   },
 ];
 

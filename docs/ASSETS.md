@@ -1,35 +1,21 @@
 # Asset and media inventory
 
-Updated: 2026-10-29. No actual project screenshots, game captures, company source, seismic data, resume PDF, or NeonSynth source code have been supplied for this repository.
+Updated: 2026-10-29 after Brady supplied project media and explicitly requested its use on the portfolio. These assets replace the conceptual covers on the homepage, project index and case-study pages. Supplied source requirements remain unchanged; the latest user request takes precedence for presentation.
 
-| Asset                       | Source/location                                               | Current use and status                                                                                                                              |
-| --------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Homepage arcade             | Authored SVG/Canvas in `src/components/arcade/`               | Opt-in Pong and Asteroids; no external art, audio, or game package. Replaces the historical M5 network.                                             |
-| GeoVis cover                | Authored SVG in `src/components/projects/project-artwork.tsx` | Labeled conceptual; no real map, company data, or internal architecture                                                                             |
-| NeonSynth cover             | Same shared SVG component                                     | Abstract waveform, labeled conceptual; no simulated product interface or playable synth                                                             |
-| TitanForge cover            | Same shared SVG component                                     | Agent/workspace concept, labeled conceptual; not proof of implemented capabilities                                                                  |
-| Swordbound cover            | Same shared SVG component                                     | Abstract sword illustration, labeled conceptual; no game capture or trailer thumbnail                                                               |
-| Official Swordbound trailer | User-supplied `https://www.youtube.com/watch?v=lIJIB93M_BQ`   | Direct link only. Third-party production/general-game scope attributed. No download, autoplay, iframe, or YouTube request before following the link |
-| Social cards                | Authored ImageResponse layout in `src/lib/social-image.tsx`   | Six static PNGs; typography/monogram/colors only; no project screenshots or third-party media.                                                      |
-| Brand icon                  | Authored `src/app/icon.svg`                                   | Static monogram metadata icon                                                                                                                       |
-| Geist Variable              | Installed `@fontsource-variable/geist` package                | Locally served font; installed license identifies SIL Open Font License 1.1. Complete notice retained at `public/licenses/geist-OFL.txt`            |
+| Asset              | Provenance and stored derivative                                                                                                                                       | Dimensions and delivery                                                                                         |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| GeoVis             | User-supplied application map screenshot; public/images/projects/geovis.webp                                                                                           | 1941×1138, lossless WebP; full map retained, no generated details or additional company data                    |
+| NeonSynth          | User-supplied neonsynth.png product screenshot; public/images/projects/neonsynth.webp                                                                                  | 1472×1001, lossless WebP; complete interface retained                                                           |
+| TitanForge Studio  | User-supplied generated metallic emblem/wordmark; public/images/projects/titanforge.webp                                                                               | 1254×1254, lossless WebP; transparency and complete lettering retained                                          |
+| Swordbound trailer | User-supplied https://www.youtube.com/watch?v=lIJIB93M_BQ; official YouTube oEmbed identifies the reveal trailer and FatalFoxStudios channel                           | Embedded from the exact youtube-nocookie.com video path only after play; original YouTube link always available |
+| Swordbound poster  | Official max-resolution poster for the same video, retrieved from https://i.ytimg.com/vi/lIJIB93M_BQ/maxresdefault.jpg; public/images/projects/swordbound-trailer.webp | 1280×720, quality-85 WebP; lightweight local preview before player activation, no video download                |
+| Arcade             | Original SVG/Canvas in src/components/arcade/                                                                                                                          | Opt-in Pong/Asteroids, no external game assets, music or package                                                |
+| Social cards       | Authored ImageResponse layout in src/lib/social-image.tsx                                                                                                              | Six typography/monogram PNGs; no new screenshot/social-card claim                                               |
+| Brand icon         | Authored src/app/icon.svg                                                                                                                                              | Static monogram                                                                                                 |
+| Geist Variable     | Installed @fontsource-variable/geist                                                                                                                                   | Locally served font; SIL OFL notice retained in public/licenses/geist-OFL.txt                                   |
 
-## Pending actual media
+Brady directly provided the three images and requested publication in this portfolio. The screenshot of the old Swordbound section is a change reference and is not published. Original source files are unmodified. Web derivatives strip incidental metadata and use responsive Next Image delivery, meaningful alternative text and contain sizing to preserve content; the case-study screenshots use their original proportions. These are specific asset-use instructions, not a blanket license for company data or unrelated media.
 
-- GeoVis: public-detail approval and a map image remain outstanding. Do not add proprietary screenshots, source, internal details, or data without approval.
-- NeonSynth: approved screenshots and actual synthesizer source are absent. Browser audio requires separate authorization and source inspection.
-- TitanForge: prototype captures and verified capability demonstrations are absent.
-- Swordbound: approved captures of Brady's contributions are absent. The official trailer must not be presented as Brady's own cinematic work.
-- Résumé: explicitly deferred by Brady on 2026-10-29 until he updates it. No résumé route or download is included.
+The trailer is labeled as the official game trailer, without the former on-page authorship disclaimer. It is not relabeled as footage authored by Brady. The video itself remains hosted by YouTube. The portfolio contacts YouTube only after a viewer activates the player; the official poster is served locally. With JavaScript disabled, the direct YouTube link remains usable. The parent frame policy permits only this exact privacy-enhanced embed path; other resource restrictions and frame-ancestors protection remain in place.
 
-When real media is added, record origin, public attribution, approval to publish and redistribute in a public repository, dimensions, alternative text, and optimized delivery. Keep private permission evidence outside the public repository. Old-portfolio assets are reference material, not automatic approval for reuse.
-
-The code license remains undecided. Do not apply a blanket license grant to personal content, third-party media, or company material.
-
-## M8 provenance review
-
-Rechecked existing conceptual SVG artwork, attributed external trailer link, and retained Geist font notice. No new project/company media or blanket license was introduced. QA screenshots and Lighthouse JSON remain outside the public repository. Approved real media and permission records remain pending as listed above.
-
-## Asteroids extension
-
-The picker illustrations and Asteroids ship, rocks, stars, and projectiles are original SVG/Canvas geometry authored in this repository. No external arcade assets, Atari artwork/logo, music, sound, footage, or new font is included. Local QA screenshots remain outside the repository.
+Actual NeonSynth DSP/source, a browser instrument, additional company/game captures and a current résumé have not been supplied. Resume and future browser-audio work remain deferred. The public repository does not imply a blanket content/media license. Original asset-inventory statements remain in Git history as the earlier no-media baseline; this inventory supersedes them.
