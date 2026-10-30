@@ -1,6 +1,6 @@
 # Project media refresh — 2026-10-29
 
-Status: implementation complete; local validation passed. Hosted visual/player review and full source CI are pending.
+Status: verified and merged for publication on 2026-10-30. PR #12 merged at ca599823ea3b159501e26888cfaa0ab47b93c212 after all 220 CI browser checks passed. Production verification is recorded in the pull request.
 
 - Replaced three conceptual covers with the user-supplied GeoVis application map, actual NeonSynth interface and TitanForge Studio emblem/wordmark. Lossless WebP derivatives preserve full images and logo transparency. The reusable media component updates homepage cards, project index and case-study covers together.
 - Replaced the Swordbound sword illustration with the official reveal-trailer poster and an opt-in inline privacy-enhanced YouTube player. The case-study trailer is at the top, with its table-of-contents anchor and persistent original YouTube fallback link. No third-party player request occurs until play; no video is downloaded.
@@ -13,3 +13,5 @@ Changed files include project content/media/card/case-study components, page sty
 The React review keeps static artwork/layout server-rendered, isolates the player state in one small client component, avoids effect-based derived state, preserves meaningful alt text and responsive image sizing, and defers the third-party player until activation. Browser validation covers accessibility, loaded images, removed content, responsive layout, navigation, CSP, and fallback behavior.
 
 Local results: format/lint/strict types, all 36 unit tests and the production build passed. All 72 affected browser checks passed across desktop Chromium, mobile Chromium emulation, Firefox and WebKit after fixing the play button accessible-name mismatch and narrowing an ambiguous no-JavaScript text selector. No checks were disabled. The full CI matrix now contains 220 cases (one added trailer case per configuration).
+
+Hosted review: the supplied GeoVis map and complete NeonSynth interface rendered with contain sizing. The actual YouTube trailer loaded and played within the hosted Swordbound case study; this was real provider playback, separate from the CI fixture. The original YouTube link remains present. Preview deployment dpl_BV4iBytkYzjUG9MqwizDj2d8WTCA built e2641a4b531b19616cb8273774625af681d28c15. Source CI passed formatting, lint, strict types, all 36 unit tests and all 220 browser checks. The user explicitly requested continuing, committing/pushing and updating deployment on 2026-10-30.

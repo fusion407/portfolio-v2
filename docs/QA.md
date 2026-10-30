@@ -102,3 +102,7 @@ Lighthouse 13.6.0 ran six sequential public lab samples using fresh headless Chr
 | /projects/swordbound-protocol | desktop | 100         | 100           | 100            | 100 | 0.271 s | 0 ms   | 0.0013 |
 
 All four score targets are met on these representative pages. These are single hosted lab samples, not field Core Web Vitals, physical-device gameplay or screen-reader equivalence. Manual screen-reader/Android/iOS/actual Safari/native zoom remain unverified. Copy/media/resume limits remain unchanged. Credential-free summaries and the live-home screenshot are saved in the local task visualization directory outside Git. Local production-test processes were stopped and the default preview build restored.
+
+## Project media refresh — publication 2026-10-30
+
+PR #12 passed all 36 unit and 220 CI browser checks, with 72 affected checks also passing locally. It replaces conceptual covers with supplied media, removes the requested sections/copy, and adds opt-in inline Swordbound playback. Real YouTube playback and supplied screenshot rendering were reviewed in the hosted preview; CI uses a provider-independent activation fixture. See PROJECT-MEDIA-REFRESH.md and PR #12 for exact source/deployment and public verification. Original project/arcade and production indexing/security coverage remains enabled; the only frame-source addition is the exact requested privacy-enhanced video path.
