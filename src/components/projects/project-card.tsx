@@ -50,13 +50,24 @@ export function ProjectCard({
             ))}
           </div>
         </details>
-        <Link
-          className="case-study-link"
-          href={projectHref(project)}
-          aria-label={`Explore project: ${project.title}`}
-        >
-          Explore project <span aria-hidden="true">↗</span>
-        </Link>
+        <div className="project-links">
+          <Link
+            className="case-study-link"
+            href={projectHref(project)}
+            aria-label={`Explore project: ${project.title}`}
+          >
+            Explore project <span aria-hidden="true">↗</span>
+          </Link>
+          {project.liveUrl && (
+            <a
+              className="case-study-link"
+              href={project.liveUrl}
+              aria-label={`Launch app: ${project.title}`}
+            >
+              Launch app <span aria-hidden="true">↗</span>
+            </a>
+          )}
+        </div>
       </div>
     </article>
   );

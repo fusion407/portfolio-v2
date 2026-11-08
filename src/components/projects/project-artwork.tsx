@@ -2,6 +2,12 @@ import Image from "next/image";
 import type { ProjectKind } from "@/content/projects";
 import { ProjectTrailer } from "./project-trailer";
 const artwork = {
+  "gig-tracker": {
+    src: "/images/projects/gig-tracker.webp",
+    alt: "Gig Tracker desktop app showing both players’ Gig dice, Street Cred totals, and the round tracker",
+    width: 1440,
+    height: 1080,
+  },
   geovis: {
     src: "/images/projects/geovis.webp",
     alt: "GeoVis application map showing the United States and surrounding regions",

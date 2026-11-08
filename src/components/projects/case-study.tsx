@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { getNextProject, projectHref, type Project } from "@/content/projects";
 import { ProjectArtwork } from "./project-artwork";
@@ -27,7 +28,17 @@ export function CaseStudy({ project }: { project: Project }) {
         <p className="eyebrow">{project.category}</p>
         <h1>{project.title}</h1>
         <div className="case-summary-grid">
-          <p className="case-lead">{project.summary}</p>
+          <div>
+            <p className="case-lead">{project.summary}</p>
+            {project.liveUrl && (
+              <a
+                className="button button-primary case-launch"
+                href={project.liveUrl}
+              >
+                Launch {project.title} <span aria-hidden="true">↗</span>
+              </a>
+            )}
+          </div>
           <dl className="case-facts">
             {project.id !== "neonsynth" && (
               <div>
@@ -124,6 +135,18 @@ export function CaseStudy({ project }: { project: Project }) {
               {section.paragraphs?.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
+              {section.image && (
+                <figure className="case-screenshot">
+                  <Image
+                    src={section.image.src}
+                    alt={section.image.alt}
+                    width={section.image.width}
+                    height={section.image.height}
+                    sizes="(max-width: 480px) calc(100vw - 48px), 390px"
+                  />
+                  <figcaption>{section.image.caption}</figcaption>
+                </figure>
+              )}
               {section.items && (
                 <ul className="contribution-list">
                   {section.items.map((item) => (

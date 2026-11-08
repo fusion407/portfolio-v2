@@ -24,7 +24,7 @@ export const portfolioPages: PortfolioPage[] = [
     description:
       "Selected AI engineering, creative software, agentic tools, and technical-art projects by Brady Dorsey.",
     socialTitle: "Built with intent.",
-    label: "Selected work / Four projects",
+    label: `Selected work / ${projects.length} projects`,
   },
   ...projects.map((project) => ({
     slug: project.slug,

@@ -2,6 +2,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 const caseStudies = [
+  { slug: "gig-tracker", title: "Gig Tracker", status: "Live" },
   { slug: "geovis", title: "GeoVis", status: "In development" },
   { slug: "neonsynth", title: "NeonSynth", status: "In development" },
   {
@@ -67,7 +68,7 @@ test("project index and next-project navigation form a complete route loop", asy
 }) => {
   await page.goto("/projects");
   await expect(page).toHaveTitle("Projects — Brady Dorsey");
-  await expect(page.locator(".project-card")).toHaveCount(4);
+  await expect(page.locator(".project-card")).toHaveCount(5);
   for (const project of caseStudies) {
     await expect(
       page.getByRole("heading", { level: 2, name: project.title, exact: true }),
@@ -88,6 +89,7 @@ test("project index and next-project navigation form a complete route loop", asy
     "neonsynth",
     "titanforge-studio",
     "swordbound-protocol",
+    "gig-tracker",
   ]) {
     await expect(page).toHaveURL(new RegExp(`/projects/${slug}$`));
     await page
@@ -306,4 +308,49 @@ test("trailer loads inline only after play on homepage, index and case study", a
       page.getByRole("link", { name: "Watch on YouTube" }),
     ).toBeVisible();
   }
+});
+
+test("Gig Tracker is discoverable, launches the live app, and shows both captured views", async ({
+  page,
+}) => {
+  for (const path of ["/", "/projects"]) {
+    await page.goto(path);
+    const card = page.getByRole("article", {
+      name: "Gig Tracker",
+      exact: true,
+    });
+    await expect(
+      card.getByRole("link", { name: "Launch app: Gig Tracker", exact: true }),
+    ).toHaveAttribute("href", "https://cyberpunk-dice.vercel.app/");
+  }
+  await page.getByRole("button", { name: "Search portfolio" }).click();
+  await page.getByRole("combobox").fill("Gig Tracker");
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/\/projects\/gig-tracker$/);
+  await expect(
+    page.getByRole("link", { name: "Launch Gig Tracker", exact: true }),
+  ).toHaveAttribute("href", "https://cyberpunk-dice.vercel.app/");
+  await expect(page.locator("#table-view img")).toHaveAttribute(
+    "src",
+    /gig-tracker-table/,
+  );
+  await page.locator("#table-view img").scrollIntoViewIfNeeded();
+  await expect
+    .poll(() =>
+      page
+        .locator("#table-view img")
+        .evaluate(
+          (image: HTMLImageElement) => image.complete && image.naturalWidth > 0,
+        ),
+    )
+    .toBe(true);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.locator("html").evaluate((element) => {
+    element.style.fontSize = "200%";
+  });
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
 });

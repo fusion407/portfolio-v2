@@ -55,13 +55,13 @@ test("project summaries disclose accurate work without navigating to unfinished 
   page,
 }) => {
   await page.goto("/");
-  await expect(page.locator(".project-card")).toHaveCount(4);
+  await expect(page.locator(".project-card")).toHaveCount(5);
   await expect(
     page.getByText("Conceptual artwork · not a product screenshot", {
       exact: true,
     }),
   ).toHaveCount(0);
-  await expect(page.locator(".project-artwork img")).toHaveCount(3);
+  await expect(page.locator(".project-artwork img")).toHaveCount(4);
   await expect(
     page.getByRole("button", { name: "Play trailer: Swordbound: Protocol" }),
   ).toBeVisible();
