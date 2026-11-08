@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+import { commands } from "../../src/content/commands";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -24,7 +25,7 @@ test("visible search trigger opens an accessible focused dialog and restores foc
   });
   await expect(dialog).toBeVisible();
   await expect(input).toBeFocused();
-  await expect(dialog.getByRole("option")).toHaveCount(15);
+  await expect(dialog.getByRole("option")).toHaveCount(commands.length);
   await expect(
     dialog.getByRole("option", { name: /download|résumé|resume/i }),
   ).toHaveCount(0);

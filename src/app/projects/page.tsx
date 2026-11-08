@@ -17,7 +17,9 @@ export default function ProjectsPage() {
         <span aria-current="page">Projects</span>
       </nav>
       <header className="projects-intro">
-        <p className="eyebrow">Selected work / 04 projects</p>
+        <p className="eyebrow">
+          Selected work / {String(projects.length).padStart(2, "0")} projects
+        </p>
         <h1>
           Built with intent.
           <br />
@@ -25,7 +27,7 @@ export default function ProjectsPage() {
         </h1>
         <p className="section-description">
           AI engineering, creative software, agentic tools, and technical art.
-          Four projects with different stages, scopes, and stories.
+          Projects with different stages, scopes, and stories.
         </p>
       </header>
       <div className="project-grid">

@@ -8,7 +8,7 @@ Primary headline: **I build things.**
 
 Milestones 1–8 and the arcade extensions are accepted and merged. [Milestone 9](docs/MILESTONE-9.md) is accepted and merged: the protected preview passed all 28 hosted checks; six Lighthouse measurements scored 98–100 Performance and 100 Accessibility/Best Practices. The authorized [production release](docs/PRODUCTION-RELEASE.md) is live at **https://www.bradydorsey.dev**. Both live domains now belong to the separate portfolio-v2 production project; the old site is retained for rollback. The [arcade extension](docs/ARCADE-SELECTOR.md) adds an icon-only cover and a picker for Pong and Asteroids. Milestone 8 adds cross-browser QA, keyboard-focus fixes, CSP headers, and repository/history checks; see its [review report](docs/MILESTONE-8.md) and [QA evidence](docs/QA.md). Milestone 7 added the confirmed public email, page-specific metadata and social images, structured identity data, preview-safe robots/sitemap behavior, and a draft legacy URL map; see its [review report](docs/MILESTONE-7.md). Résumé work is deferred at Brady's request until he updates it. Confirmed facts are tracked in [content decisions](docs/CONTENT-DECISIONS.md); broader copywriting refinements remain deferred. This repository is independent of `fusion407/portfolio`; the original project and deployment are retained while its two business domains now serve v2.
 
-Content routes: `/`, `/projects`, `/projects/geovis`, `/projects/neonsynth`, `/projects/titanforge-studio`, and `/projects/swordbound-protocol`. Generated metadata routes include `/robots.txt`, `/sitemap.xml`, and six `/og/<slug>` PNGs. Unknown paths, including `/404` and the deferred `/resume`, return a branded HTTP 404 response. Preview indexing remains disabled; see [SEO policy](docs/SEO.md).
+Content routes: `/`, `/projects`, `/projects/geovis`, `/projects/neonsynth`, `/projects/titanforge-studio`, `/projects/swordbound-protocol`, and `/projects/gig-tracker`. Generated metadata routes include `/robots.txt`, `/sitemap.xml`, and seven `/og/<slug>` PNGs. Unknown paths, including `/404` and the deferred `/resume`, return a branded HTTP 404 response. Preview indexing remains disabled; see [SEO policy](docs/SEO.md).
 
 ## Local setup
 
@@ -61,7 +61,7 @@ src/content/             Identity, navigation, projects, experience, process
 src/components/layout/   Layout helpers and skip navigation
 src/components/ui/       Reusable presentation components
 src/components/sections/ Seven homepage sections
-src/components/projects/ Shared project cards and conceptual SVG artwork
+src/components/projects/ Shared project cards, app screenshots, and trailer player
 tests/unit/              Vitest and Testing Library
 tests/e2e/               Playwright and axe accessibility checks
 .github/workflows/       Quality checks; no deployment steps

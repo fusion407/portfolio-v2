@@ -1,15 +1,21 @@
-export type ProjectKind = "geovis" | "neonsynth" | "titanforge" | "swordbound";
+export type ProjectKind =
+  "geovis" | "neonsynth" | "titanforge" | "swordbound" | "gig-tracker";
 export type ProjectSlug =
-  "geovis" | "neonsynth" | "titanforge-studio" | "swordbound-protocol";
+  | "geovis"
+  | "neonsynth"
+  | "titanforge-studio"
+  | "swordbound-protocol"
+  | "gig-tracker";
 
 export type ProjectSummary = {
   id: ProjectKind;
   slug: ProjectSlug;
   title: string;
   category: string;
-  status: "In development" | "Early prototype" | "Unreleased";
+  status: "In development" | "Early prototype" | "Unreleased" | "Live";
   summary: string;
   tools: readonly string[];
+  liveUrl?: `https://${string}`;
   role: string;
   overview: readonly string[];
 };
@@ -19,6 +25,13 @@ export type CaseStudySection = {
   title: string;
   paragraphs?: readonly string[];
   items?: readonly string[];
+  image?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    caption: string;
+  };
 };
 
 export type Project = ProjectSummary & {
@@ -172,6 +185,49 @@ export const projects: readonly Project[] = [
       },
     ],
     trailer: swordboundTrailer,
+  },
+  {
+    id: "gig-tracker",
+    slug: "gig-tracker",
+    title: "Gig Tracker",
+    category: "Tabletop companion / web app",
+    status: "Live",
+    summary:
+      "A mobile-first counter companion for the Cyberpunk 2077 trading card game, keeping Gig dice, Street Cred, and turns in sync with the table.",
+    tools: ["JavaScript", "Progressive Web App", "Vercel"],
+    role: "Personal web app project",
+    liveUrl: "https://cyberpunk-dice.vercel.app/",
+    overview: [
+      "Gig Tracker keeps the bookkeeping close at hand: track both players’ Gig dice and Street Cred, manage turn progression, and follow regulation and overtime in one interface.",
+      "Built with HTML, CSS, and vanilla JavaScript, the app saves matches on the device and works offline after the initial load. No account is needed to start playing.",
+    ],
+    sections: [
+      {
+        id: "features",
+        title: "Keep the game moving",
+        items: [
+          "Roll D4–D20 Gig dice digitally or record the faces of physical dice.",
+          "Track individual Gigs, Street Cred, steals, and face adjustments for card effects.",
+          "Follow turn progression, overtime, and Gig-based victory checks.",
+          "Undo match actions, resume local saves, and export the match log.",
+        ],
+      },
+      {
+        id: "table-view",
+        title: "One device. Both sides of the table.",
+        paragraphs: [
+          "Face-to-face mode rotates one player’s controls toward the other end of a phone or tablet. Both players can manage their Gigs, roll dice, and end turns on a shared device.",
+        ],
+        image: {
+          src: "/images/projects/gig-tracker-table.webp",
+          alt: "Gig Tracker on a phone in face-to-face mode, with Player Two’s controls rotated above Player One’s controls",
+          width: 390,
+          height: 844,
+          caption:
+            "The live app in face-to-face table view, showing a sample match.",
+        },
+      },
+    ],
   },
 ];
 
